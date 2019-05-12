@@ -179,7 +179,7 @@ function checkOrigin () {
           'git add -A',
           'git commit -m INIT',
           `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
-          'git git push -u origin master'
+          'git push -u origin master'
         ]
         console.log(execSync(execs.join(' && ')))
       }
