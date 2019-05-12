@@ -195,31 +195,32 @@ function checkLocation () {
         `cd ${path.resolve(config.baseDir, site)}`,
         'git add -A',
         'git commit -m Build',
-        `git push`
+        `git push --force`
       ]
-      console.log(execSync(execs.join(' && ')))
-      console.log(`文件夹 < ${site} > 提交成功`)
     } else {
-      console.log(`文件夹 < ${site} > 没有初始化,开始初始化`)
       execs = [
         `cd ${path.resolve(config.baseDir, site)}`,
         'git init',
         'git add -A',
         'git commit -m INIT',
         `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
-        `git push -u origin master`
+        `git push -u origin master --force`
       ]
-      console.log(execSync(execs.join(' && ')))
-      console.log(`文件夹 < ${site} > 没有初始化,开始初始化`)
     }
 
-    // execs = [
-    //   `cd ${path.resolve(config.baseDir, site)}`,
-    //   'rm -R .git'
-    // ]
+    execTask(execs)
+  })
+}
 
+// execTask()
 
-    // console.log(execs.join(' && '))
+function execTask (execs) {
+  exec(execs.join(' && '), function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout)
+    console.log('stderr: ' + stderr)
+    if (error !== null) {
+      console.log('exec error: ' + error)
+    }
   })
 }
 
