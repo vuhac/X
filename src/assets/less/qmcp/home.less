@@ -1,0 +1,333 @@
+.vp-qmcp-style {
+  background: #b62929;
+  .clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+  }
+  .clearfix {
+    zoom: 1;
+  }
+  .qmcp-home-header {
+    height: 48px;
+    line-height: 48px;
+    // padding-top: 3px;
+    color: #fff;
+    .wrapper {
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      .lang {
+        float: left;
+        width: 235px;
+        height: 100%;
+        padding-left: 48px;
+        background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+        background-position: 0 -180px;
+      }
+      .time {
+        float: left;
+        font-size: 16px;
+        line-height: 48px;
+        margin-right: 20px;
+        font-style: italic;
+      }
+      .app_down {
+        margin-left: 10px;
+        width: 60px;
+        float: left;
+        color: #4d8ffa;
+        cursor: pointer;
+        a {
+          font-size: 14px;
+          color: #2cf;
+        }
+      }
+      .login-before {
+        float: right;
+        line-height: inherit;
+        padding-right: 15px;
+        height: 100%;
+        > div {
+          position: relative;
+          float: left;
+          margin-left: 10px;
+        }
+        .userName,
+        .password {
+          padding-left: 50px;
+          height: 100%;
+          background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+          }
+        .code {
+          padding-left: 50px;
+          height: 100%;
+          background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+        }
+        .code1{
+          padding-left: 50px;
+          height: 100%;
+        }
+        .userName {
+          width: 160px;
+          background-position: 0 -389px;
+        }
+        .password {
+          width: 160px;
+          background-position: 0 -442px;
+        }
+        .code {
+          padding-left: 0;
+          background-position: 0 -496px;
+        }
+        .code1 {
+          padding-left: 0;
+          background-position: 0 -496px;
+        }
+        input {
+          width: 101px;
+          line-height: 36px;
+          height: 36px;
+          text-indent: 3px;
+          border: none;
+          background: transparent;
+          border-radius: 3px;
+          box-sizing: border-box;
+          vertical-align: top;
+          margin-top: 6px;
+          font-size: 14px;
+          color: #fff;
+          outline: none;
+        }
+        .code,.code1 {
+          line-height: 48px;
+          input {
+            width: 80px;
+            padding: 0px 8px;
+          }
+          img {
+            cursor: pointer;
+            padding-top: 6px;
+            width: 53px;
+            height: 30px;
+            margin-top: 6px;
+            margin-right: 15px;
+          }
+          a {
+            display: inline-block;
+            width: 74px;
+            height: 38px;
+            padding: 0 20px;
+            text-align: center;
+            line-height: 38px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 20px;
+            margin: 5px 0 0 5px;
+            vertical-align: top;
+            background-color: #cf3636;
+            box-shadow: 0px 0px 1px 1px #e2a982;
+            color: #fff;
+          }
+          .forget_pwd {
+            cursor: pointer;
+            vertical-align: top;
+            margin: 5px 0 0 5px;
+          }
+        }
+      }
+      .login-after {
+        float: right;
+        line-height: inherit;
+        padding-right: 15px;
+        height: 100%;
+        .userName,
+        .balance {
+          width: 198px;
+          padding-left: 50px;
+          height: 100%;
+          background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .userName {
+          background-position: 0 -566px;
+        }
+        .balance {
+          background-position: 0 -621px;
+        }
+        .link {
+          cursor: pointer;
+          margin: 0 20px;
+          width: 92px;
+          height: 100%;
+          padding-left: 40px;
+          background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+          span {
+            display: inline-block;
+            width: 71px;
+          }
+        }
+        .userCenter {
+          background-position: -108px -679px;
+        }
+        .agent {
+          background-position: -108px -679px;
+        }
+        .deposit {
+          background-position: -108px -679px;
+        }
+        .withdraw {
+          background-position: 0 -679px;
+        }
+        .exit {
+          background-position: -201px -679px;
+        }
+        .withdraw:hover {
+          color: #ffc107;
+          background-position: 0 -751px;
+        }
+        .exit:hover {
+          color: #ffc107;
+          background-position: -201px -751px;
+        }
+        .w60 {
+          width: 60px;
+        }
+        .userCenter:hover,
+        .agent:hover,
+        .deposit:hover {
+          color: #ffc107;
+          background-position: -108px -751px;
+        }
+      }
+    }
+  }
+  .qmcp-home-nav {
+    height: 70px;
+    background: #ffd5d0 url(/static//qmcp/img/main_bg.png) repeat;
+    border-bottom: 1px solid #782828;
+    .wrapper {
+      width: 1180px;
+      height: 100%;
+      margin: auto;
+      position: relative;
+      .logo {
+        width: 202px;
+        height: 50px;
+        margin: 4px;
+        margin-left: 0;
+        a {
+          display: block;
+          line-height: 76px;
+          img {
+            vertical-align: middle;
+          }
+        }
+      }
+      .nav-caidan {
+        float: right;
+        font-size: 16px;
+        ul {
+          li.nav {
+            &.navActive, &:hover {
+              background: url(/static/qmcp/img/nav/nav_active.png) no-repeat;
+              background-size: 100% 100%;
+              color: #fff;
+            }
+            &:hover .sub-nav {
+              display: block;
+              transform: translateX(-50%);
+            }
+            position: relative;
+            float: left;
+            width: 102px;
+            height: 70px;
+            cursor: pointer;
+            text-align: center;
+            color: #2c2c2c;
+            font-size: 14px;
+            span.title,
+            span.en {
+              width: 100%;
+              display: inline-block;
+              margin-top: 19px;
+            }
+            span.en {
+              margin-top: 8px;
+              font-size: 10px;
+            }
+            .sub-nav {
+              z-index: 6;
+              position: absolute;
+              left: 47.5px;
+              top: 70px;
+              width: 578px;
+              padding: 20px 34px;
+              background-color: rgba(0, 0, 0, .8);
+              border-radius: 5px;
+              &.sub-nav-SPORT {
+                width: 476px;
+              }
+              &::after {
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 26px;
+                height: 19px;
+                background: url(/static/qmcp/img/triangles_back.png?e60836c752) no-repeat;
+                top: -8px;
+              }
+              display: none;
+              .sub {
+                text-align: center;
+                width: 92px;
+                line-height: 15px;
+                margin: 5px;
+                height: 108px;
+                float: left;
+                position: relative;
+                color: #fff;
+                &:hover {
+                  background: rgba(211, 211, 211, .8);
+                  border-radius: 8px;
+                }
+                span {
+                  font-size: 13px;
+                }
+                a {
+                  display: inline-block;
+                  width: 80px;
+                  height: 80px;
+                  margin: 5px auto;
+                  background: #df4545;
+                  border-radius: 10px;
+                  img {
+                    width: 72px;
+                    height: 72px;
+                  }
+                }
+                .hot {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  width: 21px;
+                  height: 9px;
+                  background-image: url('/static/qmcp/img/nav/hot.gif');
+                }
+              }
+            }
+          }
+          .navActive {
+            color: #b62929;
+          }
+        }
+      }
+    }
+  }
+}

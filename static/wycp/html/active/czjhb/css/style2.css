@@ -1,0 +1,59 @@
+.rbag {
+    width: 500px;
+    height: 477px;
+    position: fixed;
+    z-index: 10001;
+    left: 50%;
+    top: 50%;
+    background: url(../images/rbag_bg.png) no-repeat 0 0;
+    margin: -238px 0 0 -250px;
+}
+.rbag .close {
+    width: 30px;
+    height: 30px;
+    background: url(../images/rbag_close.png) no-repeat 0 0;
+    display: block;
+    margin-left: 235px;
+}
+.rbag .cont {
+    width: 355px;
+    height: 184px;
+    margin: 250px 0 0 78px;
+    text-align: center;
+}
+.rbag .btn {
+    width: 160px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #000;
+    background: #fbdb30;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+}
+
+.rbag .txt {
+    width: 270px;
+    height: 44px;
+    border: 1px solid #b05a5a;
+    background: #7d1919;
+    color: #fff;
+    margin: 0 0 0 20px;
+    text-indent: 10px;
+}
+@keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+.snow{position:absolute;top:0;color:#fff;z-index:200;cursor:pointer}
+.snow.snow-1{width:90px;height:111px;background:url(../images/s-1.png)}
+.snow.snow-2{width:80px;height:111px;background:url(../images/s-2.png)}
+.snow.snow-3{width:100px;height:188px;background:url(../images/s-3.png)}
+.audiobox{width:27px;height:27px;position:fixed;z-index:111111;right:50px;bottom:25px;background:url(../images/audio.png);cursor:pointer}
+.audiobox.on{animation:rotating 1.2s linear infinite;-webkit-animation:rotating 1.2s linear infinite;-moz-animation:rotating 1.2s linear infinite;-o-animation:rotating 1.2s linear infinite}

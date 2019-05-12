@@ -1,0 +1,45 @@
+﻿@charset "utf-8";
+
+body{padding:0px; margin:0px;font:normal 100 12px "microsoft YaHei",SimSun,Arial;}
+*:focus{outline:0}
+dl,dt,dd,div,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,tr,td,th,thead,caption,a{margin:0;padding:0;font-weight:normal;list-style:none;text-decoration: none;}
+
+.show{ display:block}.hidden{ display:none}
+.fl{ float: left; }.fr{ float: right; }
+.w_1020{ width: 1020px; margin: 0 auto;}
+
+.top{ width: 100%; height: 108px; background: #b62929; border-top: 1px solid #d1bfa5; border-bottom: 1px solid #d1bfa5;}
+.top .w_1020{ background: url(../images/top_btn.png) right center no-repeat; height: 108px;}
+.top .w_1020 .logo{ padding-top: 12px; float: left}
+.top .w_1020 .online{ float: right}
+.top .w_1020 .online a{ display: block; width: 300px; height: 75px;margin-top: 30px;}
+
+.main{ width: 100%; height: auto; overflow: hidden; background: url('../images/bg1.png') no-repeat; background-size: 100%; min-height: 900px;}
+.main1{ width: 100%; height: 455px; overflow: hidden;}
+.main1 h5{ width: 540px; float: right; height: 58px; background: url(../images/ico1.png) center 80px no-repeat; margin-right: 90px; color: #d2d2d2; font-size: 14px; padding-top: 110px; text-align: center}
+.main1 .m1_list{ float: right; width: 540px; margin-right: 90px; position: relative; height: 210px;}
+.main1 .m1_list .ico_again{ width: 60px; height: 212px; background: url(../images/img1.png) no-repeat; right: -90px; top: 0px; display: block; position: absolute;}
+.main1 .m1_list li{ float: left; width: 180px; overflow: hidden; height: 105px; background: #96312c; position: relative; cursor: pointer;}
+.main1 .m1_list li.bg2{ background: #741611}
+.main1 .m1_list li .time{ position: absolute; right: 10px; top: 5px; color: #ffd722; font-size: 12px; font-family: Arial, Helvetica, sans-serif}
+.main1 .m1_list li .link{ position: absolute; left: 0; right: 0; top: 45px; color: #ffffff; font-size: 16px; text-align: center; font-weight: bold;}
+.main1 .m1_list li .btn{ width: 102px; height:26px; display: block; position: absolute; left: 50%; margin-left: -51px; text-align: center; color:#ffffff; font-size: 14px; line-height: 26px; background: url(../images/ico2.png) no-repeat; top: 100%;}
+.main1 .m1_list li.cur{ background: #e2c564;}
+.main1 .m1_list li.cur .time{ color: #753400}
+.main1 .m1_list li.cur .link{ color: #1b0f0d}
+
+.main2{ width: 100%; height: 340px; overflow: hidden;}
+.main2 .m2_left,.main2 .m2_right{ float: left; width: 502px;}
+.main2 .m2_left{ margin-right: 16px;}
+.main2 h5{ width: 100%; height: 42px; background: url(../images/icon1.png) center no-repeat; text-align: center; color: #ffffff; font-size: 18px; line-height: 42px;}
+.main2 ul{ height: 215px; background: url(../images/ico7.png) no-repeat; padding: 4px 0px 0px 3px;}
+.main2 ul li{ float: left}
+.main2 ul li a{ display: block; float: left; width: 145px; height: 105px; margin: 0px 1px 1px 0px; padding-left: 20px; line-height: 105px; color: #ffffff; font-size: 18px;}
+.main2 ul li a:hover{ background: #741611; color: #e2c564;}
+.main2 ul li a img{ float: left; padding-top: 30px; margin-right: 4px;}
+.main2 ul li a img.i1{ display: block; border: 0}
+.main2 ul li a img.i2{ display: none; border: 0}
+.main2 .m2_right ul li a{ padding-left: 10px; width: 155px;}
+
+.footer1{ width: 100%; height: 84px; background: #b62929 url(../images/ico_footer.png) center no-repeat; border-top: #b62929 1px solid; position: relative; bottom: 0;}
+.footer2{ width: 100%; height: 30px; line-height: 30px; background: #1d1917; text-align: center; color: #c3c1c1; font-size: 12px;}

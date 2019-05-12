@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>签到</title>
+	<link rel="stylesheet" type="text/css" href="css/checkin.css">
+	<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
+	<script src="js/checkin.js" type="text/javascript"></script>
+	<script src="svg/vivus.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="box">
+		<div class="mes">
+			<div class="almes">
+				<img src="img/al.png">
+				<div class="content">
+					<h1></h1>
+					<p></p>
+					<div class="butt">确认</div>
+				</div>
+			</div>
+		</div>
+		<div class="meser">
+			<div class="err">
+				<span></span>
+				<div class="close"><img src="img/close.png"></div>
+			</div>
+		</div>
+		<div class="top">
+			<img src="img/logo.png" alt>
+		</div>
+		<div class="date">
+			<ul>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg1" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+							<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期一</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg2" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期二</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg3" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期三</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg4" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期四</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg5" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期五</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg6" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期六</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+				<div class="bor"></div>
+				<li>
+					<div class="noday">（未签到）</div>
+					<svg id="svg7" x="0px" y="0px" width="80" height="80" viewBox="0 0 200 200" enable-background="new 0 0 200 200">
+						<circle cx="100" cy="100" r="91"/>
+					</svg>
+					<div class="day">
+						<img src="img/dg.png" alt>
+						<div class="mark"></div>
+					</div>
+					<div class="day_text">星期日</div>
+					<p class="text"><span class="text_p"></span><span class="trangle"></span></p>
+				</li>
+			</ul>
+		</div>
+		<div class="but">立即签到</div>
+		<div class="rule">
+			<p>活动时间：以官网展示为准</p>
+			<p>活动对象：全体新老会员</p>
+			<p>签到条件：</p>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>签到周期</th>
+						<th>天存款金额</th>
+						<th>天有效投注</th>
+						<th>签到奖励</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>周一至周日</td>
+						<td>1000+</td>
+						<td>X5</td>
+						<td>最高38元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>10001+</td>
+						<td>X4</td>
+						<td>最高188元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>50001+</td>
+						<td>X3</td>
+						<td>最高288元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>100001+</td>
+						<td>X2</td>
+						<td>最高588元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>300001+</td>
+						<td>X1</td>
+						<td>最高888元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>500001+</td>
+						<td>X1</td>
+						<td>最高1888元</td>
+					</tr>
+					<tr>
+						<td>周一至周日</td>
+						<td>1000001+</td>
+						<td>X1</td>
+						<td>最高8888元</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>温馨提示：签到周期越多签到奖励越高（最高8888元）</p>
+		</div>
+		<div class="ifmation">
+			<p>签到规则</p>
+      <p>1. 2019年陆续推出各类大型优惠活动，诚意邀请您共同参与、见证卓越品牌•信誉为先•客户至上•领航先锋•优惠王者</p>
+      <p>2. 签到活动香港六合彩和捕鱼游戏打码量都不计入有效投注额</p>
+			<p>3. 签到统计时间为美东时间（当天中午12点至次日中午11：59：59为一天）</p>
+			<p>4. 签到奖励按照前一天存款总额、有效投注、累计签到周期计算</p>
+			<p>5. 签到奖励属于系统自动派送，当天签到成功秒赠送至会员帐号</p>
+			<p>6. 无论是个人或团体，如有任何威胁、滥用或使用不诚实方式套利的行为系统将自动拉入优惠黑名单将不能参与所有自动派送优惠，并取消该团队或个人优惠金额盈利金额，只保留本金。</p>
+			<p>7. 客拉客将保留对活动的最终解释权，且在任何情况下可随时更改、停止、取消该优惠活动的权利，谢谢！</p>
+		</div>
+		<div class="bottom">Copyright ©GALAXY TM客拉客 Reserved</div>
+	</div>
+	<script>
+	</script>
+</body>
+</html>

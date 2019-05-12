@@ -1,0 +1,102 @@
+html {
+    background-color: #140903;
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+.header {
+    width: 100%;
+   /* height: 559px;
+    background: url("../images/head.png") no-repeat center center;*/
+}
+.header img {
+    width: 100%;
+}
+
+section.contain {
+    width: 100%;
+    /*background: url("../images/bg.png") no-repeat center center;*/
+}
+section.contain .main {
+
+    margin: 0 auto;
+}
+section.contain .main .section1 {
+    margin-bottom: 0.6rem;
+    /*background: url("../images/bg_table.png") no-repeat center center;*/
+}
+.title img{
+    /*width: 100%;*/
+    padding: 0.2rem 0 0.2rem 0.5rem;
+}
+.title span {
+    display: block;
+    width: 90%;
+    font-size: 0.3rem;
+    line-height: 1.5;
+    color: #E4C584;
+    padding-left: 0.5rem;
+}
+.table {
+    width: 95%;
+    margin: 0.6rem auto;
+}
+.sections {
+    position: relative;
+    width: 9.65rem;
+    /*height: 2.65rem;*/
+    margin: 0 auto 0.5rem;
+}
+.sections p {
+    position: absolute;
+    top: 0.4rem;
+    left: 3.3rem;
+    /*padding: 0.4rem 0 0 3.3rem;*/
+    width: 6.2rem;
+    line-height: 1.5;
+    color: #FFE3AB;
+    font-size: 0.35rem;
+}
+.sections p span {
+    color: #FFAB03;
+}
+.section2 {
+    /*background: url("../images/way.png") no-repeat 100% 100%;*/
+}
+.section3 {
+    /*background: url("../images/cycle.png") no-repeat center center;*/
+}
+.section4 {
+    /*background: url("../images/condition.png") no-repeat center center;*/
+}
+.section5 {
+    /*background: url("../images/birthday.png") no-repeat center center;*/
+}
+.section6 {
+    /*background: url("../images/celebration.png") no-repeat center center;*/
+}
+.footer {
+    width: 100%;
+    /*height: 578px;*/
+    /*background: url("../images/bg_bottom.png") no-repeat center center;*/
+}
+.footer .foot {
+    width: 100%;
+    margin: 0 auto;
+}
+.foot img{
+    padding: 0.5rem 0 0.2rem 0.5rem;
+}
+.foot span {
+    display: block;
+    width: 90%;
+    font-size: 0.35rem;
+    line-height: 1.5;
+    color: #8B7D72;
+    padding-left: 0.5rem;
+}

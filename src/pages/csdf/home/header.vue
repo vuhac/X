@@ -1,0 +1,594 @@
+<template>
+  <div class="main">
+    <div class="header-nav">
+      <div class="header-nav-body clear-fix">
+        <span>您好,欢迎来到賽馬會 </span>
+        <span>{{time}}</span>
+        <nav class="nav">
+          <ul class="clear-fix">
+            <!-- <li><a target="_blank" :href="links.jiechiLink">防劫持教程</a></li> -->
+            <li><a target="_blank" href="javascript:void(0);">网址导航</a></li>
+            <li><a target="_blank" href="javascript: void(0)" @click="addFavorite('賽馬會')">添加收藏</a></li>
+            <li><a @click="openKefu">在线客服</a></li>
+            <li><a target="_blank" href="/static/csdf/html/download/index.html">手机APP下载</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="header-main clear-fix">
+      <a href="javascript: void(0)" @click="$router.push('/')">
+        <img class="logo" src="/static/csdf/img/logo.png"/>
+      </a>
+      <div class="header-image" ></div>
+
+      <div class="header-font" v-if="userinfo">
+        <p>全新代理全新体验</p>
+        <p><span>梦想</span>从这里启航</p>
+      </div>
+      <!-- 登录前 -->
+      <div class="login-before clear-fix" v-if="!userinfo">
+        <div class="form-input">
+          <div class="row clear-fix">
+            <input class="header-input" type="text" autocomplete="off" placeholder="帐号" v-model="passKey.userName"
+                   @blur="getCode"></input>
+            <input class="header-input" maxlength="20" autocomplete="off" type="password" placeholder="密码"
+                   v-model="passKey.password"></input>
+            <button class="header-button" @click="login">登录</button>
+          </div>
+          <div class="row clear-fix">
+            <span v-if="code_show">
+                <input class="header-input w-100" size="mini" autocomplete="off" placeholder="验证码" maxlength="4" type="text" v-model="passKey.code"></input>
+                <img class="auth-image" :src="codeImg" alt="" @click="getCode">
+            </span>
+
+            <button class="header-button" @click="register">注册</button>
+            <a class="forget_pwd" onclick="alert('忘记帐号，请联系在线客服人员取回！');" href="javascript:void(0)">忘记密码?</a>
+            <button class="header-button" @click="loginTest">试玩</button>
+          </div>
+        </div>
+      </div>
+      <!-- 登录后 -->
+      <div class="login-after" v-if="userinfo">
+        <div class="row">
+          <p><span>会员帐号</span>：<span>{{userinfo.userName}}</span></p>
+          <a href="javascript: void(0)" @click="logout">退出</a>
+        </div>
+        <div class="row">
+          <a href="javascript: void(0)" @click="goUserCen('personage',1)">投注记录</a>
+          <span>余额</span>：<span>{{userinfo ? userinfo.balance : ''}}</span>
+          <span :class="'fa fa-fw fa-refresh ' + (balanceRefreshing?'fa-spin':'')" @click="getBalance" style="cursor:pointer"></span>
+        </div>
+        <div class="row">
+          <a href="javascript: void(0)" @click="goUserCen('personage',0)">会员中心</a>
+          <!-- <a href="javascript: void(0)" onclick="alert('联系直属上级或7X24小时在线客服！');">申请代理</a> -->
+          <a href="javascript: void(0)" @click="goUserCen('recharge',0)">存款</a>
+          <a href="javascript: void(0)" @click="goUserCen('withdraw',0)">取款</a>
+        </div>
+      </div>
+    </div>
+    <!-- <Modal
+        class="vp-login-warp"
+        :title="modelTitle"
+        v-model="ifLogin"
+        class-name="vp-login-warp"
+        width="790"
+        :mask-closable="false"
+        :closable="false"
+      >
+        <vp-admin-index></vp-admin-index>
+      </Modal> -->
+      <div class="my-modal" v-show="ifLogin">
+        <div class="bg"></div>
+        <div class="my-modal-content">
+          <div class="my-register">注册帐号</div>
+          <vp-admin-index></vp-admin-index>
+        </div>
+      </div>
+  </div>
+</template>
+
+<script>
+  import UserService from '@/service/public/UserService.js'
+  import store from '@/vuex/store'
+  import {postS,getS} from '@/service/public/service.js'
+  import vpAdminIndex from '../../public/tradition/components/admin'
+  export default {
+    data () {
+      return {
+        passKey: {},
+        codeImg: '/static/csdf/img/code.jpg',
+        time: this.getHMS(new Date()),
+        balanceRefreshing: false,
+        links: {
+          navLink: '',
+          jiechiLink:'https://kjzb.com/dns'
+        },
+        code_show: parseInt(localStorage.is_code_show)
+      }
+    },
+    methods: {
+      /**
+       * 收藏本站
+       * @param title
+       */
+      addFavorite (title) {
+        var url = 'http://' + location.hostname + '/'
+        try {
+          window.external.addFavorite(url, title)
+        } catch (e) {
+          try {
+            window.sidebar.addPanel(title, url, '')
+          } catch (e) {
+            alert('抱歉，您所使用的浏览器无法完成此操作。\n加入收藏失败，电脑请使用Ctrl+D进行添加')
+          }
+        }
+      },
+      openKefu () {
+        let service = JSON.parse(localStorage.config).service;
+        if (service) {
+          let ser = service.find(item => item.status === 'on')
+          if (ser) {
+            window.open(ser.url);
+          }
+        }
+      },
+      //注册
+      register () {
+         this.$store.commit('alert/showLogin', true)
+         this.$store.commit('alert/setChooseModel', '注册帐号')
+         this.$store.commit('alert/setLoginTitle', '注册帐号')
+      },
+      getCode () {
+        if (this.code_show == 0) {
+          return;
+        }
+        if (!this.passKey.userName) {
+          // alert("请务必输入6位帐号");
+          return false
+        }
+        if (this.passKey.userName.length < 5) {
+          // alert("请务必输入6位帐号");
+          return false
+        }
+
+        getS(`captcha`, {
+            userName: this.passKey.userName
+          }).then(res => {
+            if (res.code === 200) {
+              this.codeImg = res.data.captcha_image_text
+              this.passKey.captcha_key = res.data.captcha_key
+            } else {
+              this.$store.commit('alert/showTipModel', {
+                bool: true,
+                title: res.message,
+                model: 'warn'
+              })
+            }
+          })
+        },
+        is_code_show(){
+          getS(`is-show-captcha`).then(res => {
+          if (res && res.code === 200) {
+            this.code_show = res.data;
+          }
+        });
+      },
+      login () {
+        if (!this.validateAccountLogin(this.passKey.userName)) {
+          alert('请输入6-20位数字或字母组成的帐号')
+          return false
+        }
+        if (!this.validateAccountUserName(this.passKey.password)) {
+          alert('请输入6-20位数字或字母组成的密码')
+          return false
+        }
+        if(this.code_show){
+          if (this.passKey.code === '') {
+            alert('验证码请务必输入')
+            return false
+          }
+        }
+        if(this.code_show){
+          if (this.passKey.code.length < 4 || this.passKey.code.length > 4) {
+            alert('请输入4位验证码')
+            return false
+          }
+        }
+        this.passKey.device = 'pc';
+        postS(`login`, this.passKey).then(res => {
+          if (res.code === 200) {
+            // this.$router.push({
+            //   name: 'clause'
+            // })
+            UserService.setCache(res, 'v1', 'login')
+            window.location.href = '/'
+          } else {
+            alert(res.message)
+            this.is_code_show();
+          }
+        })
+      },
+      loginTest () {
+        this.$http.get(`/frontend/test/demo`, {headers: { 'Accept': 'application/x.tg.v2+json' },params:{}}).then(res => {
+          if (res.code == 200) {
+            UserService.setCache(res, 'test')
+            window.location.reload()
+          }
+        })
+      },
+      logout () {
+        UserService.logout.call(this)
+      },
+      getBalance () {
+          this.balanceRefreshing = true
+          getS(`member/balance`).then(res => {
+          if (res.code === 200) {
+            this.balanceRefreshing = false
+            let userinfo = JSON.parse(localStorage.userinfo)
+            userinfo.balance = res.data.member
+            userinfo.agent=res.data.agency
+            this.$store.commit('mainState/reloadUserinfo', userinfo)
+          }
+        })
+      },
+      goUserCen (name, num) {
+        //name的类型有 ：  recharge （充值）  personage （个人资料）
+        //withdraw （提现）  agency  （代理） message （消息）  discounts （优惠）
+        this.$store.commit('showPersonal', {
+          bool: true
+        })
+        this.$store.commit('showContent', {
+          parent: name
+        })
+        this.$store.commit('showNav', {
+          child: num
+        })
+      },
+      // register () {
+      //   this.$router.push({path:'/home/register'})
+      // }
+    },
+    computed: {
+      // 个人信息刷新
+      userinfo () {
+        return this.$store.state.mainState.userinfo
+      },
+      // 是否提示信息
+      tipDatas () {
+        return this.$store.state.alert.tipModel
+      },
+      // 是否显示登录
+      ifLogin () {
+        return this.$store.state.alert.login.ifLogin
+      },
+      // 登录注册标题切换
+      modelTitle () {
+        return this.$store.state.alert.login.modelTitle
+      }
+    },
+    created () {
+      this.is_code_show();
+      setInterval(() => {
+        this.time = this.getTimes(new Date())
+      }, 1000)
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          if (!localStorage.userinfo) {
+            let timer = setInterval(() => {
+              if (localStorage.userinfo) {
+                clearInterval(timer)
+                window.location.reload()
+              }
+            }, 1000)
+          }
+        }
+      })
+    },
+    components: {
+      vpAdminIndex
+    },
+    store
+  }
+</script>
+
+<style type="text/less" lang="less" scoped>
+  .vp-login-warp {
+    /deep/ .ivu-modal-wrap {
+      // top: 50%;
+      // -webkit-transform: translateY(-60%);
+      // -moz-transform: translateY(-60%);
+      // -o-transform: translateY(-60%);
+      // -ms-transform: translateY(-60%);
+      // transform: translateY(-60%);
+      overflow: inherit;
+
+      .ivu-modal{
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate3d(-50%,-50%,0);
+
+      .ivu-modal-header {
+        margin: 14px 20px 0 20px;
+        height: 70px;
+
+        .ivu-modal-header-inner {
+          font-size: 20px;
+          color: #333;
+          font-weight: normal;
+          border-bottom: 2px solid #FF0024;;
+          display: inline-block;
+          width: auto;
+          padding: 20px 10px 34px 10px;
+        }
+
+      }
+
+      .ivu-modal-body {
+        padding: 30px;
+      }
+
+      .ivu-modal-footer {
+        display: none;
+      }
+    }
+    }
+  }
+
+  .row:after, .clear-fix {
+    content: '';
+    display: table;
+    clear: both;
+    zoom: 1;
+  }
+
+  .main {
+    .header-nav {
+      line-height: 30px;
+      background-color: #f5f5f5;
+
+      .header-nav-body {
+        width: 1000px;
+        margin: 0 auto;
+        font-size: 12px;
+
+        .nav {
+          float: right;
+
+          ul {
+            li {
+              float: right;
+
+              a {
+                color: #5e5e5e;
+              }
+
+              a:hover {
+                color: #f13131;
+              }
+            }
+
+            li:after {
+              content: '|';
+              padding: 0 5px;
+            }
+
+            li:first-child::after {
+              content: '';
+              padding: unset;
+            }
+          }
+        }
+      }
+    }
+
+    .header-main {
+      width: 1000px;
+      height: 99px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+
+      a {
+        float: left;
+        .logo {
+        margin-top:12px;
+        height:74px;
+
+        }
+      }
+
+      .header-image {
+        float: left;
+        width: 240px;
+        height: 87px;
+        background-size: 100% 100%;
+        background: url("/static/csdf/img/header-img.png") no-repeat;
+      }
+
+      .header-font{
+        float: left;
+        color: red;
+        line-height: 30px;
+        margin: 20px 0 0 25px;
+        span{
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
+
+      .login-before {
+        width: 420px;
+        height: 99px;
+        padding-top: 10px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        .row {
+          position: relative;
+          margin-bottom: 15px;
+          white-space: nowrap;
+        }
+        .form-input {
+          .header-input, .header-button {
+            float: left;
+            height: 20px;
+            padding: 4px 14px;
+            line-height: 20px;
+            border-radius: 15px;
+            box-sizing: content-box;
+            margin-right: 10px;
+            border: none;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+
+
+          .header-input {
+            width: 120px;
+            border: 1px solid #999999;
+
+            &.w-100 {
+              width: 70px;
+            }
+
+            &:hover, &:focus {
+              border: 1px solid #f13131;
+              box-shadow: 0 0 3px 0 #f13131;
+            }
+          }
+
+          .header-button {
+            width: 40px;
+            color: #444444;
+            background-color: #D4D4D4;
+
+            &:hover {
+              color: white;
+              background-color: #f13131;
+            }
+          }
+
+          .auth-image {
+            float: left;
+            margin-top: 2px;
+            height: 26px;
+            width: 57px;
+            margin-right: 10px;
+          }
+
+          .forget_pwd {
+            float: left;
+            line-height: 30px;
+            margin-right: 10px;
+            font-size: 12px;
+            color: #999999;
+
+            &:hover {
+              color: #f13131;
+            }
+          }
+        }
+
+        .form-button {
+          width: 60px;
+          position: absolute;
+          right: 0;
+          top: 10px;
+        }
+      }
+      .login-after {
+        width:235px;
+        height: 85px;
+        margin:10px 0 0 5px;
+        float: right;
+        font-size: 14px;
+
+        .row {
+          height: 28px;
+          line-height: 28px;
+          position: relative;
+          white-space: nowrap;
+          &:nth-child(1){
+            position: relative;
+            a{
+              color: #999999;
+              display: inline-block;
+              position: absolute;
+              right: 0;
+              top:0;
+            }
+          }
+          &:nth-child(2) span:nth-child(4){
+            margin-left: 10px;
+          }
+          a{
+            color: #000;
+            margin-right: 16px;
+          }
+        }
+      }
+
+    }
+
+    .my-modal {
+      display: block;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+
+      .bg {
+      z-index: 9998;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+        background-color: rgba(0,0,0,0.36)
+      }
+      .my-modal-content {
+        max-width: 750px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 9999;
+        background-color: #fff;
+        // padding: 5% 0;
+        border-radius: 10px;
+
+        .vp-admin-wrap{
+          padding: 116px 0 0px;
+        }
+
+       .my-register{
+           position: absolute;
+           font-size: 20px;
+           line-height: 20px;
+           color: #333;
+           font-weight: normal;
+           border-bottom: 2px solid #FF0024;
+           padding: 20px 10px 20px 10px;
+           top:0px;
+           left: 30px;
+           z-index: 99;
+        }
+      }
+    }
+  }
+</style>
+

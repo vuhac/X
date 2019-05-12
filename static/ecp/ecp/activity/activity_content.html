@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <title>活动</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/iscroll.js"></script>
+  <style>
+    *, body, p {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, STHeiti, Helvetica, sans-serif !important;
+      line-height: 1.42857143;
+      font-size: 14px;
+      background: url("img/bg.jpg") no-repeat;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    .nav-new {
+      width: 100%;
+      background: linear-gradient(90deg, #ff8e00, #ff5100);
+      height: 0.88rem;
+      line-height: 0.88rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-new .nav-bar-title {
+      width: 100%;
+      font-size: 0.36rem;
+      font-weight: 600;
+      color: #fff;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      text-align: center;
+    }
+
+    .nav-bar-block > img {
+      position: absolute;
+      top: 0.25rem;
+      left: 15px;
+      width: 0.23rem;
+    }
+
+    .act_wrap {
+      position: absolute;
+      z-index: 1;
+      top: 0.88rem;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      touch-action: none;
+    }
+    .list {
+      padding: 10px;
+      position: relative;
+      font-size: 100%;
+      width: 100%;
+    }
+    .list .title {
+      text-align: justify;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255);
+    }
+    .list .date {
+      font-size: 16px;
+      line-height: 30px;
+      color: rgba(0,0,0,.5);
+      border-bottom: 1px solid rgba(0,0,0,.2);
+      margin: -4px 0 10px;
+    }
+    table {
+      width: 100%;
+      margin-bottom: 15px;
+      text-align: center;
+      border: 1px solid #bdbfc2;
+      border-spacing: 0;
+      border-collapse: collapse;
+      /*color: rgb(235, 235, 235);*/
+    }
+
+    table .firstRow {
+      /*border: 1px solid rgb(235, 235, 235);*/
+      /*background: #dcdcdc;*/
+      color: #454741;
+      border-bottom: 1px solid #bdbfc2;
+    }
+
+    table td {
+      padding: 5px 0;
+      border: 1px solid #bdbfc2;
+      vertical-align: middle;
+    }
+
+    h4 {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+      font-family: "微软雅黑", "Microsoft YaHei", Tahoma, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    p {
+      margin: 0 0 10px;
+    }
+    img {
+      vertical-align: middle;
+      width: 100%;
+    }
+  </style>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (!clientWidth > 640) {
+            docEl.style.fontSize = 10 + 'px';
+          } else {
+            docEl.style.fontSize = 10 * (clientWidth / 640) + 'px';
+          }
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      recalc();
+    })(document, window);
+      var myScroll;
+      function loaded() {
+        myScroll = new IScroll('#act_wrap', {mouseWheel: true, click: true});
+      }
+      document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+      }, false);
+  </script>
+  <script>
+
+$(function () {
+  function getQueryString(name) {
+    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    if (result == null || result.length < 1) {
+      return "";
+    }
+    return result[1];
+  }
+  var str = getQueryString("bingo");
+  document.getElementById('list_'+ str).style.display = 'block';
+
+  var ua = window.navigator.userAgent.toLowerCase();
+  if (ua.indexOf('show-icon')>=0) {
+    // $('.show-icon').show();
+    $('.nav-new').hide();
+    $('.act_wrap').css('top',0);
+
+  }
+
+});
+
+
+  </script>
+</head>
+<body onload="loaded()">
+
+<div class="nav-new">
+  <div class="nav-bar-block">
+    <img onclick="window.history.back(-1); " src="img/goBack.png" alt="">
+    <div class="nav-bar-title">优惠活动</div>
+  </div>
+</div>
+
+<div class="show-icon" style="width: 0.3rem; display: none; position: fixed;top: 0.34rem;left: 15px;z-index: 99;" onclick="window.history.back(-1); ">
+  <img src="img/goBack.png" alt="" style="width: 0.3rem;">
+</div>
+
+<div class="act_wrap" id="act_wrap">
+  <div id="act_content" class="act_content" style="">
+
+    <!--<div class="list" id="list_nuanchun" style="display: none;">
+      <img src="img/nuanchun.png">
+      <div>
+        <img src="img/nuanchunc.jpg" style="width:100%">
+      </div>
+    </div>-->
+    <div class="list" id="list_wuye" style="display: none;">
+      <img src="img/wuye.png">
+      <div>
+        <img src="img/wuyec.jpg" style="width:100%">
+      </div>
+    </div>
+
+
+    <div class="list" id="list_tjhc" style="display: none;">
+      <img src="img/tjhc.png">
+      <div>
+        <img src="img/tjhcc.jpg" style="width:100%">
+      </div>
+    </div>
+
+    <div class="list" id="list_gejh" style="display: none;">
+      <img src="img/gejh.png">
+      <div>
+        <img src="img/gejhc.jpg" style="width:100%">
+      </div>
+    </div>
+
+    <div class="list" id="list_yhk" style="display: none;">
+      <img src="img/yhk.png">
+      <div>
+        <img src="img/yhkc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_dmw" style="display: none;">
+      <img src="img/dmw.png">
+      <div>
+        <img src="img/dmwc.jpg" style="width:100%">
+      </div>
+    </div>
+
+    <div class="list" id="list_ttck" style="display: none;">
+      <img src="img/ttck.png">
+      <div>
+        <img src="img/ttckc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_jdys" style="display: none;">
+      <img src="img/jdys.png">
+      <div>
+        <img src="img/jdysc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_xhy" style="display: none;">
+      <img src="img/xhy.png">
+      <div>
+        <img src="img/xhyc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_srlj" style="display: none;">
+      <img src="img/srlj.png">
+      <div>
+        <img src="img/srljc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_smcj" style="display: none;">
+      <img src="img/smcj.png">
+      <div>
+        <img src="img/smcjc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_fw" style="display: none;">
+      <img src="img/fw.png">
+      <div>
+        <img src="img/fwc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_ky_ks" style="display: none;">
+      <img src="img/ky_ks.png">
+      <div>
+        <img src="img/ky_ksc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_ky_hl" style="display: none;">
+      <img src="img/ky_hl.png">
+      <div>
+        <img src="img/ky_hlc.jpg" style="width:100%">
+      </div>
+    </div>
+
+
+    <div class="list" id="list_dns" style="display: none;">
+      <img src="img/dns.png">
+      <div>
+        <img src="img/dnsc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_zfb" style="display: none;">
+      <img src="img/zfb.png">
+      <div>
+        <img src="img/zfbc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_wxsm" style="display: none;">
+      <img src="img/wxsm.png">
+      <div>
+        <img src="img/wxsmc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_ysf" style="display: none;">
+      <img src="img/ysf.png">
+      <div>
+        <img src="img/ysfc.jpg" style="width:100%">
+      </div>
+    </div>
+    <div class="list" id="list_wxx" style="display: none;">
+      <img src="img/wxx.png">
+      <div>
+        <img src="img/wxxc.jpg" style="width:100%">
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title></title>
+  <script>
+    (function () {
+      var url = window.location.href, obj = {}, keyvalue = [], key = '', value = '',
+        parseString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+      for (var i in parseString) {
+        keyvalue = parseString[i].split('=')
+        key = keyvalue[0]
+        value = keyvalue[1] && keyvalue[1].includes('#/') ? keyvalue[1].split('#/')[0] : keyvalue[1]
+        obj[key] = value
+      }
+
+      if (obj.agent) {localStorage.setItem('agent', obj.agent)}
+
+    })()
+
+    function isMobile () {return !!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))}
+
+    if (isMobile() !== false) {window.location.href = '/m'}
+  </script>
+  <link rel="shortcut icon" href="/static/qygj/img/favicon.png" type="image/x-icon">
+  <script src="/static/public/js/stomp.js"></script><script src="/static/public/js/qrcode.js"></script>
+<link href="/style.css" rel="stylesheet"><link href="/static/css/pages/qygj/index.105cc6a17ac8ad0c7a80e4420a163b2e.css" rel="stylesheet"></head>
+<body style="overflow-x: hidden;">
+<div id="klkApp" style="overflow-x: hidden;">
+
+</div>
+<script type="text/javascript" src="/static/js/manifest.e1a9fbb8a0285043f047.js"></script><script type="text/javascript" src="/static/js/vendor.85ef2e490f177cc66f08.js"></script><script type="text/javascript" src="/static/js/pages/qygj/index.d4cd7f7e44be45c62e22.js"></script></body>
+</html>

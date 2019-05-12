@@ -1,0 +1,376 @@
+.vp-qmcp-style {
+  background: #b62929;
+}
+
+.vp-qmcp-style .clearfix::after {
+  content: ".";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  height: 0;
+}
+
+.vp-qmcp-style .clearfix {
+  zoom: 1;
+}
+
+.vp-qmcp-style .qmcp-home-header {
+  height: 48px;
+  line-height: 48px;
+  /* padding-top: 3px; */
+  color: #fff;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .lang {
+  float: left;
+  width: 235px;
+  height: 100%;
+  padding-left: 48px;
+  background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+  background-position: 0 -180px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .time {
+  float: left;
+  font-size: 16px;
+  line-height: 48px;
+  margin-right: 20px;
+  font-style: italic;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .app_down {
+  margin-left: 10px;
+  width: 60px;
+  float: left;
+  color: #4d8ffa;
+  cursor: pointer;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .app_down a {
+  font-size: 14px;
+  color: #2cf;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before {
+  float: right;
+  line-height: inherit;
+  padding-right: 15px;
+  height: 100%;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before > div {
+  position: relative;
+  float: left;
+  margin-left: 10px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .userName,
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .password,
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code {
+  padding-left: 50px;
+  height: 100%;
+  background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .userName {
+  width: 160px;
+  background-position: 0 -389px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .password {
+  width: 160px;
+  background-position: 0 -442px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code {
+  padding-left: 0;
+  background-position: 0 -496px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before input {
+  width: 101px;
+  line-height: 36px;
+  height: 36px;
+  text-indent: 3px;
+  border: none;
+  background: transparent;
+  border-radius: 3px;
+  box-sizing: border-box;
+  vertical-align: top;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code {
+  line-height: 48px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code input {
+  width: 80px;
+  padding: 0px 8px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code img {
+  cursor: pointer;
+  padding-top: 6px;
+  width: 53px;
+  height: 30px;
+  margin-top: 6px;
+  margin-right: 15px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code a {
+  display: inline-block;
+  width: 74px;
+  height: 38px;
+  padding: 0 20px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 20px;
+  margin: 5px 0 0 5px;
+  vertical-align: top;
+  background-color: #cf3636;
+  box-shadow: 0px 0px 1px 1px #e2a982;
+  color: #fff;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-before .code .forget_pwd {
+  cursor: pointer;
+  vertical-align: top;
+  margin: 5px 0 0 5px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after {
+  float: right;
+  line-height: inherit;
+  padding-right: 15px;
+  height: 100%;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .userName,
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .balance {
+  width: 198px;
+  padding-left: 50px;
+  height: 100%;
+  background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .userName {
+  background-position: 0 -566px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .balance {
+  background-position: 0 -621px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .link {
+  cursor: pointer;
+  margin: 0 20px;
+  width: 92px;
+  height: 100%;
+  padding-left: 40px;
+  background: url("/static/qmcp/img/base-ico2.png") no-repeat;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .link span {
+  display: inline-block;
+  width: 71px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .userCenter {
+  background-position: -108px -679px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .agent {
+  background-position: -108px -679px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .deposit {
+  background-position: -108px -679px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .withdraw {
+  background-position: 0 -679px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .exit {
+  background-position: -201px -679px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .withdraw:hover {
+  color: #ffc107;
+  background-position: 0 -751px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .exit:hover {
+  color: #ffc107;
+  background-position: -201px -751px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .w60 {
+  width: 60px;
+}
+
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .userCenter:hover,
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .agent:hover,
+.vp-qmcp-style .qmcp-home-header .wrapper .login-after .deposit:hover {
+  color: #ffc107;
+  background-position: -108px -751px;
+}
+
+.vp-qmcp-style .qmcp-home-nav {
+  height: 70px;
+  background: #ffd5d0 url(/static//qmcp/img/main_bg.png) repeat;
+  border-bottom: 1px solid #782828;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper {
+  width: 1180px;
+  height: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .logo {
+  width: 202px;
+  height: 50px;
+  margin: 4px;
+  margin-left: 0;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .logo a {
+  display: block;
+  line-height: 76px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .logo a img {
+  vertical-align: middle;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan {
+  float: right;
+  font-size: 16px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav {
+  position: relative;
+  float: left;
+  width: 95px;
+  height: 70px;
+  cursor: pointer;
+  text-align: center;
+  color: #2c2c2c;
+  font-size: 14px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav.navActive,
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav:hover {
+  background: url(/static/qmcp/img/nav/nav_active.png) no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav:hover .sub-nav {
+  display: block;
+  transform: translateX(-50%);
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav span.title,
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav span.en {
+  width: 100%;
+  display: inline-block;
+  margin-top: 19px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav span.en {
+  margin-top: 8px;
+  font-size: 10px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav {
+  z-index: 6;
+  position: absolute;
+  left: 47.5px;
+  top: 70px;
+  width: 578px;
+  padding: 20px 34px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  display: none;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav.sub-nav-SPORT {
+  width: 476px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav::after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 19px;
+  background: url(/static/qmcp/img/triangles_back.png?e60836c752) no-repeat;
+  top: -8px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub {
+  text-align: center;
+  width: 92px;
+  line-height: 15px;
+  margin: 5px;
+  height: 108px;
+  float: left;
+  position: relative;
+  color: #fff;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub:hover {
+  background: rgba(211, 211, 211, 0.8);
+  border-radius: 8px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub span {
+  font-size: 13px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub a {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 5px auto;
+  background: #df4545;
+  border-radius: 10px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub a img {
+  width: 72px;
+  height: 72px;
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul li.nav .sub-nav .sub .hot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 21px;
+  height: 9px;
+  background-image: url('/static/qmcp/img/nav/hot.gif');
+}
+
+.vp-qmcp-style .qmcp-home-nav .wrapper .nav-caidan ul .navActive {
+  color: #b62929;
+}

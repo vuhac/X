@@ -1,0 +1,1389 @@
+<!doctype html>
+<html class="no-js" lang="zh-cmn-Hans">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="utf-8">
+  <title>澳门新葡京 - 电子金管家等级查询</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=yes">
+  <meta name="renderer" content="webkit">
+  <meta name="_token" content=""/>
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <link rel="stylesheet" href="static/home/css/reset.css">
+  <link rel="stylesheet" href="static/home/css/style.css">
+  <link rel="shortcut icon" href="static/home/images/favicon.ico">
+  <link rel="stylesheet" href="static/home/css/responsive.css">
+  <script type="text/javascript" src="static/home/js/jquery-1.8.3.min.js"></script>
+  <!--<script type="text/javascript" src="http://apps.bdimg.com/libs/layer/2.1/layer.js"></script>-->
+  <script type="text/javascript" src="static/home/js/layer/layer.js"></script>
+  <script type="text/javascript" src="static/home/js/drz.js"></script>
+</head>
+<script>
+  $(function () {
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.indexOf('show-icon')>=0) {
+      $('.hide').hide();
+      $('.back').hide()
+    }
+    var appUrl = window.location.href;
+    if (appUrl.includes('app=app')) {
+      $('.hide').hide();
+      $('.back').hide()
+    }
+  });
+
+    function make_pop(con, btn){
+      if(!btn) btn = '确认';
+      // if(!func) func = function() {};
+      var cover = '<div id="cover" style=""></div>';
+      var pop_ups =
+        '<div class="wrap" style="visibility: visible;" id="pop_win">' +
+        '    <div class="popup">' +
+        '        <div class="popup-head">' +
+        '            <h3 class="popup-title">' + con + '</h3>' +
+        '        </div>' +
+        '        <div class="popup-buttons">' +
+        '            <button class="button-positive button" type="button" onclick="close_pop();">'+btn+'</button>' +
+        '        </div>' +
+        '    </div>' +
+        '</div>';
+      $('body').append(cover);
+      $('body').append(pop_ups);
+    };
+  function close_pop() {
+    $('#cover').remove();
+    $('#pop_win').remove();
+  };
+</script>
+<body class="container">
+<style>
+  #cover {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10001;
+  }
+  .wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    z-index: 10002;
+  }
+  .popup {
+    border-radius: 4px;
+    padding-top: 10px;
+    width: 250px;
+    max-width: 100%;
+    max-height: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .popup-head {
+    border-bottom: none;
+    padding: 15px 10px;
+    text-align: center;
+  }
+  .popup-title {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #2bb01f;
+  }
+  .popup-buttons {
+    min-height: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 10px;
+  }
+  .popup-buttons .button:last-child {
+    margin-right: 0px;
+  }
+  .popup-buttons .button {
+    border-radius: 6px;
+    height: 40px;
+    min-height: 40px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+  }
+  .button.button-positive {
+    border-width: 0;
+    background: -moz-linear-gradient(top,#298dff,#1081ff);
+    background: -webkit-linear-gradient(top,#298dff,#1081ff);
+    background: linear-gradient(top,#298dff,#1081ff);
+    color: #fff;
+  }
+</style>
+<!--<div id="cover"></div>
+<div class="wrap" style="">
+  <div class="popup">
+    <div class="popup-head"><h3 class="popup-title">精彩内容，即将上线</h3></div>
+    <div class="popup-buttons">
+      <button class="button-positive button" type="button" onclick="close_pop();">关闭</button>
+    </div>
+  </div>
+
+</div>-->
+<div class="header">
+  <div class="w1000">
+    <a class="logo" href="#"></a>
+    <div class="back" onclick="window.history.back();"><img src="static/home/images/back.png" alt="" style="height: 26px;"></div>
+    <div class="gh"><a href="javascript:;"></a></div>
+
+    <div class="headright">
+      <div class="clear"></div>
+      <div class="menu">
+        <ul>
+          <li><a href="/" target="_blank"><span class="icons icon1"></span><span>官方首页</span></a></li>
+          <li class="hot" onclick="alert('精彩内容，即将上线！')"><a href="javascript:void(0)"><span class="icons icon2"></span><span>免息借呗</span></a></li>
+          <li class="hot" onclick="alert('精彩内容，即将上线！')"><a href="javascript:void(0)"><span
+                  class="icons icon3"></span><span>帐号交易</span></a></li>
+          <li class="tui"><a href="/static/t111/html/download/index.html" target="_blank"><span
+                  class="icons icon4"></span><span>APP下载</span></a></li>
+          <li>
+            <a href="https://gzzaxc219.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=12357&configID=41831&jid=&s=1"
+               target="_blank"><span class="icons icon5"></span><span>在线客服</span></a></li>
+        </ul>
+      </div>
+      <div class="menu1">
+        <ul>
+          <li class="hide"><a href="/" target="_blank"><span class="icons icon1"><img
+                  src="static/home/images/icon/home.png" alt=""></span><span>官方首页</span></a></li>
+          <li onclick="make_pop('精彩内容，即将上线','关闭')"><a href="javascript:void(0)"><span class="icons icon2"><img src="static/home/images/icon/jiebei.png" alt=""></span><span class="hot">免息借呗</span></a></li>
+          <li onclick="make_pop('精彩内容，即将上线','关闭')"><a href="javascript:void(0)"><span class="icons icon3"><img
+                  src="static/home/images/icon/jiaoyi.png" alt=""></span><span class="hot">帐号交易</span></a></li>
+          <li class="hide"><a href="/static/t111/html/download/index.html" target="_blank"><span class="icons icon4"><img
+                  src="static/home/images/icon/mobile.png" alt=""></span><span class="tui">APP下载</span></a></li>
+          <li onclick="window.open('https://gzzaxc219.livechatvalue.com/chat/chatClient/chatbox.jsp?companyID=12357&configID=41831&jid=&s=1','_blank')">
+            <a href="javascript:void (0)"><span class="icons icon5"><img src="static/home/images/icon/kefu.png" alt=""></span><span>在线客服</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="closeArea"></div>
+
+    </div>
+  </div>
+</div>
+<div class="banner">
+
+
+</div>
+<div class="search_wrap">
+
+  <div class="searchbox"><span class="stt">等级查询</span>
+    <input type="text" placeholder="请输入会员帐号" onfocus="if(this.placeholder=='请输入会员帐号')this.placeholder=''"
+           onBlur="if(this.placeholder =='') this.placeholder ='请输入会员帐号'"
+           id="search1" class="int">
+    <input type="submit" value="" class="searchbtn" id="submit" onclick="scq()">
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="main">
+  <!--<div class="gonggao">
+    <div class="w1000">
+      <span id="txtHint">最新公告：</span>
+      <marquee id="msgNews" scrollamount="4" scrolldelay="100" direction="left" onMouseOver="this.stop();" onMouseOut="this.start();">尊敬的VIP会员您好：北京时间2018年10月1日的打码量已经上传更新，请您前往VIP查询中心核实即可，祝您游戏愉快，多多盈利！！！</marquee>
+    </div>
+  </div>-->
+  <div class="con con1">
+    <div class="w1000" style="">
+      <div class="title"><img src="static/home/images/title1.png"></div>
+      <div class="con1-content">
+        美东时间2018年11月19日开始，在澳门新葡京的每一笔电子游艺将永久累积打码，累积到一定标准，即可升级
+        ，每升一级即可获得相对应的等级礼金，等级礼金最高可获得688000元，还可获得无门槛要求的周周俸禄、月月俸禄。让您的会员帐号变成永久收益的有价值的会员帐号！
+      </div>
+      <div class="tableBox">
+        <div class="tableInner">
+          <table class="table1" cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr>
+              <th>等级</th>
+              <th>累计打码</th>
+              <th>等级礼金</th>
+              <th>周俸禄</th>
+              <th>月俸禄</th>
+              <th>累计等级礼金</th>
+              <th>一对一客服经理</th>
+              <th>存取款加速通道</th>
+            </tr>
+            <tr>
+              <td>1级</td>
+
+              <td>3万+</td>
+
+              <td>15元</td>
+
+              <td>-</td>
+
+              <td>5元</td>
+
+              <td>15元</td>
+
+              <td>-</td>
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>2级</td>
+
+              <td>10万+</td>
+
+              <td>30元</td>
+
+              <td>-</td>
+
+              <td>10元</td>
+
+              <td>45元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>3级</td>
+
+              <td>25万+</td>
+
+              <td>55元</td>
+
+              <td>3元</td>
+
+              <td>20元</td>
+
+              <td>100元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>4级</td>
+
+              <td>50万+</td>
+
+              <td>100元</td>
+
+              <td>5元</td>
+
+              <td>50元</td>
+
+              <td>200元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>5级</td>
+
+              <td>100万+</td>
+
+              <td>200元</td>
+
+              <td>10元</td>
+
+              <td>100元</td>
+
+              <td>400元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>6级</td>
+
+              <td>200万+</td>
+
+              <td>400元</td>
+
+              <td>20元</td>
+
+              <td>200元</td>
+
+              <td>800元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>7级</td>
+
+              <td>300万+</td>
+
+              <td>500元</td>
+
+              <td>35元</td>
+
+              <td>300元</td>
+
+              <td>1300元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>8级</td>
+
+              <td>400万+</td>
+
+              <td>600元</td>
+
+              <td>50元</td>
+
+              <td>400元</td>
+
+              <td>1900元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>9级</td>
+
+              <td>500万+</td>
+
+              <td>700元</td>
+
+              <td>80元</td>
+
+              <td>500元</td>
+
+              <td>2600元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>10级</td>
+
+              <td>600万+</td>
+
+              <td>800元</td>
+
+              <td>100元</td>
+
+              <td>600元</td>
+
+              <td>3400元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>11级</td>
+
+              <td>800万+</td>
+
+              <td>900元</td>
+
+              <td>120元</td>
+
+              <td>800元</td>
+
+              <td>4300元</td>
+
+
+              <td>-</td>
+
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>12级</td>
+
+              <td>1000万+</td>
+
+              <td>1000元</td>
+
+              <td>150元</td>
+
+              <td>1000元</td>
+
+              <td>5300元</td>
+
+
+              <td>√</td>
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>13级</td>
+
+              <td>1200万+</td>
+
+              <td>1100元</td>
+
+              <td>180元</td>
+
+              <td>1200元</td>
+
+              <td>6400元</td>
+
+
+              <td>√</td>
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>14级</td>
+
+              <td>1400万+</td>
+
+              <td>1200元</td>
+
+              <td>220元</td>
+
+              <td>1400元</td>
+
+              <td>7600元</td>
+
+
+              <td>√</td>
+
+              <td>-</td>
+
+            </tr>
+            <tr>
+              <td>15级</td>
+
+              <td>1600万+</td>
+
+              <td>1300元</td>
+
+              <td>260元</td>
+
+              <td>1600元</td>
+
+              <td>8900元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+
+            </tr>
+            <tr>
+              <td>16级</td>
+
+              <td>1800万+</td>
+
+              <td>1400元</td>
+
+              <td>300元</td>
+
+              <td>1800元</td>
+
+              <td>10300元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+
+            </tr>
+            <tr>
+              <td>17级</td>
+
+              <td>2100万+</td>
+
+              <td>1500元</td>
+
+              <td>400元</td>
+
+              <td>2100元</td>
+
+              <td>11800元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>18级</td>
+
+              <td>2400万+</td>
+
+              <td>1600元</td>
+
+              <td>500元</td>
+
+              <td>2400元</td>
+
+              <td>13400元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>19级</td>
+
+              <td>2700万+</td>
+
+              <td>1700元</td>
+
+              <td>600元</td>
+
+              <td>2700元</td>
+
+              <td>15100元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>20级</td>
+
+              <td>3000万+</td>
+
+              <td>1900元</td>
+
+              <td>700元</td>
+
+              <td>3000元</td>
+
+              <td>17000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+
+            </tr>
+            <tr>
+              <td>21级</td>
+
+              <td>3500万+</td>
+
+              <td>2700元</td>
+
+              <td>800元</td>
+
+              <td>3500元</td>
+
+              <td>19700元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>22级</td>
+
+              <td>4000万+</td>
+
+              <td>2800元</td>
+
+              <td>900元</td>
+
+              <td>4000元</td>
+
+              <td>22500元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>23级</td>
+
+              <td>4500万+</td>
+
+              <td>2900元</td>
+
+              <td>1000元</td>
+
+              <td>4500元</td>
+
+              <td>25400元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>24级</td>
+
+              <td>5000万+</td>
+
+              <td>3000元</td>
+
+              <td>1100元</td>
+
+              <td>5000元</td>
+
+              <td>28400元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>25级</td>
+
+              <td>5500万+</td>
+
+              <td>3100元</td>
+
+              <td>1200元</td>
+
+              <td>5500元</td>
+
+              <td>31500元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>26级</td>
+
+              <td>6000万+</td>
+
+              <td>3200元</td>
+
+              <td>1300元</td>
+
+              <td>6000元</td>
+
+              <td>34700元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+
+            </tr>
+            <tr>
+              <td>27级</td>
+
+              <td>7000万+</td>
+
+              <td>5500元</td>
+
+              <td>1500元</td>
+
+              <td>7000元</td>
+
+              <td>40200元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>28级</td>
+
+              <td>8000万+</td>
+
+              <td>5800元</td>
+
+              <td>1700元</td>
+
+              <td>8000元</td>
+
+              <td>46000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>29级</td>
+
+              <td>9000万+</td>
+
+              <td>6100元</td>
+
+              <td>1900元</td>
+
+              <td>9000元</td>
+
+              <td>52100元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>30级</td>
+
+              <td>1.0亿+</td>
+
+              <td>6400元</td>
+
+              <td>2100元</td>
+
+              <td>10000元</td>
+
+              <td>58500元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>31级</td>
+
+              <td>1.1亿+</td>
+
+              <td>6700元</td>
+
+              <td>2300元</td>
+
+              <td>11000元</td>
+
+              <td>65200元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+
+            </tr>
+            <tr>
+              <td>32级</td>
+
+              <td>1.2亿+</td>
+
+              <td>7000元</td>
+
+              <td>2500元</td>
+
+              <td>12000元</td>
+
+              <td>72200元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>33级</td>
+
+              <td>1.4亿+</td>
+
+              <td>12000元</td>
+
+              <td>3000元</td>
+
+              <td>14000元</td>
+
+              <td>84200元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>34级</td>
+
+              <td>1.6亿+</td>
+
+              <td>12500元</td>
+
+              <td>3500元</td>
+
+              <td>16000元</td>
+
+              <td>96700元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>35级</td>
+
+              <td>1.8亿+</td>
+
+              <td>13000元</td>
+
+              <td>4000元</td>
+
+              <td>18000元</td>
+
+              <td>109700元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>36级</td>
+
+              <td>2.0亿+</td>
+
+              <td>13500元</td>
+
+              <td>4500元</td>
+
+              <td>20000元</td>
+
+              <td>123200元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>37级</td>
+
+              <td>2.3亿+</td>
+
+              <td>17800元</td>
+
+              <td>5200元</td>
+
+              <td>23000元</td>
+
+              <td>141000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>38级</td>
+
+              <td>2.6亿+</td>
+
+              <td>19000元</td>
+
+              <td>6000元</td>
+
+              <td>26000元</td>
+
+              <td>160000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>39级</td>
+
+              <td>2.9亿+</td>
+
+              <td>20000元</td>
+
+              <td>6800元</td>
+
+              <td>29000元</td>
+
+              <td>180000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>40级</td>
+
+              <td>3.2亿+</td>
+
+              <td>21000元</td>
+
+              <td>7600元</td>
+
+              <td>32000元</td>
+
+              <td>201000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>41级</td>
+
+              <td>3.5亿+</td>
+
+              <td>22000元</td>
+
+              <td>8400元</td>
+
+              <td>35000元</td>
+
+              <td>223000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>42级</td>
+
+              <td>4.0亿+</td>
+
+              <td>30000元</td>
+
+              <td>9500元</td>
+
+              <td>40000元</td>
+
+              <td>253000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>43级</td>
+
+              <td>4.5亿+</td>
+
+              <td>31000元</td>
+
+              <td>10800元</td>
+
+              <td>45000元</td>
+
+              <td>284000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>44级</td>
+
+              <td>5.0亿+</td>
+
+              <td>32000元</td>
+
+              <td>12000元</td>
+
+              <td>50000元</td>
+
+              <td>316000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>45级</td>
+
+              <td>5.5亿+</td>
+
+              <td>33000元</td>
+
+              <td>13500元</td>
+
+              <td>55000元</td>
+
+              <td>349000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>46级</td>
+
+              <td>6.0亿+</td>
+
+              <td>34000元</td>
+
+              <td>15000元</td>
+
+              <td>60000元</td>
+
+              <td>383000元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>47级</td>
+
+              <td>7.0亿+</td>
+
+              <td>65000元</td>
+
+              <td>17500元</td>
+
+              <td>70000元</td>
+
+              <td>448000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>48级</td>
+
+              <td>8.0亿+</td>
+
+              <td>70000元</td>
+
+              <td>20000元</td>
+
+              <td>80000元</td>
+
+              <td>518000元</td>
+
+
+              <td>√</td>
+
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>49级</td>
+
+              <td>9.0亿+</td>
+
+              <td>80000元</td>
+
+              <td>22500元</td>
+
+              <td>90000元</td>
+
+              <td>598000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            <tr>
+              <td>50级</td>
+
+              <td>10.0亿+</td>
+
+              <td>90000元</td>
+
+              <td>25000元</td>
+
+              <td>100000元</td>
+
+              <td>688000元</td>
+
+
+              <td>√</td>
+
+              <td>√</td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class="con1_pormpt">
+         例：会员在彩票游戏投注的每一笔有效金额、累计达到10万打码量即可获得等级二礼金30元，无周俸禄，每月可获得10元月俸禄，当累计到300万有效投注，即可再次获得升级礼金1300元，35元周俸禄，每月可获得300元月俸禄！
+       </div>-->
+    </div>
+    <div class="w1000">
+      <div class="title"><img src="static/home/images/title2.png"></div>
+      <div class="con2-content">
+        <div class="con2left">
+          <span class="con2left1">1.如何查询帐号等级？</span><br>
+          每天中午12点系统将会自动统计更新您的会员帐号等级，请在等级查询输入会员帐号查询​<br>
+          <span class="con2left2">2.如何申请礼金？</span><br>
+          无需申请，每天中午12点系统将会自动统计更新您的等级，并将您的晋升礼金自动添加至您的会员帐号。<br>
+          如：会员直接从等级2升级到到等级5，跨越3个等级，即可获得升级礼金：55（等级3）+100（等级4）+200（等级5）=355元<br/>
+          <span class="con2left3">3.如何申请每周俸禄？</span><br>
+          无需申请，按您的等级来计算，每星期一23:59:59前系统将自动派送完成，由于会员众多系统会陆陆续续派送，如星期二还未派送到帐请联系在线客服<br>
+          如：会员等级为15级周俸禄为260元、等级为38级周俸禄为6000元、等级为45级周俸禄为13500元以此类推。<br>
+          <span class="con2left3">4.如何申请每月俸禄？</span><br>
+          无需申请，按您的等级来计算，每月5号23:59:59前系统将自动派送完成，由于会员众多系统会陆陆续续派送，如每月6号还未派送到帐请联系在线客服<br>
+          如：会员等级为15级月俸禄为1600元、等级为38级月俸禄为26000元、等级为45级月俸禄为55000元以此类推。。<br>
+          <span class="con2left4">5.周俸禄不能领取？</span><br>
+          两周以上没有投注的会员不给予派发俸禄，保留等级。<br>
+          <span class="con2left4">6.赠送的礼金/俸禄，怎样才可以提款？</span><br>
+          会员所得礼金、周俸禄、月俸禄仅一倍流水即可提款。<br>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div class="con con2">
+
+ </div>-->
+
+<!--  <div class="con con3">
+    <div class="w1000">
+      <div class="title"><img src="static/home/images/title3.png"></div>
+      <div class="con1-content">
+        <p>
+          <span class="con2left1">所有优惠以人民币(CNY)为结算金额，以北京时间(EDT)为计时区间；</span>
+          <span class="con2left2">每位玩家﹑每户﹑每一住址 、每一电子邮箱地址﹑每一电话号码﹑相同支付方式(相同借记卡/信用卡/银行帐号)
+            及IP地址只能享有一次优惠；若会员有重复申请帐号行为，公司保留取消或收回会员优惠彩金的权利；</span>
+          <span class="con2left3">澳门新葡京的所有优惠特为玩家而设，如发现任何团体或个人，以不诚实方式套取红利或任何威胁、滥用公司优惠等行为，公司保留冻结、取消该团体或个人帐号及帐号结余的权利；</span>
+          <span class="con2left4">若会员对活动有争议时，为确保双方利益，杜绝身份盗用行为，澳门新葡京有权要求会员向我们提供充足有效的文件，用以确认是否享有该优惠的资质；</span>
+          <span class="con2left5">当参与优惠会员未能完全遵守、或违反、或滥用任何有关公司优惠或推广的条款，又或我们有任何证据有任何团队或个人投下一连串的关联赌注，籍以造成无论赛果怎样都可以确保可以从该存款红利或其他推广活动提供的优惠获利，澳门新葡京保留权利向此团队或个人停止、取消优惠或索回已支付的全部优惠红利。此外，公司亦保留权利向这些客户扣取相当于优惠红利价值的行政费用，以补偿我们的行政成本；
+          </span>
+          <span class="con2left6">八码以上会员将无此等级优惠，不能领取彩金；澳门新葡京保留对活动的最终解释权，以及在无通知的情况下修改、终止活动的权利，适用于所有优惠。</span>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!--<div class="con4">
+  <div class="title"><img src="static/home/images/title0.png"></div>
+  &lt;!&ndash;<div class="con4_por">您觉得不好请告诉我们，您觉得好请告诉您的朋友！</div>&ndash;&gt;
+</div>-->
+
+<!--<div class="footer">
+  &lt;!&ndash; <div class="footerimg">
+      <img src="images/footerimg.png" height="319" width="1000" alt="">
+  </div> &ndash;&gt;
+  <div class="copyright">
+      澳门新葡京所提供的产品和服务，是由澳门特别行政区 The Macao Special Administrative Region.授权和监管。选择我们，您将拥有可靠的资金保障和优质的服务。<br>
+      Copyright 澳门新葡京
+  </div>
+</div>-->
+
+<script type="text/javascript" src="static/home/js/jquery.hhService.js"></script>
+<script>
+  $(function () {
+    $("#kfleft").fix({
+      float: 'left',
+      minStatue: false,
+      skin: 'green',
+      durationTime: 600
+    });
+    $("#kfright").fix({
+      float: 'right',
+      minStatue: false,
+      skin: 'green',
+      durationTime: 600
+    });
+  });
+</script>
+
+
+<div class="modal nofound" id="nofound">
+  <a class="layui-layer-close closebtn2"></a>
+
+
+  <a class="gotop" id="gotop" href="javascript:;"></a>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#gotop').click(function () {
+      $('html,body').animate({
+        scrollTop: 0
+      }, 600);
+    })
+    $('#gotop').hide();
+    $(window).scroll(function () {
+      if ($(window).scrollTop() >= 200) {
+        $('#gotop').fadeIn(400);
+      } else {
+        $('#gotop').fadeOut(200);
+      }
+    })
+  })
+
+  $(function () {
+
+
+    /*  $('.gh').click(function () {
+        if ($(this).hasClass('selected')) {
+          $(this).removeClass('selected');
+
+        } else {
+          $(this).addClass('selected');
+
+        }
+      })*/
+
+    $('.header .menu li').click(function () {
+      $(".header").removeClass('selected');
+      $(".header .menu").removeClass('selected');
+      $('.gh').removeClass('selected');
+
+    });
+    $('.closeArea').on('click', function () {
+      $(".header").removeClass('selected');
+      $(".header .menu1").removeClass('selected');
+    });
+
+    $('.gh').click(function () {
+      if ($('.header').hasClass('selected')) {
+        $('.header').removeClass('selected');
+      } else {
+        $('.header').addClass('selected')
+      }
+    })
+
+  })
+</script>
+</body>
+
+
+</html>

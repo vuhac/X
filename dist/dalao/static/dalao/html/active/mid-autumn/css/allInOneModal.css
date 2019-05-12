@@ -1,0 +1,1155 @@
+@CHARSET "UTF-8";
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999 !important;
+    display: none;
+    outline: 0;
+}
+
+.modal-dialog {
+    position: relative;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    outline: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    margin: 0 auto;
+}
+
+.modal.fade .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+}
+
+.modal.in .modal-dialog {
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.modal-hd {
+    font-size: 18px;
+    position: relative;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-hd .close {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    background: 0 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    top: 0;
+    right: 10px;
+    float: right;
+}
+
+/*opacity:.6; filter:alpha(opacity=60);*/
+.modal-bd {
+    position: relative;
+    padding: 20px;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998 !important;
+    background-color: #000;
+}
+
+.modal-backdrop.in {
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+/*登陆*/
+#allInOneModal .modal-content {
+    max-width: 900px;
+    min-width: 300px;
+    background-color: #fff;
+    overflow: hidden;
+    color: #000;
+}
+
+#allInOneModal .modal-header #windowLogo {
+    margin-left: 10px;
+    display: block;
+}
+
+#allInOneModal .modal-header .close {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: url('/images/windows/X.png') no-repeat;
+}
+
+#allInOneModal .modal-body {
+    background-color: #fff;
+    /*max-height: 650px;*/
+    min-width: 250px;
+    margin: 10px;
+    overflow-x: hidden;
+}
+
+#allInOneModal .modal-body .modal-nav {
+    max-width: 550PX;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+#allInOneModal .modal-header {
+    position: relative;
+    height: 100px;
+    background: url(../images/windows/modal-bg.png) no-repeat center top;
+}
+
+#allInOneModal .modal-header .r-title {
+    padding-top: 15px;
+}
+
+#allInOneModal .modal-header .qy-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#allInOneModal .modal-header h1 {
+    width: 100%;
+    line-height: 1.2;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+#allInOneModal .modal-header #windowLogo {
+    margin-top: 20px;
+    margin-left: 0;
+}
+
+#allInOneModal .modal-header .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#allInOneModal .modal-body .modal-nav ul li {
+    display: inline-block;
+    margin-right: 30px;
+    padding: 10px 0;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-left: -7px;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+}
+
+#allInOneModal .modal-body .modal-nav ul li:last-child {
+    margin-right: 0;
+}
+
+#allInOneModal .modal-body .modal-nav ul li.active {
+    border-bottom: 2px solid red;
+}
+
+#allInOneModal .modal-body .modal-nav i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    margin-right: 5px;
+    text-align: center;
+    border: 1px solid #939393;
+    font-size: 16px;
+    color: #939393;
+}
+
+#allInOneModal .modal-body .modal-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#allInOneModal .nbt-group {
+    position: relative;
+    max-width: 550px;
+    width: 100%;
+    margin: 25px 0 0;
+}
+
+/*#allInOneModal .nbt-inline{*/
+/*display: inline-block;*/
+/*max-width: 250px;*/
+/*}*/
+
+#allInOneModal .nbt2-group {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+#allInOneModal .nbt2-group .title-dis {
+    display: inline-block;
+    text-align: right;
+    width: 17%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+#allInOneModal .nbt2-group .title-dis a span {
+    color: #8f6a3e;
+}
+
+#allInOneModal .nbt2-group #rule {
+    color: #8f6a3e;
+}
+
+#allInOneModal .btn1-group input[type=button] {
+    display: inline-block;
+    width: 65%;
+    height: 40px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+#allInOneModal .btn-group-position1 {
+    margin-top: 15px;
+}
+
+#allInOneModal #loginModalBody {
+    overflow: hidden;
+}
+
+#allInOneModal #loginModalBody .nbt-group {
+    margin-left: 8%;
+}
+
+#allInOneModal #loginModalBody .nbt-title * {
+    display: inline-block;
+}
+
+#allInOneModal #loginModalBody #imgTryCode {
+    right: 0;
+}
+
+#allInOneModal .nbt-title {
+    height: 125px;
+    line-height: 125px;
+}
+
+#allInOneModal .nbt-title h1 {
+    font-size: 32px;
+}
+
+#allInOneModal .nbt-group .title-dis {
+    display: inline-block;
+    text-align: right;
+    width: 17%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+#allInOneModal .nbt-group .title-dis i {
+    color: #ff0000;
+
+}
+
+#allInOneModal .forgetpassword1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 77px;
+    height: 30px;
+    font-size: 14px;
+    background: rgb(191, 166, 135);
+    color: #fff;
+    border: none;
+}
+
+#allInOneModal #loginname {
+    /*width: 83%;*/
+    padding: 0 5px;
+}
+
+#allInOneModal #imgTryCode {
+    position: absolute;
+    top: 2px;
+    right: 88px;
+    height: 26px;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+#allInOneModal select,
+#allInOneModal input[type=text],
+#allInOneModal input[type=password] {
+    width: 65%;
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+    color: gray;
+    border: 1px solid #dcdcdc;
+    background: transparent;
+}
+
+#allInOneModal .modal-body .modal-wrapper .win-reg-tip {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#allInOneModal .modal-body .modal-wrapper .win-reg-tip p {
+    line-height: 1.6;
+}
+
+#allInOneModal .modal-body .modal-wrapper .win-reg-tip .icon-tip {
+    border: 4px solid #ed7b1a;
+    margin-right: 20px;
+}
+
+#allInOneModal .modal-body .modal-wrapper .win-reg-tip .icon-tip span {
+    display: block;
+    width: 44px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid #fff;
+    background: #ed7b1a;
+    color: #fff;
+    padding-top: 8px;
+}
+
+#allInOneModal .modal-body .modal-wrapper .win-reg-tip .tishi-tip {
+    border: 1px solid #ed7b1a;
+    padding: 5px;
+    color: #cc0000;
+}
+
+#allInOneModal .close {
+    display: none;
+}
+
+#allInOneModal .btn {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+#allInOneModal .btn-red {
+    background: #b48c68;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+#allInOneModal .btn-red:hover {
+    background: #8f6a3e;
+}
+
+#allInOneModal .btn-gray {
+    background: #888;
+}
+
+#allInOneModal .btn-gray:hover {
+    background: #889;
+}
+
+#allInOneModal .row {
+    margin-bottom: 20px;
+}
+
+#allInOneModal .ml90 {
+    margin-left: 90px;
+}
+
+#allInOneModal .corg {
+    color: #ff8500;
+}
+
+#allInOneModal .btn-orange {
+    background: #f07429;
+    color: #fff;
+}
+
+#left-pic {
+    padding-top: 18%;
+    text-align: center;
+}
+
+#allInOneModal .btn-group1 {
+    margin: 20px auto;
+}
+
+#allInOneModal .ft12 {
+    font-size: 12px;
+}
+
+#allInOneModal .red {
+    color: red;
+}
+
+/*一般用户注册*/
+#allInOneModal #registerModalBody .modal-body {
+    min-width: 280px;
+}
+
+#allInOneModal #registerModalBody .nbt-group .right-row {
+    display: inline-block;
+    width: 65%;
+}
+
+#allInOneModal .nbt-group label {
+    display: inline-block;
+    width: 83%;
+    font-size: 14px;
+}
+
+#allInOneModal .nbt-group label input[type='checkbox'] {
+    width: 20px;
+}
+
+#allInOneModal .nbt-group label a span {
+    color: red;
+}
+
+#allInOneModal #registerModalBody .cbrown {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+#allInOneModal #registerModalBody .win-reg-tip .tishi-tip {
+    padding: 5px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+#allInOneModal #registerModalBody .win-reg-tip .msg-tip {
+    max-width: 600px;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+#allInOneModal #registerModalBody #registerBtn {
+    background: #b48c68;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    width: 65%;
+}
+
+#allInOneModal #registerModalBody #emailRegister {
+    width: 100% !important;
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+    color: gray;
+    border: 1px solid #dcdcdc;
+    background: transparent;
+}
+
+
+#allInOneModal #registerModalBody #imgRegisterTryCode {
+    position: absolute;
+    top: 0;
+    right: 44px;
+
+}
+
+/*注册成功*/
+#register-success-container .row {
+    margin: 0 0 10px 0;
+    padding: 0 30px;
+    line-height: 5;
+    background: #ececeb;
+}
+
+#register-success-container .code-content {
+    line-height: 5;
+}
+
+#register-success-container .row div p {
+    color: black;
+    font-size: 16px;
+    line-height: 2;
+}
+
+#register-success-container .row div.remind-title {
+    padding-left: 10px;
+}
+
+#register-success-container .row div.remind-title p {
+    margin-top: 10px;
+    color: #b48c68;
+}
+
+#register-success-container .row div {
+    font-size: 16px;
+}
+
+#register-success-container .row div.sendback {
+    text-align: right;
+}
+
+#register-success-container .row div.sendback img {
+    vertical-align: middle;
+}
+
+#register-success-container .row div .device-title {
+    margin-top: 40px;
+}
+
+#register-success-container .row div .device-title1 {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#register-success-container .row div .device-img {
+    text-align: center;
+}
+
+#register-success-container .row div .device-img img {
+    margin: 25px 0;
+}
+
+#register-success-container .row #code-img {
+    padding: 15px;
+}
+
+#allInOneModal #registerModalBody #reg-form > div {
+    text-align: center;
+}
+
+
+/*忘记密码*/
+#allInOneModal .forgetpassword .row {
+    background: #ececeb;
+}
+
+#allInOneModal .forgetpassword .modal-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #f07429;
+}
+
+#allInOneModal .forgetpassword .top-tips {
+    width: 100%;
+    background: #ececeb;
+    margin-bottom: 20px;
+    line-height: 86px;
+}
+
+#allInOneModal .forgetpassword div.three-ways {
+    font-size: 16px;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 25px;
+}
+
+#allInOneModal .forgetpassword div.three-ways .bulb-container {
+    display: inline-block;
+}
+
+#allInOneModal .forgetpassword div.three-ways .bulb-container img {
+    vertical-align: top;
+}
+
+#allInOneModal .forgetpassword div.three-ways .text-container {
+    display: inline-block;
+
+}
+
+#allInOneModal .forgetpassword div.three-ways .text-container p {
+    line-height: 2;
+    /*color: red;*/
+}
+
+#allInOneModal .forgetpassword .get-message {
+    margin: 0 auto 20px;
+}
+
+#allInOneModal .forgetpassword .circle {
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    color: #7d6549;
+    text-align: center;
+    line-height: 70px;
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle span {
+    font-size: 36px;
+    color: #f07429;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle h3 {
+    font-size: 18px;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle-inner {
+    padding-top: 30px;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-title {
+    height: 85px;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-content {
+    width: 100%;
+    text-align: center;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-content .clickable,
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-content .server {
+    display: inline-block;
+    width: 188px;
+    height: 40px;
+    line-height: 40px;
+    background: #bfbfbf;
+    letter-spacing: 10px;
+    text-align: center;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-content .clickable:hover,
+#allInOneModal #forgetpasswordModalBody .circle-inner .circle-content .server:hover {
+    background: #b48c68;
+}
+
+#allInOneModal #emailModalBody .modal-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+#allInOneModal #emailModalBody .modal-wrapper .wrapper {
+    text-align: center;
+    padding: 30px;
+    color: #000;
+    font-size: 18px;
+    padding-bottom: 50px;
+    background: #ececeb;
+}
+
+/*#allInOneModal #emailModalBody .modal-wrapper .wrapper .get-email{*/
+/*background: rgb(234,206,172);*/
+/*}*/
+
+#allInOneModal .nbt3-group {
+    margin-left: 6%;
+}
+
+/*短信找回密码*/
+
+#allInOneModal #messageModalBody .modal-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #f07429;
+}
+
+#allInOneModal #messageModalBody .modal-wrapper .wrapper {
+    text-align: center;
+    background: #ececeb;
+    padding: 20px;
+    color: #000;
+    font-size: 18px;
+    padding-bottom: 50px;
+}
+
+#allInOneModal #messageModalBody .modal-wrapper .wrapper span.h1 {
+    font-size: 28px;
+    position: relative;
+    top: 5px;
+}
+
+/*牌照展示*/
+
+#allInOneModal #licenseModalBody .modal-body {
+    max-height: 400px;
+    padding: 50px;
+
+}
+
+#allInOneModal #licenseModalBody  .modal-wrapper {
+    text-align: center;
+}
+#allInOneModal #licenseModalBody .modal-content {
+    max-height: 590px;
+}
+
+#allInOneModal #licenseModalBody .modal-wrapper .fl {
+    width: 40%;
+}
+
+#allInOneModal #licenseModalBody .modal-wrapper .fr {
+    width: 60%;
+}
+
+#allInOneModal #licenseModalBody .modal-wrapper p, #allInOneModal #licenseModalBody .modal-wrapper span {
+    font-size: 16px;
+    line-height: 2;
+}
+
+#allInOneModal #licenseModalBody .modal-wrapper p {
+    color: #333333;
+}
+
+#allInOneModal #licenseModalBody .modal-wrapper span {
+    color: #9e7c54;
+}
+
+#allInOneModal #licenseBigModal .modal-body {
+    max-height: 400px;
+    padding: 50px;
+    overflow: auto;
+}
+
+#allInOneModal #licenseBigModal .modal-content {
+    max-height: 590px;
+}
+
+/*代理注册*/
+
+#allInOneModal #agentRegisterModalBody {
+    color: #7f6043;
+    margin-bottom: 20px;
+}
+
+#allInOneModal #agentRegisterModalBody .nbt-group .left-row, #allInOneModal #agentRegisterModalBody .nbt-group .right-row {
+    display: inline-block;
+}
+
+#allInOneModal #agentRegisterModalBody .nbt-group .left-row {
+    width: 23%;
+}
+
+#allInOneModal #agentRegisterModalBody .nbt-group .right-row {
+    width: 67%;
+}
+
+#allInOneModal #agentRegisterModalBody .modal-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#allInOneModal #agentRegisterModalBody .nbt-group {
+    max-width: 100%;
+}
+
+#allInOneModal #agentRegisterModalBody .nbt-group label {
+    width: 100%;
+}
+
+#allInOneModal #agentRegisterModalBody .btn-gray,
+#allInOneModal #agentRegisterModalBody .btn-orange,
+#agentRegisterModalBody #agentRegisterModalBody .corange {
+    font-size: 18px;
+    padding: 5px;
+}
+
+#allInOneModal #agentRegisterModalBody .btn-gray,
+#allInOneModal #agentRegisterModalBody .btn-orange {
+    color: #fff;
+}
+
+#allInOneModal #agentRegisterModalBody .cbrown {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+#allInOneModal #agentRegisterModalBody .win-reg-tip .tishi-tip {
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+#allInOneModal #agentRegisterModalBody .win-reg-tip .msg-tip {
+    max-width: 600px;
+    line-height: 22px;
+    font-size: 14px;
+}
+
+#allInOneModal #agentRegisterModalBody #reg-form {
+    color: #bc9878;
+    font-size: 16px;
+}
+
+#allInOneModal #agentRegisterModalBody #reg-form input,
+#allInOneModal #agentRegisterModalBody #reg-form select {
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+    color: gray;
+    border: 1px solid #dcdcdc;
+    width: 100%;
+    max-width: 268px;
+}
+
+#allInOneModal #agentRegisterModalBody #agentRegisterBtn {
+    background: rgb(239, 68, 59);
+    color: #fff;
+    height: 50px;
+    font-size: 26px;
+    letter-spacing: 5px;
+    max-width: 280px;
+    padding: 0px 50px;
+}
+
+#allInOneModal #agentRegisterModalBody #cancelBtn {
+    background: #b48c68;
+}
+
+#allInOneModal #agentRegisterModalBody em {
+    color: red;
+}
+
+#allInOneModal #agentRegisterModalBody label {
+    line-height: 1.6;
+}
+
+#allInOneModal #agentRegisterChkModalBody {
+    font-size: 18px;
+    overflow-x: visible;
+}
+
+#allInOneModal #agentRegisterChkModalBody .modal-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#allInOneModal #agentRegisterChkModalBody .modal-wrapper h1 {
+    font-size: 40px;
+    color: rgb(191, 47, 47);
+    margin: 30px auto;
+}
+
+#allInOneModal #agentRegisterChkModalBody .modal-wrapper h3 {
+    color: #ff8500
+}
+
+#allInOneModal #agentRegisterChkModalBody .modal-wrapper .registerChkForm {
+    border: 1px solid #ff8500;
+    max-width: 400px;
+    overflow: auto;
+    margin: 0 auto;
+    text-align: left;
+    padding: 10px;
+    line-height: 30px;
+}
+
+#allInOneModal #agentRegisterChkModalBody #agentRegisterTryCode {
+    display: none;
+}
+
+#allInOneModal #agentRegisterChkModalBody #getRegisterTryCode {
+    background: rgb(239, 68, 59);
+    color: #fff;
+    padding: 5px;
+    margin-left: 50px;
+}
+
+#allInOneModal #agentRegisterChkModalBody input[type=text] {
+    margin: 10px 0px;
+    padding: 5px;
+    color: gray;
+    border: 1px solid gray;
+    background: transparent;
+}
+
+#allInOneModal #agentRegisterChkModalBody #registerBtn,
+#allInOneModal #agentRegisterChkModalBody #cancelBtn {
+    color: #fff;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 15px;
+    margin: 10px;
+}
+
+#allInOneModal #agentRegisterChkModalBody .nbt-group {
+    margin: 0;
+}
+
+.hvr-float {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+/*邮箱验证*/
+.emailist{
+    border:1px solid #bdbdbd;
+    border-radius: 4px;
+    background-color:#fff;
+    color:#666;
+    font-size:14px;
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+}
+.emailist li{
+    padding:2px 11px;
+    cursor:pointer;
+    text-align: left;
+}
+.emailist .on, .emailist li:hover{
+    background-color:#eee;
+}
+@media (max-width: 767px) {
+    .modal-header .f1 {
+        float: none;
+    }
+
+    #allInOneModal .modal-header {
+        position: relative;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    #allInOneModal .modal-body .modal-nav ul li {
+        padding: 6px;
+        margin-right: 0;
+    }
+
+    #allInOneModal .modal-header .close {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        background-size: 100%;
+    }
+
+    #allInOneModal #loginModalBody .nbt-group {
+        margin-left: 0;
+        text-align: center;
+
+    }
+
+    #allInOneModal .btn-group {
+        margin: 0;
+    }
+
+    #allInOneModal .btn1-group {
+        text-align: center;
+    }
+
+    #allInOneModal .modal-header .r-title {
+        padding: 0;
+    }
+
+    #allInOneModal .modal-header h1 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    #allInOneModal #loginModalBody .nbt-title {
+        height: auto;
+    }
+
+    #allInOneModal #registerModalBody #imgRegisterTryCode {
+        top: 38px;
+        right: 0px;
+    }
+
+    #allInOneModal .forgetpassword1 {
+        top: 38px;
+        right: 2px;
+    }
+
+    #allInOneModal #loginModalBody .nbt-group .title-dis {
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+
+    #allInOneModal .btn-group input[type=button] {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #allInOneModal #loginModalBody #loginname {
+        width: 100%;
+    }
+
+    #allInOneModal #loginModalBody input[type=text], #allInOneModal #loginModalBody input[type=password] {
+        width: 100%;
+    }
+
+    #allInOneModal #loginModalBody .forgetpassword {
+        top: 32px;
+    }
+
+    #allInOneModal #loginModalBody #imgTryCode {
+        top: 40px;
+        right: 2px;
+    }
+
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    #allInOneModal .modal-content {
+        max-width: 900px;
+        max-height: 500px;
+        overflow: auto;
+    }
+
+    #allInOneModal .modal-content {
+        width: 90%;
+    }
+
+    #allInOneModal .modal-body .modal-nav {
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    #allInOneModal .nbt-group .title-dis {
+        width: 100%;
+        text-align: left;
+    }
+
+    #allInOneModal #registerModalBody .step2 {
+        position: static;
+    }
+
+    #allInOneModal .nbt2-group label {
+        width: 100%;
+    }
+
+    #allInOneModal select, #allInOneModal input[type=text],
+    #allInOneModal input[type=password] {
+        width: 100%;
+    }
+
+    #allInOneModal #registerModalBody #imgTryCode {
+        top: 40px;
+        right: 2px;
+    }
+
+    #allInOneModal .modal-body .modal-nav i {
+        display: none;
+    }
+
+    #allInOneModal #registerModalBody #reg-form .col-xs-12:nth-child(1) .nbt-group:nth-last-child(1) {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    #allInOneModal #registerModalBody .modal-body {
+        max-height: 840px;
+    }
+
+    #allInOneModal #registerChkModalBody .modal-wrapper h1 {
+        font-size: 32px;
+    }
+
+    #allInOneModal #registerSuccessModalBody .modal-wrapper h1 {
+        font-size: 28px;
+    }
+
+    #allInOneModal .nbt-form {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    #allInOneModal #registerModalBody .nbt-group .left-row {
+        width: 95%;
+        padding: 5px 0px;
+    }
+
+    #allInOneModal #registerModalBody .nbt-group .right-row {
+        width: 100%;
+    }
+
+    #allInOneModal .nbt-group {
+        margin: 0px;
+        padding: 8px 0px;
+    }
+
+    #allInOneModal #emailModalBody .modal-wrapper .wrapper span.h1 {
+        font-size: 20px;
+    }
+
+    #allInOneModal .forgetpassword h1.h1 {
+        font-size: 16px;
+        line-height: 26px;
+        background: #ececeb;
+    }
+
+    #allInOneModal .forgetpassword .nbt-group {
+        text-align: center;
+    }
+
+    #allInOneModal .forgetpassword input[type="text"] {
+        font-size: 14px;
+    }
+
+    #imgCode1 {
+        position: absolute;
+        top: 39px;
+        right: 2px;
+    }
+
+    #register-success-container .row {
+        padding: 0;
+    }
+
+    #register-success-container .row div {
+        padding: 0 10px;
+    }
+
+    #register-success-container .row #code-img {
+        padding: 0;
+    }
+
+    /*忘记密码*/
+    #allInOneModal .forgetpassword div.three-ways {
+        width: 90%;
+    }
+}

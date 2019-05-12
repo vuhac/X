@@ -1,0 +1,103 @@
+<!doctype html>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>客拉客APP下载页面</title>
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/rem.js"></script>
+    <style>
+        * {
+            font-family: "Microsoft YaHei", Arial, serif;
+        }
+        #linkList .down {
+            font-size: 0.5rem;
+            font-family: "Microsoft YaHei", Arial, serif;
+            width: 100%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            border-radius: 0.2rem;
+            margin-bottom: 0.6rem;
+        }
+        #linkList .down span {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.1rem;
+            height: 1.1rem;
+            background-size: cover;
+        }
+        #linkList .logoIos {
+            background: url("./images/ios.svg");
+            height: 1.4rem!important;
+            width: 1.3rem!important;
+            /*vertical-align: top!important;*/
+        }
+        #linkList .logoAndroid {
+            background: url("./images/and.svg");
+        }
+        #linkList .mob {
+            background: url("./images/mob.svg");
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body class="mobile" style=" overflow: hidden; width: 100%;padding-top: 8%;">
+<div class="regbody" style="">
+    <div id="pingTest"></div>
+    <div class="regbodywrp" style="">
+        <div class="rlogo-wrp speed" style="margin: 0 auto 3%;width: 30%;">
+            <img src="images/klk_logo.png" style="border-radius: 12px; width: 100%;">
+        </div>
+        <h1 style="text-align: center;width: 30%; margin: 0 auto;font-size: 0.55rem;">客拉客</h1>
+    </div>
+
+    <div id="linkList" style="padding: 0 20%;margin-top: 4%;margin-bottom: 7%;">
+        <a href="" class="hre1">
+            <div class="down" style="background-color: #37d6ee;">
+               <!-- <span class="logoIos"></span>iPhone版本下载-->
+                <span class="logoIos" style="margin-left: -0.3rem;"></span><span class="logoAndroid" style=" margin: 0 0.2rem;"></span>APP下载
+            </div>
+        </a>
+
+        <a href="images/klk.jpg">
+            <div class="down" style="background-color: #ee9137;">
+                <span class="logoIos"></span>iPhone安装教程
+            </div>
+        </a>
+        <a href="/">
+            <div class="down" style="background-color: #3ed100;">
+                <span class="mob" style="margin-left: -0.3rem;margin-right: 0.2rem"></span>点击H5网页版
+            </div>
+        </a>
+    </div>
+    <div class="text" style="width: 100%;font-size: 13px;text-align: center;">下载APP畅快体验 防劫持 速度快 不掉线 操作流畅</div>
+    <div class="foot" style="/*position: absolute;*/width: 100%;/*padding: 0 10px;*/font-size: 12px;margin-top: 0.8rem;text-align: center;">
+        客拉客版权所有 18+ 创新博弈 成功从客拉客开始
+    </div>
+</div>
+</body>
+<script>
+    var android_url = "http://3000016.com/download/klk/klk.apk";
+    var ios_url = 'itms-services:///?action=download-manifest&url=https://raw.githubusercontent.com/buttCar/kjzb2/master/klk.plist';
+    var ua = window.navigator.userAgent.toLowerCase();
+    var url = '';
+    if (/iphone/.test(ua) || /ipad/.test(ua)) {
+        $('.hre1').attr('href', ios_url);
+    } else if (/android/.test(ua)) {
+        url = android_url;
+        $('.hre1').attr('href', android_url);
+    } else {
+        console.log("您的移动设备暂不支持此APP，请谅解");
+    }
+</script>
+</html>

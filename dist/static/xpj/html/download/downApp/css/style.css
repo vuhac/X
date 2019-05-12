@@ -1,0 +1,397 @@
+* {
+    font-family: "Microsoft YaHei", Arial, serif;
+    /*-webkit-box-sizing: border-box;
+    box-sizing: border-box;*/
+    padding: 0;
+    margin: 0;
+    -webkit-text-size-adjust: 100%;
+}
+
+.page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+a:link {
+    text-decoration: none
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    background-color: white;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 1rem;
+    border-bottom: 0.02rem solid #f3f5f6;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+   /* display: flex;
+    justify-content: center;
+    align-items: center;*/
+}
+
+.logo {
+    display: block;
+    /*width: 0.84rem;*/
+    /*height: 0.6rem;*/
+    width: 0.84rem;
+    height: 0.84rem;
+    margin-left: 0.3rem;
+    margin-top: 0.08rem;
+    float: left;
+}
+
+.title-box {
+    height: 100%;
+    float: left;
+    margin-left: 0.24rem;
+}
+
+.title {
+    height: 0.4rem;
+    display: block;
+    margin-top: 0.14rem;
+}
+
+.ios-download {
+    float: right;
+    margin-right: 0.3rem;
+    display: block;
+    padding: 0;
+    height: 0.6rem;
+    line-height: 0.5rem;
+    box-sizing: border-box;
+    margin-top: 0.2rem;
+
+}
+
+.ios-download img {
+    display: block;
+}
+
+.desc {
+    color: #c7c7c7;
+    font-size: 0.24rem;
+    line-height: 0.24rem;
+    margin-top: 0.1rem;
+}
+
+.btn {
+    display: inline-block;
+    width: 2.9rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    color: white;
+    text-align: center;
+    border-radius: 0.1rem;
+    font-size: 0.36rem;
+    margin: 0 0.1rem;
+    background: -webkit-linear-gradient(120deg, #376dff, #55e8ff);
+    background: -o-linear-gradient(120deg, #376dff, #55e8ff);
+    background: -moz-linear-gradient(120deg, #376dff, #55e8ff);
+    background: linear-gradient(120deg, #376dff, #55e8ff);
+}
+
+.body {
+    width: 100%;
+    height: calc(100% - 1rem);
+    box-sizing: border-box;
+    /*padding-bottom: 1rem;*/
+    position: fixed;
+    top: 1rem;
+}
+
+.clear-fix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.scroller {
+    width: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    min-height: 2.88rem;
+}
+
+.swiper-img {
+    width: 100%;
+}
+
+.h5-links {
+    /*position: absolute;*/
+    width: 100%;
+    /*height: 1.1rem;*/
+    /*left: 0;*/
+    /*top: 0.2rem;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h5-links .h5-link {
+    /*float: left;*/
+    width: 22%;
+    /*padding: 0 1.5%;*/
+    /*height: 100%;*/
+    font-size: 0;
+    /*box-sizing: border-box;*/
+}
+/*.h5-links .h5-link:first-child {
+    padding-left: 0;
+}
+.h5-links .h5-link:last-child {
+    padding-right: 0;
+}*/
+.h5-links .h5-link img {
+    width: 100%;
+}
+.notice {
+    margin: 0.3rem auto 0;
+    /*width: 97%;
+    color: #FDFDFD;
+    font-size: 0.3rem;
+
+    padding: 0.2rem;
+    text-align: justify;
+    background: #42576B;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    border-radius: 0.2rem;
+    overflow: hidden;*/
+}
+.notice img {
+    width: 100%;
+}
+.space {
+    height: 0.15rem;
+    background: #eeeeee;
+}
+.h5-links-2 {
+    /*position: absolute;*/
+    width: 100%;
+    /*height: 1.1rem;*/
+    /*left: 0;*/
+    /*top: 4.9rem;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h5-links-2 .h5-link-2 {
+    float: left;
+    width: 48%;
+    /*padding: 0 1.5%;*/
+    font-size: 0;
+    height: 100%;
+    box-sizing: border-box;
+
+}
+.h5-links-2 .h5-link-2 img {
+    width: 100%;
+}
+.content {
+    overflow: hidden;
+    width: 97%;
+    margin: 0.3rem auto;
+    background: #3e4a55;
+    /*height: 100px;*/
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    border-radius: 0.2rem;
+}
+.content .title {
+    width: 60%;
+    text-align: center;
+    margin: 0.4rem auto;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    /*color: #ffffff;
+    background: #60D16C;
+    font-size: 0.4rem;
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius: 0.1rem;
+    border-radius: 0.1rem;*/
+}
+.content .title img {
+    width: 100%;
+}
+#swiper3 .swiper-wrapper img {
+    height: 11.5rem;
+    margin: auto;
+    display: block;
+    vertical-align: middle;
+}
+.pagination2 {
+    font-size: 0;
+    text-align: center;
+    position: absolute;
+}
+.ios-download-2 {
+    position: absolute;
+    width: 70%;
+    height: 1.1rem;
+    left: 15%;
+    top: 3.2rem;
+    box-sizing: border-box;
+}
+
+/*进度条*/
+.box {
+    width: 90%;
+    position: absolute;
+    top: 13%;
+    left: 5%;
+}
+
+.ok {
+    width: 50%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.5rem;
+    margin: 0 auto;
+    text-align: center;
+    background: #999;
+    color: #FFF;
+    /*display: none;*/
+}
+
+.tbox {
+    width: 100%;
+    left: 5%;
+    background: #FDFDFD  no-repeat;
+    margin-top: 20px;
+}
+
+.tbox div {
+    width: 0px;
+    height: 49px;
+    background: #A9D127  no-repeat;
+    text-align: center;
+
+    font-family: Tahoma;
+    font-size: 18px;
+    line-height: 48px;
+}
+/*弹窗*/
+#overlay {
+    margin: 0px; padding: 0px; border: none; width: 100%; height: 100%; background: rgb(51, 51, 51); opacity: 0.6; z-index: 9999; position: fixed; top: 0px; left: 0px; display: none;
+}
+#easyDialogBox {
+    margin: -208px 0px 0px -143px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;
+}
+.swiper1, .swiper1 .swiper-slide {
+    width: 200px;
+    height: 320px;
+    text-align: center;
+}
+
+#zhiyin {
+    background: #FFF;
+    width: 286px;
+    border-radius: 0.2rem;
+    padding: 0 0 1rem 0;
+    position: relative;
+}
+#zhiyin .bu {
+    padding-top: 18px;
+}
+#zhiyin .bu .home-device {
+    width: 200px;
+    height: 340px;
+    margin: 0 auto;
+    position: relative;
+}
+#zhiyin .bu .home-device .swiper-main {
+    width: 198px;height: 308px; position: relative;
+}
+
+#zhiyin .title {
+    width: 153px;
+    line-height: 36px;
+    height: 36px;
+    font-size: 0.35rem;
+    color: #FFF;
+    text-align: center;
+    margin: 0 auto;
+    background: #ff760e;
+    border-radius: 2rem;
+    position: absolute;
+    z-index: 999;
+    top: -18px;
+    left: 76px;
+}
+
+#zhiyin .bu h2 {
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 30px;
+    color: #000;
+}
+
+#zhiyin .bu img {
+    width: 160px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#zhiyin .next {
+    width: 90px;
+    line-height: 36px;
+    border-radius: 2rem;
+    border: 2px #414141 solid;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    font-size: 18px;
+}
+
+#zhiyin .next a {
+    color: #414141;
+    display: block;
+}
+
+.pagination1 {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.pagination1 .swiper-pagination-bullet {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #999;
+    box-shadow: 0px 1px 2px #555 inset;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.pagination1 .swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+#zhiyin .pay_close {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: url(../images/jietu/pay_close_03.png);
+    background-size: 100% 100%;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+}

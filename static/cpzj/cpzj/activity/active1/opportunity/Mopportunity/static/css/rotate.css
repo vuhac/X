@@ -1,0 +1,210 @@
+@keyframes lottery_rotate {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(360deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_18 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3600deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_8 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3635deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_588 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3880deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_188 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3730deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_88 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3699deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_58 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3670deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_18_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3600deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_8_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3635deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_588_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3880deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_188_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3730deg); transform-origin: 50% 50% 0px;
+    }
+}
+@keyframes lottery_rotate_88_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3699deg); transform-origin: 50% 50% 0px;
+    }
+}
+
+@keyframes lottery_rotate_58_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3670deg); transform-origin: 50% 50% 0px;
+    }
+}
+
+@keyframes lottery_rotate_888_b {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3800deg); transform-origin: 50% 50% 0px;
+    }
+}
+
+@keyframes lottery_rotate_888 {
+    0%{
+        transform: rotate(0); transform-origin: 50% 50% 0px;
+    }
+    100%{
+        transform: rotate(3800deg); transform-origin: 50% 50% 0px;
+    }
+}
+
+@keyframes  lottery_winners {
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-1241px);
+    }
+}
+
+#lottery_winners_data>tbody{
+    animation: lottery_winners 109s infinite linear;
+}
+
+#lotteryBtn{
+    transform: scale(1);
+    transition: all 2s;
+    width: 32%;
+}
+#lotteryBtn:hover{
+    transform: scale(1.3);
+}
+
+.winning_check{
+    cursor: pointer;
+}
+
+#get_chance {
+    display: inline;
+}
+.route_infinite{
+    animation: lottery_rotate 13s infinite linear;
+}
+.lottery_rotate_18{
+    animation: lottery_rotate_18 5s ease forwards;
+}
+.lottery_rotate_88{
+    animation: lottery_rotate_88 5s ease forwards;
+}
+.lottery_rotate_588{
+    animation: lottery_rotate_588 5s ease forwards;
+}
+.lottery_rotate_188{
+    animation: lottery_rotate_188 5s ease forwards;
+}
+.lottery_rotate_8{
+    animation: lottery_rotate_8 5s ease forwards;
+}
+.lottery_rotate_58{
+    animation: lottery_rotate_58 5s ease forwards;
+}
+.lottery_rotate_18_b{
+    animation: lottery_rotate_18_b 5s ease forwards;
+}
+.lottery_rotate_88_b{
+    animation: lottery_rotate_88_b 5s ease forwards;
+}
+.lottery_rotate_588_b{
+    animation: lottery_rotate_588_b 5s ease forwards;
+}
+.lottery_rotate_188_b{
+    animation: lottery_rotate_188_b 5s ease forwards;
+}
+.lottery_rotate_8_b{
+    animation: lottery_rotate_8_b 5s ease forwards;
+}
+.lottery_rotate_58_b{
+    animation: lottery_rotate_58_b 5s ease forwards;
+}
+
+.lottery_rotate_888{
+    animation: lottery_rotate_888 5s ease forwards;
+}
+
+.lottery_rotate_888_b{
+    animation: lottery_rotate_888_b 5s ease forwards;
+}
+.lotteryBtn_group{
+    border: none;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+    padding-top: 16%;
+    width: 100%;
+}
+.aui_content{
+    overflow-y: auto;
+}

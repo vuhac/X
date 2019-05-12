@@ -1,0 +1,32 @@
+.navbar {
+    position: relative;
+    margin-bottom: 20px;
+}
+.container {
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.navbar>.container, .navbar>.container-fluid {
+    overflow: visible;
+}
+/* .container {
+    width: 1160px;
+} */
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}

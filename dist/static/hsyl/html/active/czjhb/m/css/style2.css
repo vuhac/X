@@ -1,0 +1,104 @@
+.rbag {
+    width: 300px;
+    height: 285px;
+    position: fixed;
+    z-index: 10001;
+    left: 76%;
+    top: 60%;
+    background: url(../../images/rbag_bg.png) no-repeat 0 0;
+    background-size: 100%;
+    margin: -238px 0 0 -250px;
+}
+
+.rbag .close {
+    width: 30px;
+    height: 30px;
+    background: url(../../images/rbag_close.png) no-repeat 0 0;
+    display: block;
+    margin-left: 148px;
+}
+
+.rbag .cont {
+    width: 308px;
+    height: 110px;
+    text-align: center;
+    margin-top: 135px;
+}
+
+.rbag .btn {
+    width: 145px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #000;
+    background: #fbdb30;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+}
+
+.rbag .txt {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #b05a5a;
+    background: #7d1919;
+    color: #fff;
+    /*margin: 0 0 0 20px;*/
+    text-indent: 10px;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+.snow {
+    position: absolute;
+    top: 0;
+    color: #fff;
+    z-index: 200;
+    cursor: pointer
+}
+
+.snow.snow-1 {
+    width: 50px;
+    height: 60px;
+    background: url(../../images/s-1.png) no-repeat;
+    background-size: 100%;
+}
+
+.snow.snow-2 {
+    width: 40px;
+    height: 60px;
+    background: url(../../images/s-2.png) no-repeat;
+    background-size: 100%;
+}
+
+.snow.snow-3 {
+    width: 50px;
+    height: 70px;
+    background: url(../../images/s-3.png) no-repeat;
+    background-size: 100%;
+}
+
+.audiobox {
+    width: 27px;
+    height: 27px;
+    position: fixed;
+    z-index: 111111;
+    right: 18px;
+    bottom: 8px;
+    background: url(../../images/audio.png) no-repeat;
+    cursor: pointer
+}
+
+.audiobox.on {
+    animation: rotating 1.2s linear infinite;
+    -webkit-animation: rotating 1.2s linear infinite;
+    -moz-animation: rotating 1.2s linear infinite;
+    -o-animation: rotating 1.2s linear infinite
+}

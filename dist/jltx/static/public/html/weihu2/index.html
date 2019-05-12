@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <title>站点维护中...</title>  
+    <style>
+      html,body{
+        padding: 0;
+        margin: 0;
+      }
+      .loading-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 770px;
+        height: 202px;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);		/* IE 9 */
+        -webkit-transform: translate(-50%,-50%);	/* Safari and Chrome */
+        -o-transform: translate(-50%,-50%);		/* Opera */
+        -moz-transform: translate(-50%,-50%);		/* Firefox */        
+      }
+      .loading-container .wrap{
+        /* padding: 250px 110px 0 110px; */
+        float: left;
+        padding-left: 30px;
+      }
+      .loading-container .bg{
+        float: left;
+      }
+      .loading-container .text{
+        padding-top: 50px;
+        color: #000;
+        font-size: 14px;
+        letter-spacing: 2px;
+        width: 300px;
+      }  
+      .loading-container .text.text2{
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }    
+    </style>
+</head>
+  <body>
+      <div class="loading-container">
+        <div class="bg">
+            <img  src="./img/contactimg.png" alt="">
+        </div>
+       
+        <div class="wrap">
+            <div class="text">
+              抱歉，为了更好的用户体验，服务器正在维护升级，给大家带来不便，敬请谅解！
+            </div>
+            <div class="text text2 time">
+                
+            </div>
+            <a class="kefu" href="">
+              <img class="contact" src="./img/contactus.png" alt="">
+            </a>
+        </div>
+
+        
+      </div>
+      <script>
+        document.querySelector('.time').innerHTML="维护时间至："+JSON.parse(localStorage.config).close.timeEnd;
+        let service=JSON.parse(localStorage.config).service;
+        if(service[0]){
+          document.querySelector('.kefu').setAttribute('href',service[0].url);          
+        }                      
+      </script>
+  </body>
+</html>

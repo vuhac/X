@@ -1,0 +1,235 @@
+@charset "UTF-8";
+body,html{
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+#fishBody {
+    position: relative;
+    min-height: 2340px;
+    max-width: 1920px;
+    min-width: 1200px;
+    margin: 0 auto;
+    padding-top: 90px;
+    padding-bottom: 20px;
+    background: url(../images/5bj.jpg) no-repeat center top;
+    background-size: 100% 100%
+}
+
+.content {
+    position: relative;
+    width: 1200px;
+    overflow: hidden;
+    z-index: 5;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.5)
+}
+
+.content #items {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative
+}
+
+#items .item {
+    margin: 20px;
+    padding: 20px;
+    background: #fff
+}
+
+#items .item .title {
+    overflow: hidden;
+    margin-left: 20px
+}
+
+#items .item .title img {
+    float: left
+}
+
+#items .item .title h1 {
+    float: left;
+    color: #333;
+    font-size: 24px;
+    margin-left: 20px
+}
+
+#items .item .title h1 span {
+    color: #fd4747;
+    font-size: 48px
+}
+
+#items .item .item-box {}
+
+#items .item .box-left {
+    position: relative;
+    float: left;
+    width: 56.3%;
+    height: 261px
+}
+
+#items .item .box-left .box-demo .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98px;
+    height: 98px;
+    background: url(../images/hot.png) no-repeat center top
+}
+
+.mark-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.mark-box .join-game {
+    position: absolute;
+    bottom: 36%;
+    left: 30%;
+    z-index: 200;
+    width: 36.2%;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    background: #fd4747;
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+.mark-box .try-game {
+    background: #9f7340;
+    bottom: 60%
+}
+
+.mark-box .try-game1 {
+    background: #9f7340;
+    bottom: 40%
+}
+
+.mark-box .join-game>a {
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.join-game:hover {
+    height: 51px;
+    background: #a2230b;
+    border-bottom: 5px solid #821400
+}
+
+.try-game:hover,
+.try-game1:hover {
+    height: 51px;
+    background: #c6955c;
+    border-bottom: 5px solid #9f7340
+}
+
+#items .item .box-left:hover .mark-box {
+    opacity: 1;
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 10px rgba(255, 255, 255, 0.65);
+    transition: all 0.3s
+}
+
+#items .item .item-box .box-right {
+    float: left;
+    width: 43.7%;
+    height: 261px
+}
+
+#items .item .item-box .box-right .main-content p {
+    padding: 0 0 30px 20px;
+    font-size: 14px;
+    color: #333
+}
+
+#items .item .item-box div.code-container {
+    width: 100%;
+    height: 136px;
+    overflow: hidden
+}
+
+#items .item .item-box div.code-container div {
+    position: relative;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden
+}
+
+#items .item .item-box div.code-container div:first-child {
+    width: 304px
+}
+
+#items .item .item-box div.code-container div:first-child span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #fd4747
+}
+
+#items .item .item-box div.code-container div:last-child {
+    text-align: center
+}
+
+#items .item .item-box div.code-container div:last-child img {
+    padding: 0 20px
+}
+
+#items .item .item-box div.code-container div:first-child .pt-down {
+    position: absolute;
+    top: 53px;
+    right: 82px;
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    background: #fd4747
+}
+
+.code-container .pt-down>a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+#items .code-container .pt-down:hover a {
+    background: #821400
+}
+
+#items .code-container .pt-touch img {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s
+}
+
+#items .code-container .pt-touch:hover img {
+    opacity: 0.8;
+    transform: scale(0.95)
+}

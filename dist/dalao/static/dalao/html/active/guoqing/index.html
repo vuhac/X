@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>环球娱乐-国庆翻彩金，福气临门得iPhone XS Max</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/common.css?v=0920"/>
+    <link rel="stylesheet" type="text/css" href="./css/mobile.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="./css/lib/animations2.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/plugins/hover.css"/>-->
+    <link rel="stylesheet" type="text/css" href="./css/index.css?v=7"/>
+    <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+    <!--<script type="text/javascript" src="/js/items.js?v=0922"></script>-->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            /*手机*/
+            if (/AppleWebKit.*Mobile/i.test(navigator.userAgent)
+                || /Android/i.test(navigator.userAgent)
+                || /BlackBerry/i.test(navigator.userAgent)
+                || /IEMobile/i.test(navigator.userAgent)
+                || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                window.location.href = "./m";//要跳转的目录
+            }
+
+            /*获取用户id*/
+        //  var uid =  localStorage.getItem('userinfo').uid;
+         var user11 = localStorage.getItem('Public_User') ? localStorage.getItem('Public_User') : 'v1';
+        var url = window.location.origin+'/api/' + user11 + '/';
+        var token = localStorage.getItem('token');
+            /*翻牌*/
+            $('.card').on('click', function () {
+
+                if(token){
+                  turnOver(this);
+                }else{
+                      $(".messageTip").css('display', 'block');
+                     $('.messageBox p').html('请您登录后再来参与活动！');
+                }
+
+            });
+            /*查看翻牌记录*/
+            $('.look').on('click', function () {
+                lookHistory();
+            });
+            $('.autTempClose').on('click', function () {
+                $('.tan').hide();
+            });
+            /*获奖名单*/
+            $.ajax({
+               type: "post",
+                    url: url+"preferential/happy8days/winning",
+                    // data: {
+                    //     uid: uid,
+                    //     type: "flop"
+                    // },
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                        },
+                    async: false,
+                    type: "post",
+                    data: {
+                        limit:50
+                          },
+                success: function (data) {
+                    var content = '';
+                    var data = data.data;
+                    for (var i = 0; i < data.length; i++) {
+                        content += `<div class="item">
+                                <span class="span1">恭喜玩家</span><span class="span2">${data[i].username}</span><span class="span3">获得了</span><span class="span4">${data[i].bouns}</span>
+                            </div>`;
+                    }
+                    $('#winnerList1').html(content);
+
+                    var speed = 30;
+                    var tab = document.getElementById("list");
+                    var tab1 = document.getElementById("winnerList1");
+                    var tab2 = document.getElementById("winnerList2");
+                    tab2.innerHTML = tab1.innerHTML;
+
+                    function Marquee() {
+                        if (tab2.offsetHeight - tab.scrollTop <= 0) {
+                            tab.scrollTop -= tab1.offsetHeight
+                        }
+                        else {
+                            tab.scrollTop++;
+                        }
+                    }
+
+                    var MyMar = setInterval(Marquee, speed);
+                    tab.onmouseover = function () {
+                        clearInterval(MyMar)
+                    };
+                    tab.onmouseout = function () {
+                        MyMar = setInterval(Marquee, speed)
+                    };
+
+                }
+            });
+
+            function turnOver(e) {
+                $.ajax({
+                    type: "post",
+                    url: url+"preferential/happy8days",
+                    // data: {
+                    //     uid: uid,
+                    //     type: "flop"
+                    // },
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                        },
+                    async: false,
+                    type: "post",
+                    data: {
+                          },
+                    success: function (data) {
+                        // console.log(data);
+                        // console.log(data.status);
+                        if (data.code == 200) {
+
+                            $(".messageTip").css('display', 'block');
+                            $('.messageBox p').html('恭喜您获得'+data.data);
+
+                            $(e).css('background', 'url(img/open.png)');
+                            $(e).children("p").text(data.data);
+                        } else {
+
+                            $(".messageTip").css('display', 'block');
+                            $('.messageBox p').html(data.message);
+
+                        }
+
+                    }
+                })
+            }
+
+            function lookHistory() {
+                $.ajax({
+                   type: "post",
+                    url: url+"preferential/happy8days/receive",
+                    // data: {
+                    //     uid: uid,
+                    //     type: "flop"
+                    // },
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                        },
+                    async: false,
+                    type: "post",
+                    data: {
+                          },
+                    success: function (data) {
+                        console.log(data)
+                        $('.lookHistory').css('display', 'block');
+                        var lists = '';
+                        var data = data.data;
+                        for (var i = 0; i < data.length; i++) {
+                            lists += `<tr>
+                    <td>${getDate(data[i].time)}</td>
+                    <td>已翻牌</td>
+                    <td>${getMyDate(data[i].time-0)}</td>
+                    <td>${data[i].bouns}</td>
+                    <td>已领取</td>
+                </tr>`;
+                        }
+                        $('.historyBox .content tbody').html(lists);
+                    }
+                })
+
+            }
+        //   获取日期
+             function getDate(str){
+                var oDate = new Date(str*1000),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth()+1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                 oSen = oDate.getSeconds(),
+                 oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay);
+                return oTime;
+             }
+
+
+        // 获取时间
+            function getMyDate(str){
+                var oDate = new Date(str*1000),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth()+1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                 oSen = oDate.getSeconds(),
+                 oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+getzf(oMin) +':'+getzf(oSen);
+                return oTime;
+             }
+        //  补0
+             function getzf(num){
+             if(parseInt(num) < 10){
+              num = '0'+num;
+               }
+          	return num;
+             }
+
+
+
+
+            /*获奖名单*/
+            /*var speed=30;
+            var tab=document.getElementById("list");
+            var tab1=document.getElementById("winnerList1");
+            var tab2=document.getElementById("winnerList2");
+            tab2.innerHTML=tab1.innerHTML;
+            function Marquee(){
+                if(tab2.offsetHeight-tab.scrollTop<=0){
+                    tab.scrollTop-=tab1.offsetHeight
+                }
+                else{
+                    tab.scrollTop++;
+                }
+            }
+            var MyMar=setInterval(Marquee,speed);
+            tab.onmouseover=function() {clearInterval(MyMar)};
+            tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};*/
+            /*let appUrl = window.location.href;
+            if (appUrl.includes('app=app')){
+                $('.container').css({'position':'absolute','top':'47px'})
+            }*/
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="content slide">
+        <ul class="responsive">
+
+
+            <!-- body -->
+            <li class="body-section">
+
+                <header class="header">
+
+                </header>
+
+
+                <div class="main-body">
+                    <article class="part1">
+                        <section class="cont flex">
+                            <div class="act-info">
+                                <h3>活动时间：</h3>
+                                <p>10月1日 12:00:00 至 10月8日
+                                    11:59:59，共计7天。只要在这期间每天有效投注达到1000元以上均可自动参与（香港六合彩不计算在内）每日可翻牌一次，无法累计，当日未翻视为自行放弃，翻完后，系统将于5分钟内自动汇入奖金至您的帐号。最高奖金12000元
+                                    最高礼品iPhone XS Max。</p>
+                            </div>
+                        </section>
+                    </article>
+                    <article class="part2">
+                        <div class="content">
+                            <div class="cards">
+                                <div class="card" style="margin-left: 56px;"><p></p></div>
+                                <div class="card"><p></p></div>
+                                <div class="card"><p></p></div>
+                                <div class="card"><p></p></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="look">查看我的翻牌记录</div>
+                    <div class="list" id="list">
+                        <div id="winnerList1">
+                            <!--
+                            <div class="item">
+                                <span class="span1">恭喜</span><span class="span2">XXXXXXX</span><span class="span3">玩家获得了</span><span class="span4">XXXXX</span>
+                            </div>-->
+                        </div>
+                        <div id="winnerList2"></div>
+
+
+                    </div>
+                    <article class="part3" style="margin-top: 904px;">
+                        <section class="cont flex">
+
+                            <div class="rule-cont">
+                                <div class="rule-des">
+                                    <h3 style="font-size: 36px;margin: 70px 0 25px 0;">活动规则：</h3>
+                                    <p><span>1.</span>所得奖金需要一倍流水才可进行提款。</p>
+                                    <p><span>2.</span>所得iPhone XS Max我司将主动与得奖者联系，沟通后续赠奖事宜。请客户务必确认个人资料中的联络方式为真实资料，以免无法领奖。
+                                    </p>
+                                    <p><span>3.</span>此优惠活动只适用于同一位会员，同一台计算机，同一个住址和IP地址，若会员有重复申请帐号行为，公司将保留取消或者收回会员优惠彩金的权利。
+                                    </p>
+                                    <p><span>4.</span>若会员对活动有争议时，为确保双方利益，杜绝身份盗用行为，环球娱乐
+                                        有权要求会员向我们提供充足有效的文件，用于确认是否享有该优惠的资格。
+                                    </p>
+                                    <p><span>5.</span>环球娱乐将保留对活动的最终解释权，以及在无通知的情况下进行修改、终止活动的权利。</p>
+                                </div>
+                            </div>
+
+                        </section>
+                    </article>
+                </div>
+
+            </li>
+
+            <!-- footer 底部-->
+
+        </ul>
+    </div>
+</div>
+
+<div class="tan messageTip" style="display: none;">
+    <div class="messageBox">
+        <div class="autTempClose"></div>
+        <div class="tempTit">提示信息</div>
+        <p></p>
+
+
+    </div>
+</div>
+<div class="tan lookHistory" style="display: none;">
+    <div class="historyBox">
+        <div class="autTempClose"></div>
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th width="17%">日期</th>
+                    <th width="13%">记录</th>
+                    <th width="30%">翻牌时间</th>
+                    <th width="22%">彩金/礼品</th>
+                    <th width="18%">状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <!--<td>2018-09-30</td>
+                    <td>已翻牌</td>
+                    <td>2018-09-22 08:13:24</td>
+                    <td>iPhone_XS_Max</td>
+                    <td>已赠送</td>-->
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="" id="j-login"/>
+
+
+</body>
+</html>
+
+
+<!--<link rel="stylesheet" type="text/css" href="./css/mobile.css?v=2" />--><!--
+<link rel="stylesheet" type="text/css" href="./css/allInOneModal.css?v=3" />
+<script type="text/javascript" src="/js/login.js?v=4"></script>-->
+
+
+<!--<script type="text/javascript">
+
+    $(function(){
+        // 加載作業
+        $("#allInOneModal").on('show.bs.modal', function(){
+            var $body = $(this).find(".modal-body").attr("id");
+            switch($body){
+                case "loginModalBody":
+                    $("#loginname").focus();
+                    break;
+                case "registerModalBody":
+                    $("#loginnameRegister").focus();
+                    $.getScript('/js/register.js?v=3777', true);
+                    break;
+                case "registerChkModalBody":
+                    $("#validateCodeRegister").val("");
+                    $("#getRegisterTryCode").show();
+                    $("#imgRegisterTryCode").hide();
+                    break;
+                case "forgetpasswordModalBody":
+                    $.getScript('/js/forgetpassword.js?v=0901', true);
+                    $.getScript('//js.touclick.com/js.touclick?b=68aca137-f3c5-457b-87a4-8a46880b1e66', true);
+                    break;
+                case "agentRegisterModalBody":
+                    $("#loginnameRegister").focus();
+                    $.getScript('/js/agentRegister.js?v=67', true);
+                    break;
+            }
+        });
+    });
+
+</script>-->
+

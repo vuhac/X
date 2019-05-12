@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <title>活动</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/iscroll.js"></script>
+  <style>
+    *, body, p {
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, STHeiti, Helvetica, sans-serif !important;
+      line-height: 1.42857143;
+      font-size: 14px;
+    }
+
+    img {
+      vertical-align: middle;
+      width: 100%;
+    }
+
+    .nav-new {
+      width: 100%;
+      background: linear-gradient(90deg, #ff8e00, #ff5100);
+      height: 0.88rem;
+      line-height: 0.88rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-new .nav-bar-title {
+      width: 100%;
+      font-size: 0.36rem;
+      font-weight: 600;
+      color: #fff;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      text-align: center;
+    }
+
+    .nav-bar-block > img {
+      position: absolute;
+      top: 0.25rem;
+      left: 15px;
+      width: 0.23rem;
+    }
+
+    .wrap {
+      position: absolute;
+      z-index: 1;
+      top: 0.88rem;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .wrap .activity_content .list {
+      padding: 0 10px 10px;
+    }
+
+    .activity_content a {
+      margin-top: 10px;
+      display: inline-block;
+      color: #3c3c3c;
+      border: 1px solid #e6eaed;
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .activity_content a p {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 10px 0 10px 10px;
+      margin: 0;
+      border-bottom: 1px solid #e6eaed;
+    }
+
+  </style>
+
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (!clientWidth > 640) {
+            docEl.style.fontSize = 10 + 'px';
+          } else {
+            docEl.style.fontSize = 10 * (clientWidth / 640) + 'px';
+          }
+          ;
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      recalc();
+      // doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+</head>
+<body onload="loaded();">
+<div class="nav-new">
+  <div class="nav-bar-block">
+    <img onclick="window.history.back(-1); " src="img/goBack.png" alt="">
+    <div class="nav-bar-title">优惠活动</div>
+  </div>
+</div>
+
+<div class="wrap" id="wrap">
+  <div id="activity_content" class="activity_content">
+    <div class="list">
+      <!--<a class="menuHead" href="./active/qd/m/index.html?v=091701">
+        <p>登入领彩金</p>
+        <img src="img/x_dengru.jpg" alt="">
+      </a>-->
+      <!--<a class="menuHead" href="/static/hqyl/html/active/double11/index.html">
+        <p>双11优惠不停歇</p>
+        <img src="img/double11.jpg" alt="">
+      </a>-->
+      <!--<a class="menuHead" href="/static/hqyl/html/active/goldegg/index.html">
+        <p>金蛋降临</p>
+        <img src="img/goldegg.jpg" alt="">
+      </a>-->
+      <!--<a class="menuHead" href="https://www.ebetking.me/2018NYBT/" target="_blank">
+        <p>百家乐争霸赛</p>
+        <img src="img/bjlzbs.jpg" alt="">
+      </a>-->
+      <!--<a class="menuHead" href="/static/hqyl/html/active/pig2019/m/index.html">
+        <p>金猪贺岁</p>
+        <img src="img/pig2019.jpg" alt="">
+      </a>-->
+
+      <!--<a class="menuHead" href="activity_content.html?bingo=yuanxiao">
+        <p>正月十五  元宵佳节</p>
+        <img src="img/yuanxiao.jpg" alt="">
+      </a>-->
+
+      <a class="menuHead" href="/static/hqyl/html/active/qiandao/m/index.html">
+        <p>每日签到</p>
+        <img src="img/qiandao.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="/static/hqyl/html/active/qpssq/m/index.html">
+        <p>棋牌上上签</p>
+        <img src="img/qpssq.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=ysf1">
+        <p>云闪付充值即送88</p>
+        <img src="img/ysf1.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=rkyh">
+        <p>入款优惠加赠2.5%</p>
+        <img src="img/rkyh.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=publish">
+        <p>十二期亿元现金回馈</p>
+        <img src="img/publish.jpg" alt="">
+      </a>
+
+
+      
+      <!--<a class="menuHead" href="activity_content.html?bingo=201901">
+        <p>第一期亿元现金回馈</p>
+        <img src="img/201901.jpg" alt="">
+      </a>-->
+      <!--<a class="menuHead" href="activity_content.html?bingo=201902">
+        <p>第二期亿元现金回馈</p>
+        <img src="img/201902.jpg" alt="">
+      </a>-->
+
+      <a class="menuHead" href="activity_content.html?bingo=201903">
+        <p>第三期亿元现金回馈</p>
+        <img src="img/201903.jpg" alt="">
+      </a>
+      <!--<a class="menuHead" href="activity_content.html?bingo=fg">
+        <p>FG天天返利</p>
+        <img src="img/fg.jpg?v=0101" alt="">
+      </a>-->
+
+      <!--<a class="menuHead" href="https://web.cq9promo.com/newyear" target="_blank">
+        <p>CQ9龙虎榜</p>
+        <img src="img/tigerList.jpg" alt="">
+      </a>-->
+
+     <!-- <a class="menuHead" href="activity_content.html?bingo=5_11">
+        <p>第11期亿元彩金</p>
+        <img src="img/5_11.jpg" alt="">
+      </a>-->
+      <a class="menuHead" href="activity_content.html?bingo=bjl">
+        <p>惊喜百家乐</p>
+        <img src="img/bjl.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=kjyh">
+        <p>银联存款回馈</p>
+        <img src="img/kjyh.jpg" alt="">
+      </a>
+
+
+      <!--<a class="menuHead" href="activity_content.html?bingo=x_5_10">
+        <p>第10期千万彩金</p>
+        <img src="img/x_5_10.jpg" alt="">
+      </a>-->
+      <a class="menuHead" href="activity_content.html?bingo=birthday">
+        <p>周岁奖礼金</p>
+        <img src="img/birthday.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=shell">
+        <p>万炮齐发 一炮而鸣</p>
+        <img src="img/shell.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=x_kscp">
+        <p>快速彩票 奖金大派送</p>
+        <img src="img/x_kscp.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=ky_hl">
+        <p>开元棋牌 豪礼相赠</p>
+        <img src="img/x_ky_hl.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=ky_ks">
+        <p>开元棋牌 亏损救援金</p>
+        <img src="img/x_ky_ks.jpg" alt="">
+      </a>
+      <!--<a class="menuHead" href="./active/vip/index.html"><img src="img/x_vip.jpg" alt=""></a>
+      <div class="promotContent">
+      </div>-->
+
+      <a class="menuHead" href="activity_content.html?bingo=x_gift">
+        <p>你取我就送 让“礼”遇见你</p>
+        <img src="img/x_gift.jpg" alt="">
+      </a>
+      <!--<a class="menuHead" href="activity_content.html?bingo=ysf">
+        <p>云闪付一键支付更简单</p>
+        <img src="img/x_ysf.jpg" alt="">
+      </a>-->
+      <a class="menuHead" href="activity_content.html?bingo=wxsm">
+        <p>一键解除限额释放微信精彩</p>
+        <img src="img/x_wxsm.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=wxzf">
+        <p>微信全新版本</p>
+        <img src="img/x_wxzf.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=tytz">
+        <p>体育投注 天天有奖 现金直送1888元</p>
+        <img src="img/x_tytz.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=x_dns">
+        <p>一键解决DNS劫持问题</p>
+        <img src="img/x_dns.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=x_by">
+        <p>玩“赚”捕鱼</p>
+        <img src="img/x_by.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=lhdb">
+        <p>天天消除拿大奖</p>
+        <img src="img/x_lhdb.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=mg">
+        <p>天天领取得意金</p>
+        <img src="img/x_mg.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=ptdz">
+        <p>PT电子 签到有奖</p>
+        <img src="img/x_ptdz.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=dzjj">
+        <p>电子超级奖金</p>
+        <img src="img/x_dzjj.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=dzyx">
+        <p>电子7天乐</p>
+        <img src="img/x_dzyx.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=dzyy">
+        <p>电子勇猛闯关</p>
+        <img src="img/x_dzyy.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=xzst">
+        <p>雪中送炭 电子救援金</p>
+        <img src="img/x_xzst.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=ssfs">
+        <p>实时返水2.0%</p>
+        <img src="img/x_ssfs.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=hpp">
+        <p>选择好品牌</p>
+        <img src="img/x_hpp.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=x_ck">
+        <p>24小时出款 0手续费</p>
+        <img src="img/x_ck.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=ywjx">
+        <p>神秘彩金随机派送</p>
+        <img src="img/x_ywjx.jpg" alt="">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var myScroll;
+
+  function loaded() {
+    myScroll = new IScroll('#wrap', {mouseWheel: true, click: true});
+  }
+
+  document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+  }, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+  font-family: "\5FAE\8F6F\96C5\9ED1", Arial, Tahoma;
+  font-size: 0.8rem;
+  background: #1c1b31;
+  .clearfix::before,
+  .clearfix::after,
+  .wrapper::before,
+  .wrapper::after,
+  .row::before,
+  .row::after,
+  .content::before,
+  .content::after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+  }
+  img {
+    border: none;
+  }
+}

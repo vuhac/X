@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <title>活动</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <style>
+    *, body, p {
+      margin: 0;
+      padding: 0;
+      color: #333333;
+    }
+
+    body {
+      /* background: url("img/bg.jpg") no-repeat; */
+      background-size: cover;
+      line-height: 1.42857143;
+      font-size: 14px;
+
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    .activity_content_wrap {
+      padding: 0 10px;
+    }
+    .activity_content_wrap a {
+      display: inline-block;
+    }
+
+    #activity_content_wrap .title {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, .8);
+    }
+
+    #activity_content_wrap .date {
+      font-size: 16px;
+      line-height: 30px;
+      color: rgba(0, 0, 0, .5);
+      border-bottom: 1px solid rgba(0, 0, 0, .2);
+      margin: -4px 0 10px;
+    }
+
+    #activity_content_wrap h4 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    #activity_content_wrap .menuHead img {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    #activity_content_wrap .promotContent .content {
+      /*border: 4px solid #4f8ffc;*/
+      /* padding: 10px; */
+      /*background-color: #e5eeff;*/
+    }
+
+    #activity_content_wrap .promotContent img {
+      width: 100%;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, STHeiti, Helvetica, sans-serif !important;
+    }
+
+    #activity_content_wrap .promotContent {
+      /*color: rgb(245, 245, 245);*/
+      /* background: url("img/bg.jpg") no-repeat; */
+      background-size: cover;
+      width: 100%;
+      text-align: left;
+      margin: 0 auto;
+      font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+    }
+
+    #activity_content_wrap .promotContent hr {
+      height: 1px;
+      background-color: rgb(250, 220, 75);
+      border: 0;
+    }
+
+    #activity_content_wrap .promotContent .con_title {
+      display: inline-block;
+      padding: 5px 15px;
+      /*background: #4d90fb;
+      border-radius: 5px;
+      box-shadow: 0 2px 1px #6b8cbf;
+      color: #eff8f8;*/
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      /*color: rgb(250, 220, 75);*/
+    }
+
+    #activity_content_wrap .promotContent table {
+      width: 100%;
+      margin-bottom: 15px;
+      text-align: center;
+      border: 1px solid #bdbfc2;
+      border-spacing: 0;
+      border-collapse: collapse;
+      /*color: rgb(235, 235, 235);*/
+    }
+
+    #activity_content_wrap .promotContent table .firstRow {
+      /*border: 1px solid rgb(235, 235, 235);*/
+      background: #dcdcdc;
+      color: #454741;
+      border-bottom: 1px solid #bdbfc2;
+    }
+
+    #activity_content_wrap .promotContent table td {
+      padding: 5px 0;
+      border: 1px solid #bdbfc2;
+      vertical-align: middle;
+    }
+
+    .nav-new {
+      width: 100%;
+      background: linear-gradient(90deg, #ff8e00, #ff5100);
+      height: 0.88rem;
+      line-height: 0.88rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-new .nav-bar-title {
+      width: 100%;
+      font-size: 20px;
+      color: #fff;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      text-align: center;
+    }
+
+    .nav-bar-block > img {
+      position: absolute;
+      top: 0.25rem;
+      left: 15px;
+      width: 0.23rem;
+    }
+  </style>
+  <script>
+    function setupWebViewJavascriptBridge(param1, param2) {
+      localStorage.setItem('token', param1);
+      localStorage.setItem('url', param2);
+    }
+  </script>
+  <script>
+      (function (doc, win) {
+          var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function () {
+                  var clientWidth = docEl.clientWidth;
+                  if (!clientWidth) return;
+                  if(!clientWidth>640){
+                      docEl.style.fontSize = 10 +'px';
+                  }else{
+                      docEl.style.fontSize = 10* (clientWidth / 640) + 'px';
+                  };
+                  docEl.style.fontSize = 100* (clientWidth / 750) + 'px';
+              };
+          if(!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          recalc();
+          // doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document,window) ;
+  </script>
+  <script>
+      $(document).ready(
+          function () {
+              var count = $('.promotContent').size();
+              console.log(count);
+              for (var i = 0; i <= count; i++) {
+                  $(".promotContent:eq(" + i + ")").hide();
+              }
+              $(".menuHead").click(function () {
+                  $(this).next(".promotContent").toggle().siblings(".promotContent").hide();
+                  $('html,body').animate({scrollTop: $(this).offset().top+5},0);
+              });
+          });
+
+  </script>
+</head>
+<body>
+
+<div id="activity_content_wrap" class="activity_content_wrap">
+
+  <!--<a class="menuHead" href="./active/mid-autumn/index.html?v=091701"><img src="img/mid-autumn.jpg" alt=""></a>
+  <div class="promotContent">
+  </div>-->
+
+  <a class="menuHead" href="./active/jgj/index.html?v=110701"><img src="img/jgj.jpg" alt=""></a>
+  <div class="promotContent">
+  </div>
+
+  <!--<a class="menuHead" href="./active/opportunity/Mopportunity/index.html?v=112401"><img src="img/zhuanpan.jpg" alt=""></a>
+  <div class="promotContent">
+  </div>-->
+
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/daili.png" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/dailic.png" alt="">
+    </div>
+  </div>
+
+  <!-- <a class="menuHead" href="javascript:void(0);"><img src="img/chuxi.gif" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/yuandanc.png" alt="">
+    </div>
+  </div> -->
+
+  <a class="menuHead" href="/static/ddcp/html/download/mobile/index.html"><img src="img/down.jpg" alt=""></a>
+  <div class="promotContent">
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/kyqp.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/kyqpc.jpg" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/sc.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/scc.jpg" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/ssc.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/sscc.png" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/wdxy.png" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/wdxyc.png" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/yqhy.png" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/yqhyc.jpg" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/scck.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/scckc.jpg" alt="">
+    </div>
+  </div>
+  <a class="menuHead" href="javascript:void(0);"><img src="img/68fba8fe-e27e-4dac-bfd2-a715f95c1b22.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/c5f2dca4-2c84-4ed5-b30b-0c1b3f9a0482.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/46d10efa-54af-4737-a257-8034021c6865.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/wxxz.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/a1c25d36-3987-4df9-85e7-a3b62b474bda.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/zfbxz.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/182a7bf9-76e1-4b05-8b4f-efb499f76727.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/ysf.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/41a09999-c3bd-463b-beb3-bebdb76e47e8.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/4c2551de-6156-49c0-85c9-a4066ace111e.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/f32af1e4-df22-4e1d-86f7-cb4656b6cbc9.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/f6fc72f2-7023-4e9a-85fa-3045ece0dc14.jpg" alt="">
+    </div>
+  </div>
+
+  <a class="menuHead" href="javascript:void(0);"><img src="img/08caa2f3-eb6b-494a-ab4c-830e6f13867a.jpg" alt=""></a>
+  <div class="promotContent">
+    <div class="content">
+      <img src="img/b5bcd2cf-210a-46b5-bcc6-1f24ce3807b7.jpg" alt="">
+    </div>
+  </div>
+</div>
+</body>
+</html>

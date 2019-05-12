@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <title>活动</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/iscroll.js"></script>
+  <style>
+    *, body, p {
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, STHeiti, Helvetica, sans-serif !important;
+      line-height: 1.42857143;
+      font-size: 14px;
+    }
+
+    img {
+      vertical-align: middle;
+      width: 100%;
+    }
+
+    .nav-new {
+      width: 100%;
+      /*background: linear-gradient(90deg, #ff8e00, #ff5100);*/
+      background: #5f8ff2;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-new .nav-bar-title {
+      width: 100%;
+      font-size: 0.36rem;
+      font-weight: 600;
+      color: #fff;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      text-align: center;
+    }
+
+    .nav-bar-block > img {
+      position: absolute;
+      top: 0.25rem;
+      left: 15px;
+      width: 0.23rem;
+    }
+
+    .wrap {
+      position: absolute;
+      z-index: 1;
+      top: 0.88rem;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .wrap .activity_content .list {
+      padding: 0 10px 10px;
+    }
+
+    .activity_content a {
+      margin-top: 10px;
+      display: inline-block;
+      color: #3c3c3c;
+      border: 1px solid #e6eaed;
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .activity_content a p {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 10px 0 10px 10px;
+      margin: 0;
+      border-bottom: 1px solid #e6eaed;
+    }
+
+    /*弹窗start*/
+    .van-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.7);
+    }
+    .van-dialog {
+      display: none;
+      line-height: 1;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 85%;
+      font-size: 16px;
+      overflow: hidden;
+      -webkit-transition: .3s;
+      transition: .3s;
+      border-radius: 10px;
+      background-color: #fff;
+      -webkit-transform: translate3d(-50%,-50%,0);
+      transform: translate3d(-50%,-50%,0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .van-dialog__header {
+      border-bottom: 1px solid #f5f5f5;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: 500;
+      font-family: PingFang SC, STHeitiSC-Light, Helvetica-Light, arial, sans-serif !important;
+      box-sizing: border-box;
+    }
+    .van-dialog__content {
+      padding: 16px;
+      font-size: 16px;
+      line-height: 1.5;
+      max-height: 60vh;
+      overflow-y: auto;
+      text-align: center;
+      -webkit-overflow-scrolling: touch;
+    }
+    .van-dialog__message--has-title {
+      padding-top: 12px;
+      color: #7d7e80;
+    }
+    .van-dialog__footer {
+      overflow: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      position: relative;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 2px;
+      box-sizing: border-box;
+      font-size: 16px;
+      text-align: center;
+      -webkit-appearance: none;
+      -webkit-text-size-adjust: 100%;
+      background: #f8f8f8;
+    }
+.van-button__text {
+  color: #f60;
+}
+    /*弹窗end*/
+
+  </style>
+
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth
+          if (!clientWidth) return
+          if (!clientWidth > 640) {
+            docEl.style.fontSize = 10 + 'px'
+          } else {
+            docEl.style.fontSize = 10 * (clientWidth / 640) + 'px'
+          }
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px'
+        }
+      if (!doc.addEventListener) return
+      win.addEventListener(resizeEvt, recalc, false)
+      recalc()
+      // doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window)
+  </script>
+  <script>
+    $(document).ready(
+      function () {
+        var colors = [
+          {color: '#4d8ffa', title: '冰川蓝', code: 'a'},
+          {color: '#FF003D', title: '旺旺红', code: 'b'},
+          {color: '#A33AA3', title: '高贵紫', code: 'c'},
+          {color: '#0ACA00', title: '草原绿', code: 'd'},
+          {color: '#FF1A18', title: '法拉利红', code: 'e'},
+          {color: '#FFA500', title: '土豪金', code: 'f'},
+        ];
+        var cod = window.localStorage.getItem('toggleColor');
+        colors.filter(function (ele) {
+          if (ele.code === cod) {
+            $('.nav-new').css('background', ele.color);
+          }
+        })
+
+      });
+  </script>
+</head>
+<body onload="loaded();">
+<div class="nav-new">
+  <div class="nav-bar-block">
+    <img onclick="window.history.back(-1); " src="img/goBack.png" alt="">
+    <div class="nav-bar-title">优惠活动</div>
+  </div>
+</div>
+
+<div class="wrap" id="wrap">
+  <div id="activity_content" class="activity_content">
+    <div class="list">
+      <!--<a class="menuHead" href="javascript:openVan()">
+        <p>免息借呗</p>
+        <img src="img/jiebei.jpg" alt="">
+      </a>-->
+
+    <!--  <a class="menuHead" href="javascript:openVan()">
+        <p>视讯金管家</p>
+        <img src="img/sxjgj.jpg" alt="">
+      </a>-->
+
+     <!-- <a class="menuHead" href="javascript:openVan()">
+        <p>棋牌金管家</p>
+        <img src="img/qpjgj.jpg" alt="">
+      </a>-->
+
+     <!-- <a class="menuHead" href="javascript:openVan()">
+        <p>电子金管家</p>
+        <img src="img/dzjgj.jpg" alt="">
+      </a>-->
+
+    <!--  <a class="menuHead" href="javascript:openVan()">
+        <p>彩票金管家</p>
+        <img src="img/cpjgj.jpg" alt="">
+      </a>-->
+
+      <a class="menuHead" href="activity_content.html?bingo=publish">
+        <p>19年12期现金回馈</p>
+        <img src="img/publish.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=ysf">
+        <p>云闪付一键支付更简单</p>
+        <img src="img/ysf.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=zhuanzhang">
+        <p>转帐到银行卡</p>
+        <img src="img/zhuanzhang.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=201903">
+        <p>第三期亿元现金回馈</p>
+        <img src="img/201903.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=bjl">
+        <p>惊喜百家乐</p>
+        <img src="img/bjl.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=yinlian">
+        <p>银联存款回馈</p>
+        <img src="img/yinlian.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=kscp">
+        <p>快速彩票5888元</p>
+        <img src="img/kscp.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=bydr1">
+        <p>捕鱼达人第1恵</p>
+        <img src="img/bydr1.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=bydr2">
+        <p>捕鱼达人第2恵</p>
+        <img src="img/bydr2.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=bydr3">
+        <p>捕鱼达人第3恵</p>
+        <img src="img/bydr3.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=fanshui">
+        <p>实时返水3.0%</p>
+        <img src="img/fanshui.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=qpyx1">
+        <p>棋牌游戏第1恵</p>
+        <img src="img/qpyx1.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=qpyx2">
+        <p>棋牌游戏第2恵</p>
+        <img src="img/qpyx2.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=qpyx3">
+        <p>棋牌游戏第3恵</p>
+        <img src="img/qpyx3.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=qpyx4">
+        <p>棋牌游戏第4恵</p>
+        <img src="img/qpyx4.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=qpyx5">
+        <p>棋牌游戏第5恵</p>
+        <img src="img/qpyx5.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy1">
+        <p>电子游艺第1恵</p>
+        <img src="img/dzyy1.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy2">
+        <p>电子游艺第2恵</p>
+        <img src="img/dzyy2.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy3">
+        <p>电子游艺第3恵</p>
+        <img src="img/dzyy3.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy4">
+        <p>电子游艺第4恵</p>
+        <img src="img/dzyy4.jpg" alt="">
+      </a>
+      <a class="menuHead" href="activity_content.html?bingo=dzyy5">
+        <p>电子游艺第5恵</p>
+        <img src="img/dzyy5.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy6">
+        <p>电子游艺第6恵</p>
+        <img src="img/dzyy6.jpg" alt="">
+      </a>
+
+      <a class="menuHead" href="activity_content.html?bingo=dzyy7">
+        <p>电子游艺第7恵</p>
+        <img src="img/dzyy7.jpg" alt="">
+      </a>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="van-dialog" style="z-index: 2001;">
+  <div class="van-dialog__header">提示</div>
+  <div class="van-dialog__content">
+    精彩活动,敬请期待!
+  </div>
+  <div class="van-dialog__footer" onclick="closeVan()">
+    <span class="van-button__text">确认</span>
+  </div>
+</div>
+<div class="van-overlay" style="z-index: 2000;"></div>
+
+<script>
+  /*弹窗*/
+  function openVan () {
+    document.querySelector('.van-overlay').style.display = 'block';
+    document.querySelector('.van-dialog').style.display = 'block';
+
+  }
+  function closeVan () {
+    document.querySelector('.van-overlay').style.display = 'none';
+    document.querySelector('.van-dialog').style.display = 'none';
+  }
+  var myScroll;
+
+  function loaded () {
+    myScroll = new IScroll('#wrap', { mouseWheel: true, click: true })
+  }
+
+  document.addEventListener('touchmove', function (e) {
+    e.preventDefault()
+  }, false)
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>吉利彩票 - 云博科技</title>
+  <script>
+    (function () {
+      var url = window.location.href, obj = {}, keyvalue = [], key = '', value = '',
+        parseString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+      for (var i in parseString) {
+        keyvalue = parseString[i].split('=')
+        key = keyvalue[0]
+        value = keyvalue[1] && keyvalue[1].includes('#/') ? keyvalue[1].split('#/')[0] : keyvalue[1]
+        obj[key] = value
+      }
+
+      if (obj.agent) {localStorage.setItem('agent', obj.agent)}
+
+    })()
+
+    function isMobile () {return !!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))}
+
+    if (isMobile() !== false) {window.location.href = '/m'}
+  </script>
+  <link rel="shortcut icon" href="/static/jlcp/img/jlfavicon.ico" type="image/x-icon">
+  <script src="/static/public/js/stomp.js"></script><script src="/static/public/js/qrcode.js"></script>
+<link href="/style.css" rel="stylesheet"><link href="/static/css/pages/jlcp/index.2556f51e2446b8d4eb68ea4362ae72e9.css" rel="stylesheet"></head>
+<body>
+<div id="Appjlcp">
+
+</div>
+<script type="text/javascript" src="/static/js/manifest.e1a9fbb8a0285043f047.js"></script><script type="text/javascript" src="/static/js/vendor.85ef2e490f177cc66f08.js"></script><script type="text/javascript" src="/static/js/pages/jlcp/index.7f3e015b54c7f7922b0b.js"></script></body>
+</html>

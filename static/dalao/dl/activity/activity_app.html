@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-rim-auto-match" content="none">
+  <title>活动</title>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script>
+    function setupWebViewJavascriptBridge(param1, param2) {
+      localStorage.setItem('token', param1);
+      localStorage.setItem('url', param2);
+    }
+  </script>
+  <style>
+    *,
+    body,
+    p {
+      margin: 0;
+      padding: 0;
+      color: #333333;
+    }
+
+    body {
+      /* background: url("img/bg.jpg") no-repeat; */
+      background-size: cover;
+      line-height: 1.42857143;
+      font-size: 14px;
+
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    .activity_content_wrap {
+      padding: 0 10px;
+    }
+
+    .activity_content_wrap a {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    #activity_content_wrap .title {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, .8);
+    }
+
+    #activity_content_wrap .date {
+      font-size: 16px;
+      line-height: 30px;
+      color: rgba(0, 0, 0, .5);
+      border-bottom: 1px solid rgba(0, 0, 0, .2);
+      margin: -4px 0 10px;
+    }
+
+    #activity_content_wrap h4 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    #activity_content_wrap .menuHead img {
+      width: 100%;
+      /*border-radius: 10px;*/
+    }
+
+    #activity_content_wrap .promotContent .content {
+      /*border: 4px solid #4f8ffc;*/
+      /* padding: 10px; */
+      /*background-color: #e5eeff;*/
+    }
+
+    #activity_content_wrap .promotContent img {
+      width: 100%;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, STHeiti, Helvetica, sans-serif !important;
+    }
+
+    #activity_content_wrap .promotContent {
+      /*color: rgb(245, 245, 245);*/
+      /* background: url("img/bg.jpg") no-repeat; */
+      background-size: cover;
+      width: 100%;
+      text-align: left;
+      margin: 0 auto;
+      font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+    }
+
+    #activity_content_wrap .promotContent hr {
+      height: 1px;
+      background-color: rgb(250, 220, 75);
+      border: 0;
+    }
+
+    #activity_content_wrap .promotContent .con_title {
+      display: inline-block;
+      padding: 5px 15px;
+      /*background: #4d90fb;
+      border-radius: 5px;
+      box-shadow: 0 2px 1px #6b8cbf;
+      color: #eff8f8;*/
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      /*color: rgb(250, 220, 75);*/
+    }
+
+    #activity_content_wrap .promotContent table {
+      width: 100%;
+      margin-bottom: 15px;
+      text-align: center;
+      border: 1px solid #bdbfc2;
+      border-spacing: 0;
+      border-collapse: collapse;
+      /*color: rgb(235, 235, 235);*/
+    }
+
+    #activity_content_wrap .promotContent table .firstRow {
+      /*border: 1px solid rgb(235, 235, 235);*/
+      background: #dcdcdc;
+      color: #454741;
+      border-bottom: 1px solid #bdbfc2;
+    }
+
+    #activity_content_wrap .promotContent table td {
+      padding: 5px 0;
+      border: 1px solid #bdbfc2;
+      vertical-align: middle;
+    }
+
+    .nav-new {
+      width: 100%;
+      background: linear-gradient(90deg, #ff8e00, #ff5100);
+      height: 0.88rem;
+      line-height: 0.88rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .nav-new .nav-bar-title {
+      width: 100%;
+      font-size: 20px;
+      color: #fff;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      text-align: center;
+    }
+
+    .nav-bar-block>img {
+      position: absolute;
+      top: 0.25rem;
+      left: 15px;
+      width: 0.23rem;
+    }
+  </style>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          if (!clientWidth > 640) {
+            docEl.style.fontSize = 10 + 'px';
+          } else {
+            docEl.style.fontSize = 10 * (clientWidth / 640) + 'px';
+          };
+          docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      recalc();
+      // doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+  </script>
+  <script>
+    $(document).ready(
+      function () {
+        var count = $('.promotContent').size();
+        // console.log(count);
+        for (var i = 0; i <= count; i++) {
+          $(".promotContent:eq(" + i + ")").hide();
+        }
+        $(".menuHead").click(function () {
+          $(this).next(".promotContent").toggle().siblings(".promotContent").hide();
+          $('html,body').animate({ scrollTop: $(this).offset().top + 5 }, 0);
+        });
+      });
+
+  </script>
+</head>
+
+<body>
+
+  <div id="activity_content_wrap" class="activity_content_wrap" style="background: url(img/bg.jpg) no-repeat;background-size: cover;">
+
+    <a class="menuHead" href="/static/dalao/html/active/czjhb/m/index.html" target="_blank">
+      <img src="img/redb.gif" alt="">
+    </a>
+    <div class="promotContent">
+    </div>
+
+
+    <a class="menuHead" href="/static/dalao/html/active/jgj/index.html" target="_blank">
+      <img src="img/jgj.png" alt="">
+    </a>
+    <div class="promotContent">
+    </div>
+
+    <!--<a class="menuHead" href="javascript:void(0);">
+      <img src="img/mayday.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/maydayc.png" alt="">
+      </div>
+    </div>-->
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/tjhc.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/tjhcc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/dmw.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/dmwc.png" alt="">
+      </div>
+    </div>
+
+   <!-- <a class="menuHead" href="/static/dalao/html/active/opportunity/index.html" target="_blank">
+      <img src="img/zhuanpan.png" alt="">
+    </a>
+    <div class="promotContent">
+    </div>-->
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/ky_hl.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/ky_hlc.png" alt="">
+      </div>
+    </div>
+
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/ky_ks.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/ky_ksc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/wuye.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/wuyec.png" alt="">
+      </div>
+    </div>
+
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/xhy.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/xhyc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/smcj.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/smcjc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/ysf.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/ysfc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/guanzhu.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/guanzhuc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/srlj.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/srljc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/dns.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/dnsc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/wxsm.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/wxsmc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/wxx.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/wxxc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/yhk.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/yhkc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/zfb.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/zfbc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/fw.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/fwc.png" alt="">
+      </div>
+    </div>
+
+    <a class="menuHead" href="javascript:void(0);">
+      <img src="img/jdys.png" alt="">
+    </a>
+    <div class="promotContent">
+      <div class="content">
+        <img src="img/jdysc.png" alt="">
+      </div>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

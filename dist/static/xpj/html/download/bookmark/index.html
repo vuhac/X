@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>新葡京赌场APP下载页面</title>
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <!--<link rel="stylesheet" href="css/responsive.css">-->
+  <script rel="script" type="text/javascript">
+    document.documentElement.style.fontSize = (window.document.documentElement.clientWidth / 750) * 100 + 'px'
+  </script>
+  <style>
+    * {
+      font-family: "Microsoft YaHei", Arial, serif;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .page {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+
+    a:link {
+      text-decoration: none
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    .header {
+      box-sizing: border-box;
+      width: 100%;
+      height: 1rem;
+      border-bottom: 0.02rem solid #f3f5f6;
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+    }
+
+    .logo {
+      display: block;
+      width: 0.84rem;
+      height: 0.84rem;
+      margin-left: 0.3rem;
+      margin-top: 0.08rem;
+      float: left;
+    }
+
+    .title-box {
+      height: 100%;
+      float: left;
+      margin-left: 0.24rem;
+    }
+
+    .title {
+      height: 0.4rem;
+      display: block;
+      margin-top: 0.14rem;
+    }
+
+    .ios-download {
+      float: right;
+      margin-right: 0.3rem;
+      display: block;
+      padding: 0;
+      height: 0.6rem;
+      line-height: 0.5rem;
+      box-sizing: border-box;
+      margin-top: 0.2rem;
+
+    }
+
+    .ios-download img {
+      display: block;
+    }
+
+    .desc {
+      color: #c7c7c7;
+      font-size: 0.24rem;
+      line-height: 0.24rem;
+      margin-top: 0.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 2.9rem;
+      height: 0.7rem;
+      line-height: 0.7rem;
+      color: white;
+      text-align: center;
+      border-radius: 0.1rem;
+      font-size: 0.36rem;
+      margin: 0 0.1rem;
+      background: -webkit-linear-gradient(120deg, #376dff, #55e8ff);
+      background: -o-linear-gradient(120deg, #376dff, #55e8ff);
+      background: -moz-linear-gradient(120deg, #376dff, #55e8ff);
+      background: linear-gradient(120deg, #376dff, #55e8ff);
+    }
+
+    .body {
+      width: 100%;
+      height: calc(100% - 1rem);
+      box-sizing: border-box;
+      padding-bottom: 1rem;
+      position: fixed;
+      top: 1rem;
+    }
+
+    .clear-fix:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    .scroller {
+      width: 100%;
+    }
+
+    .swiper-container {
+      width: 100%;
+      min-height: 2.88rem;
+    }
+
+    .swiper-img {
+      width: 100%;
+    }
+
+    .h5-links {
+      position: absolute;
+      width: 100%;
+      height: 1.1rem;
+      left: 0;
+      top: 0.2rem;
+    }
+
+    .h5-links .h5-link {
+      float: left;
+      width: 25%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .h5-links-2 {
+      position: absolute;
+      width: 100%;
+      height: 1.1rem;
+      left: 0;
+      top: 4.6rem;
+    }
+
+    .h5-links-2 .h5-link-2 {
+      float: left;
+      width: 50%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .ios-download-2 {
+      position: absolute;
+      width: 70%;
+      height: 1.1rem;
+      left: 15%;
+      top: 3rem;
+      box-sizing: border-box;
+    }
+
+  </style>
+
+  <script rel="script" type="text/javascript">
+    var android_url = 'http://3000016.com/download/xpj_new_version/xpj.apk'
+    var ios_url = 'itms-services:///?action=download-manifest&amp;url=https://raw.githubusercontent.com/buttCar/kjzb2/master/xpj_new_version.plist'
+    var ua = window.navigator.userAgent.toLowerCase()
+
+    // if (/iphone/.test(ua) || /ipad/.test(ua)) {
+    //   window.open(bookmark_url)
+    //   setTimeout(function () {
+    //     window.location.replace('/m')
+    //   }, 1000)
+    // }  else if (/android/.test(ua)) {
+    //   window.location.href = android_url
+    //   setTimeout(function () {
+    //     window.location.replace('/m')
+    //   }, 1000)
+    // }
+
+  </script>
+
+</head>
+
+<body style="background-color: white">
+<div class="page">
+  <div class="header clear-fix">
+    <img src="images/logo.png" class="logo" alt/>
+    <div class="title-box">
+      <img src="images/title.png" class="title" alt>
+      <p class="desc">下载APP 畅享新体验</p>
+    </div>
+    <a class="ios-download d" href="">
+      <img src="images/ios-download.png" style="height: 100%" alt/>
+    </a>
+  </div>
+  <div class="body" id="scroll">
+    <div class="scroller">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <img class="swiper-img" src="images/swiper-1.jpg" alt>
+        </div>
+      </div>
+      <div style="padding: 0.3rem 0.24rem;position: relative">
+        <img src="images/content.png" alt="" style="width: 100%">
+        <div class="h5-links clear-fix">
+          <a class="h5-link c" href="http://3471.cc"></a>
+          <a class="h5-link c" href="http://3484.cc"></a>
+          <a class="h5-link c" href="http://3684.cc"></a>
+          <a class="h5-link c" href="http://3704.cc"></a>
+        </div>
+        <a class="d ios-download-2"></a>
+        <div class="h5-links-2 clear-fix">
+          <a class="h5-link-2 d" href=""></a>
+          <a class="h5-link-2 c-random" href=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script rel="script" type="text/javascript" src="js/jroll-lite.js"></script>
+<script rel="script" type="text/javascript">
+  var mySwiper = new Swiper('.swiper-container', {
+    autoplay: true,//可选选项，自动滑动
+    autoHeight: true
+  })
+
+  document.querySelectorAll('.d').forEach(function (item) {
+    item.href = ios_url
+  })
+
+  var links = document.querySelectorAll('.c')
+
+  document.querySelector('.c-random').href = links[Math.floor(Math.random() * 9999) % links.length]
+
+  document.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) {
+      event.preventDefault()
+    }
+  })
+  var lastTouchEnd = 0
+  document.addEventListener('touchend', function (event) {
+    var now = (new Date()).getTime()
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault()
+    }
+    lastTouchEnd = now
+  }, false)
+  document.addEventListener('gesturestart', function (event) {
+    event.preventDefault()
+  })
+
+  if (/iphone/.test(ua) || /ipad/.test(ua)) {
+    document.querySelectorAll('.link').forEach(item => {
+      item.setAttribute('href', ios_url)
+    })
+  } else if (/android/.test(ua)) {
+    document.querySelectorAll('.link').forEach(item => {
+      item.setAttribute('href', android_url)
+    })
+  } else {
+    console.log('您的移动设备暂不支持此APP，请谅解')
+  }
+
+  var jroll = new JRoll('#scroll')
+  jroll.refresh()
+  setInterval(function () {
+    jroll.refresh()
+  }, 500)
+</script>
+</html>

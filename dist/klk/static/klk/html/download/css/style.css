@@ -1,0 +1,144 @@
+@keyframes autoSlide {
+    0% {transform: translateY(0);}
+    25% {transform: translateY(10px);}
+    50% {transform: translateY(0);}
+    75% {transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+}
+.mobile_auto {
+    animation: autoSlide 3s linear infinite;
+}
+.mobile_auto:nth-child(2) {
+    animation-duration: 6s;
+}
+/*弹出层*/
+.layui-layer-title {
+    /*background: rgba(0, 0, 0, .4);*/
+}
+/*隐藏右上角最大化按钮*/
+.layui-layer-setwin .layui-layer-max {
+    display: none;
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: "Microsoft YaHei", Arial, Verdana, SimSun, SimHei, Helvetica, sans-serif;
+    background: url("../images/bg.jpg") no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    overflow:hidden;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+    /*height: 890px;*/
+}
+
+.container > .container-left {
+    width: 600px;
+    height: 580px;
+    margin-top: 30%;
+    transform: translateY(-50%);
+}
+
+.container > .container-left > .logo {
+    width: 115px;
+    height: 115px;
+    background: url("../images/logo.png");
+    background-size: contain;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 18px;
+    margin-bottom: 30px;
+}
+
+.container > .container-left > .down {
+    background: url("../images/down-app.png") 100% 100% no-repeat;
+    width: 486px;
+    height: 170px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 45px;
+}
+/*.container > .container-left > .play {
+    background: url("../images/play.png") 100% 100%;
+    width: 289px;
+    height: 34px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+}*/
+/* .container > .container-left > .pc {
+    display: block;
+    background: url("../images/pc.png") 100% 100%;
+    width: 254px;
+    height: 46px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+} */
+.container .ar{
+    height: 195px;
+    /* background: url("../images/code.png"); */
+	    background-size: contain;
+    margin-left: 30px;
+    padding:5px;
+    background-color: #fff;
+}
+.down_ios,.down_android,.ios_help {
+    margin: 0 0 30px 25px;
+}
+.container .down_ios {
+    display: block;
+    background: url("../images/down-ios.png") 100% 100%;
+    width: 321px;
+    height: 49px;
+    margin-top:30px; 
+    cursor: pointer;
+}
+.container .down_android {
+    background: url("../images/down-android.png") 100% 100%;
+    width: 321px;
+    height: 49px;
+}
+/* .container .ios_help {
+    background: url("../images/ios-help.png");
+    width: 276px;
+    height: 54px;
+} */
+.container .container-right {
+    position: relative;
+    width: 600px;
+    height: 650px;
+    margin-top: 30%;
+    transform: translateY(-50%);
+}
+.container-right .phone {
+    position: absolute;
+}
+.phone1 {
+    background: url("../images/phone11.png") no-repeat;
+    width: 486px;
+    height: 686px;
+    z-index: 3;
+    top: -28px;
+    left: 5%;
+}
+.phone2 {
+    background: url("../images/phone12.png") no-repeat;
+    width: 557px;
+    height: 734px;
+    z-index: 2;
+    top: 14px;
+    left: 10%;
+}
+.phone3 {
+    background: url("../images/phone13.png")no-repeat;
+    width: 487px;
+    height: 689px;
+    z-index: 1;
+    top: 50px;
+    left: 8%;}

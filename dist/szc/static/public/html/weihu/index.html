@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>站点维护</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        background-image: url('./images/pc1.png');
+        background-size:100%;
+        position:relative;
+    }
+    .main {
+        position: absolute;
+        /* left:50%;
+        top:50%;
+        transform:translate(-50%,-50%); */
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        margin:auto;
+        width:1200px;   
+        height:465px;
+        text-align: center;
+    }
+    .main-upgrade {
+        max-width: 100%;
+    }
+    .main-txt {
+        position: absolute;
+        top: 0;
+        /* left: 45%; */
+        right:100px;
+        width:500px;
+        height: 100%;
+        padding-right:20px;
+    }
+    .title-txt {
+        /* margin-top: 1rem;
+        margin-bottom: .2rem;  */
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        /* font-size: .9rem; */
+        font-size: 50px;
+        margin-top:40px;
+        /* padding-top:20px; */
+        margin-bottom:5px;
+        color: #41acd8;
+    }
+    .body-txt {
+        font-family: 'Courier New', Courier, monospace;
+        /* font-size: .4rem;
+        text-indent: .6rem; */
+        font-size:25px;
+        text-indent: 20px;
+        line-height: 1.7;
+        color: #54575c;
+        text-align: left;
+    }
+    .service {
+        position: absolute;
+        bottom: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+        /* padding: 0.1rem .5rem; */
+        border: none;
+        border-radius: 3%;
+        background-color: #41acd8;
+        color: white;
+        /* font-size: .4rem; */
+        font-size:30px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        padding:10px;
+    }
+</style>
+<script>
+    (function () {
+      var url = window.location.href, obj = {}, keyvalue = [], key = '', value = '',
+        parseString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+      for (var i in parseString) {
+        keyvalue = parseString[i].split('=')
+        key = keyvalue[0]
+        value = keyvalue[1] && keyvalue[1].includes('#/') ? keyvalue[1].split('#/')[0] : keyvalue[1]
+        obj[key] = value
+      }
+
+      if (obj.agent) {localStorage.setItem('agent', obj.agent)}
+
+    })()
+
+    function isMobile () {return !!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))}
+
+    if (isMobile() !== false) {window.location.href = './m/index.html'}
+</script>
+
+<body>
+    <div class="container">
+       <main class="main">
+            <img src="./images/pc2.png" alt="" class="main-upgrade">
+            <section class="main-txt">
+                <h1 class="title-txt">
+                    网站升级维护中...
+                </h1>
+                <p class="body-txt">
+                    <span class="txt-tip"></span>
+                    <br/>维护截止时间至：<span class="time"></span>
+                </p>        
+               
+                <a class="service" href="">在线客服
+                </a>
+            </section>
+       </main> 
+    </div>
+</body>
+<script>
+
+        // document.querySelector('.time').innerHTML="维护时间至："+JSON.parse(localStorage.config).close.timeEnd;
+        // let service=JSON.parse(localStorage.config).service;
+        // if(service[0]){
+        //   document.querySelector('.service').setAttribute('href',service[0].url);          
+        // }
+        
+        let xml=new XMLHttpRequest();
+        xml.open("get","./config.json",true);
+        xml.send();
+        xml.onreadystatechange=function(){
+            if(xml.readyState==4&&xml.status==200){
+                let res=JSON.parse(xml.responseText);
+                if(res.code==200){
+                    console.log("成功")
+                    console.log(res);
+                    document.querySelector(".txt-tip").innerHTML=res.contentTxt
+                    document.querySelector(".time").innerHTML=res.timeEnd;
+                    if(res.serviceUrl){
+                      document.querySelector('.service').setAttribute('href',res.serviceUrl);          
+                    }
+                }   
+            }
+        }
+
+        
+
+</script>
+</html>

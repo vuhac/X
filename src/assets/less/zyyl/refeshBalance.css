@@ -1,0 +1,105 @@
+.BalanceSelector1 .Hover, .BalanceSelector1 .Hover .BalanceSelectorHeader {
+    background-position: 0 -6px;
+    color: #FFDF1B;
+}
+.BalanceSelector1 .Hover img {
+    top: -6px;
+}
+
+.BalanceSelector1 ul {
+    border-radius: 4px 4px 4px 4px;
+}
+.BalanceSelector1 ul li.firstRow a, .BalanceSelector1 ul li.firstRow div {
+    background-color: #BBBBBB;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.BalanceSelector1 ul li.lastRow a, .BalanceSelector1 ul li.lastRow div {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.BalanceSelector1 ul {
+    background-clip: border-box;
+    background-position: right top;
+    background-repeat: no-repeat;
+   /*  border: 1px solid #333333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+    list-style: none outside none;
+    position: absolute;
+    right: 0;
+    width: 160px;
+}
+.BalanceSelector1 ul li {
+    line-height: 30px;
+    white-space: nowrap;display: block;width:160px;text-align: -webkit-match-parent;
+}
+.BalanceSelector1 ul li div {
+    cursor: default;
+    font-size: 13px;
+    height: auto;
+    line-height: 30px;
+    display: block; 
+    width:160px;
+    margin:0px
+}
+.BalanceSelector1 ul li a, .BalanceSelector1 ul li div {
+    background-color: #B4B4B4;
+    border-bottom: 1px solid #9E9E9E;
+    border-top: 1px solid #C0C0C0;display: block;text-align:left
+}
+.BalanceSelector1 ul li a,.BalanceSelector1 ul li a:link, .BalanceSelector1 ul li a:visited   {
+    background-position: 164px 2px;
+    background-repeat: no-repeat;
+    color: #333333;
+    cursor: pointer;
+    display: block;
+    font-family: verdana;
+    font-size: 12px;
+    height: 28px;
+    padding: 0 10px;text-align:left
+}
+.BalanceSelector1 ul li a:hover {
+    background-color: #C8C8C8;
+    border-top: 1px solid #D8D8D8;
+}
+.BalanceSelector1 ul li span.BalanceLabel {
+    color: #666666;
+    display: inline-block;
+    float: left;
+    padding-left: 10px;
+}
+
+.BalanceSelector1 ul li span.BonusValue, .BalanceSelector1 ul li span.WithdrawableValue, .BalanceSelector1 ul li span.TotalValue {
+    color: #333333;
+    display: inline-block;
+    float: none;
+}
+
+
+/*******因静态分离，图片在default中，所以输入验证样式也抽离到公用css中**********/
+
+span.error {
+    background: url(../images/cross.png) no-repeat;
+}
+
+span.success {
+    background: url(../images/tick.png) no-repeat;
+}
+
+span.error_msg {
+    font-weight: bold;
+    line-height: 28px;
+    height: 18px;
+    font-size: 12px;
+    padding: 3px 0px 5px 20px;
+}
+
+#toShowResendEmailDialog {
+    display: none;
+    height: 160px !important;
+}
+
+#toShowResendEmailDialog .input {
+    width: 120px;
+}
+               
