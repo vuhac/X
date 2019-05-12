@@ -10,8 +10,14 @@ const config = {
   token: 'cf010bb8139040cc0313c7f3f4073552379a4eb5',
   server: '10.10.121.251',
   base: 'lottery-repo-',
-  baseDir: path.resolve(__dirname, 'dist')
+  baseDir: path.resolve(__dirname, 'dist'),
+  sshFile: '$HOME/.ssh/repo'
 }
+
+const users = [
+  'zs',
+  'candice'
+]
 
 /**
  * GOGS 请求配置
@@ -132,6 +138,11 @@ const api = {
         private: true
       }
     )
+  },
+  addCollaborators (site) {
+    users.forEach(user => {
+      $http.put(`/repos/${config.user}/${config.base + site}/collaborators/${user}`)
+    })
   }
 }
 
@@ -146,6 +157,7 @@ function main () {
         if (!res.data.find(item => item.name === config.base + site)) {
           api.createRepo(config.base + site).then(createRes => {
             console.log('创建远端仓库成功: ' + createRes.name)
+            api.addCollaborators(site)
             sitesOriginStatus[site] = true
             checkOrigin()
           }).catch(err => {
@@ -154,6 +166,7 @@ function main () {
           })
         } else {
           console.log('远端仓库已存在:' + config.base + site)
+          api.addCollaborators(site)
           sitesOriginStatus[site] = true
           checkOrigin()
         }
@@ -169,22 +182,45 @@ function checkOrigin () {
   if (sites.every(site => sitesOriginStatus[site])) {
     console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  远端检查完成\n')
     console.log('\n\n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  开始检查本地仓库状态\n')
-    sites.forEach(site => {
-      if (fs.existsSync(path.resolve(config.baseDir, site, '.git'))) {
-        console.log(`文件夹 < ${site} > 已经初始化,开始提交`)
-      } else {
-        console.log(`文件夹 < ${site} > 没有初始化,开始初始化`)
-        const execs = [
-          'git init',
-          'git add -A',
-          'git commit -m INIT',
-          `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
-          'git push -u origin master'
-        ]
-        console.log(execSync(execs.join(' && ')))
-      }
-    })
+    checkLocation()
   }
+}
+
+function checkLocation () {
+  sites.forEach(site => {
+    let execs = []
+    if (fs.existsSync(path.resolve(config.baseDir, site, '.git'))) {
+      console.log(`文件夹 < ${site} > 已经初始化,开始提交`)
+      execs = [
+        `cd ${path.resolve(config.baseDir, site)}`,
+        'git add -A',
+        'git commit -m Build',
+        `git push`
+      ]
+      console.log(execSync(execs.join(' && ')))
+      console.log(`文件夹 < ${site} > 提交成功`)
+    } else {
+      console.log(`文件夹 < ${site} > 没有初始化,开始初始化`)
+      execs = [
+        `cd ${path.resolve(config.baseDir, site)}`,
+        'git init',
+        'git add -A',
+        'git commit -m INIT',
+        `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
+        `git push -u origin master`
+      ]
+      console.log(execSync(execs.join(' && ')))
+      console.log(`文件夹 < ${site} > 没有初始化,开始初始化`)
+    }
+
+    // execs = [
+    //   `cd ${path.resolve(config.baseDir, site)}`,
+    //   'rm -R .git'
+    // ]
+
+
+    // console.log(execs.join(' && '))
+  })
 }
 
 main()
