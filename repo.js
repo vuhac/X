@@ -207,7 +207,19 @@ function execTask () {
       if (error !== null) {
         console.log('exec error: ' + error)
       }
-      execTask()
+
+      execs = [
+        execs[0],
+        'git push'
+      ]
+      exec(execs.join(' && '), function (error, stdout, stderr) {
+        console.log('stdout: ' + stdout)
+        console.log('stderr: ' + stderr)
+        if (error !== null) {
+          console.log('exec error: ' + error)
+        }
+        execTask()
+      })
     })
   }
 
