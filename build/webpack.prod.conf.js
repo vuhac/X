@@ -29,8 +29,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   plugins: [
-    new cleanWebpackPlugin(['dist/*'], {
-      root: path.resolve(__dirname, '../')
+    new cleanWebpackPlugin(['dist/*/*'], {
+      root: path.resolve(__dirname, '../'),
+      exclude: ['.git']
     }),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
