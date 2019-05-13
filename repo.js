@@ -174,7 +174,7 @@ function checkLocation () {
         'git add -A',
         'git commit -m Build',
         `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
-        'git pull origin master',
+        'git pull',
         'git push'
       ]
     } else {
