@@ -1612,7 +1612,7 @@
 
     <ul class="tab clear-fix footer" id="tab">
         <li class="tab-item float-left">
-            <a href="index.php"><img src="img/icon-jk.png?v=1.0.0" alt/><span>借呗规则</span></a>
+            <a href="index.html"><img src="img/icon-jk.png?v=1.0.0" alt/><span>借呗规则</span></a>
         </li>
         <li class="tab-item float-left">
             <a href="javascript: alert('敬请期待!')"><img src="img/icon-ws.png?v=1.0.0" alt/><span>账号买卖</span></a>
@@ -1676,6 +1676,8 @@
     var ua = window.navigator.userAgent.toLowerCase();
     if (ua.indexOf('show-icon')>=0) {
       $('#modal-port .modal-box').css('margin-top','6rem')
+      $('.header').hide();
+      $('.body').css({'top':0,'height':'99.99%'})
     }
     function onScreen () {
         $('body').css('display', 'none')
@@ -1856,13 +1858,22 @@
         })
 
         function checkUser () {
-            $.post('../api/index.php', {
-                action: 'getUser',
-                id: '<?=$uid?>'
-            }, function (res) {
-                res = JSON.parse(res)
-                if (res.code !== 200) noUser()
-            })
+          $.ajax({
+            type:'post',
+            url: url + "preferential/jiebei/",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: token
+            },
+            data: {
+              action: 'getUser'
+            },
+            dataType:'json',
+            success: function (res) {
+              // res = JSON.parse(res)
+              if (res.code !== 200) noUser()
+            }
+          })
         }
 
         var navs = $('.continue[nav-item]')
@@ -1935,149 +1946,188 @@
             $('[back-item=' + item + ']').show()
             switch (item) {
                 case 'page-ed' :
-                    $.post(
-                        '../api/index.php',
-                        {
-                            action: 'amountQuery'
-                        },
-                        function (res) {
-                            res = JSON.parse(res)
-                            if (res.code === 200) {
-                                $('#ed-user').val(res.data['username'] || '')
-                                $('#ed-sx').val(res.data['shixunAmount'] || '0')
-                                $('#ed-qp').val(res.data['qipaiAmount'] || '0')
-                                $('#ed-cp').val(res.data['caipiaoAmount'] || '0')
-                                $('#ed-dz').val(res.data['dianziAmount'] || '0')
-                                $('#ed-zed').val(res.data['total'] || '0')
-                            } else {
-                                alert(typeof res['msg'] === 'string' ? res['msg'] : '查询失败')
-                            }
-                        })
+                  $.ajax({
+                    type:'post',
+                    url: url + "preferential/jiebei/",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                    },
+                    data: {
+                      action: 'amountQuery'
+                    },
+                    dataType:'json',
+                    success: function (res) {
+                      // res = JSON.parse(res)
+                      if (res.code === 200) {
+                        $('#ed-user').val(res.data['userName'] || '')
+                        $('#ed-sx').val(res.data['shixunAmount'] || '0')
+                        $('#ed-qp').val(res.data['qipaiAmount'] || '0')
+                        $('#ed-cp').val(res.data['caipiaoAmount'] || '0')
+                        $('#ed-dz').val(res.data['dianziAmount'] || '0')
+                        $('#ed-zed').val(res.data['total'] || '0')
+                      } else {
+                        alert(typeof res['msg'] === 'string' ? res['msg'] : '查询失败')
+                      }
+                    }
+                  })
                     break
 
                 case 'page-hk':
-                    $.post(
-                        '../api/index.php',
-                        {
-                            action: 'userRepaymentInfo'
-                        },
-                        function (res) {
-                            res = JSON.parse(res)
-                            if (res.code === 200) {
-                                $('#hk-user').val(res.data['username'])
-                                $('#hk-name').val(res.data['zhName'])
-                                $('#hk-qk').val(res.data['overdraft'])
-                                var $input = $('#hk-amount')
-                                $input.val(res.data['overdraft'])
-                                $input.attr('max', res.data['overdraft'])
+                  $.ajax({
+                    type:'post',
+                    url: url + "preferential/jiebei/",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                    },
+                    data: {
+                      action: 'userRepaymentInfo'
+                    },
+                    dataType:'json',
+                    success: function (res) {
+                      // res = JSON.parse(res)
+                      if (res.code === 200) {
+                        $('#hk-user').val(res.data['userName'])
+                        $('#hk-name').val(res.data['zhName'])
+                        $('#hk-qk').val(res.data['overdraft'])
+                        var $input = $('#hk-amount')
+                        $input.val(res.data['overdraft'])
+                        $input.attr('max', res.data['overdraft'])
 
-                                var qk = parseInt(res.data['overdraft'])
-                                if (qk) {
-                                    $('#hk-submit').attr('disabled', null)
-                                    $('#hk-form').on('submit', function () {
-                                        var amount = parseInt($input.val())
-                                        if (isNaN(amount) || amount < 1) {
-                                            alert({ text: '请输入有效的金额' })
-                                            return false
-                                        } else if (amount > parseInt(res.data['overdraft'])) {
-                                            alert({ text: '还款金额不能大于欠款金额' })
-                                            return false
-                                        } else {
-                                            if (window.__submit) return false
-                                            window.__submit = true
-                                            $.post('../api/index.php', {
-                                                active: 'balanceReturnAmount',
-                                                amount: amount
-                                            }, function (res) {
-                                                res = JSON.parse(res)
-
-                                                if (res.code === 400) {
-                                                    alert(res.msg)
-                                                } else if (res.code === 200) {
-                                                    alert({
-                                                        text: res.data['msg'],
-                                                        callback: function () {
-                                                            goBack('jl')
-                                                        }
-                                                    })
-                                                }
-                                                window.__submit = false
-                                                return false
-                                            })
-                                            return false
-                                        }
-
-                                        // goPage('back')
-                                        // goBackItem('page-zf')
-                                        return false
-                                    })
-                                } else {
-                                    $('#hk-submit').attr('disabled', true)
-                                    $('#hk-form').off('submit')
-                                }
+                        var qk = parseInt(res.data['overdraft'])
+                        if (qk) {
+                          $('#hk-submit').attr('disabled', null)
+                          $('#hk-form').on('submit', function () {
+                            var amount = parseInt($input.val())
+                            if (isNaN(amount) || amount < 1) {
+                              alert({ text: '请输入有效的金额' })
+                              return false
+                            } else if (amount > parseInt(res.data['overdraft'])) {
+                              alert({ text: '还款金额不能大于欠款金额' })
+                              return false
                             } else {
-                                $('#hk-submit').attr('disabled', true)
-                                $('#hk-form').off('submit')
-                                noUser()
+                              if (window.__submit) return false
+                              window.__submit = true
+                              $.ajax({
+                                type:'post',
+                                url: url + "preferential/jiebei/",
+                                headers: {
+                                  "Content-Type": "application/x-www-form-urlencoded",
+                                  Authorization: token
+                                },
+                                data: {
+                                  action: 'balanceReturnAmount',
+                                  amount: amount
+                                },
+                                dataType:'json',
+                                success: function (res) {
+                                  // res = JSON.parse(res)
+
+                                  if (res.code === 400) {
+                                    alert(res.msg)
+                                  } else if (res.code === 200) {
+                                    alert({
+                                      text: res.data['msg'],
+                                      callback: function () {
+                                        goBack('jl')
+                                      }
+                                    })
+                                  }
+                                  window.__submit = false
+                                  return false
+                                }
+                            })
+                              return false
                             }
+
+                            // goPage('back')
+                            // goBackItem('page-zf')
+                            return false
+                          })
+                        } else {
+                          $('#hk-submit').attr('disabled', true)
+                          $('#hk-form').off('submit')
                         }
-                    )
+                      } else {
+                        $('#hk-submit').attr('disabled', true)
+                        $('#hk-form').off('submit')
+                        noUser()
+                      }
+                    }
+            })
                     break
 
                 case 'page-jk':
-                    $.post(
-                        '../api/index.php',
-                        {
-                            action: 'userLoanInfo'
-                        },
-                        function (res) {
-                            res = JSON.parse(res)
-                            if (res.code === 200) {
-                                var userInfo = res.data
-                                $('#jk-user').val(userInfo['username'])
-                                $('#jk-name').val(userInfo['zhName'])
-                                $('#jk-zye').val(userInfo['totalAmount'])
-                                $('#jk-ysy').val(userInfo['alreadyUseAmount'])
-                                $('#jk-ky').val(userInfo['allowAmount'])
-                                $('#jk-date').val(userInfo['returnAmounDate'].substr(0, 10))
-                                $('#jk-jk').attr('max', userInfo['allowAmount'])
+                  $.ajax({
+                    type:'post',
+                    url: url + "preferential/jiebei/",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                    },
+                    data: {
+                      action: 'userLoanInfo'
+                    },
+                    dataType:'json',
+                    success: function (res) {
+                      // res = JSON.parse(res)
+                      if (res.code === 200) {
+                        var userInfo = res.data
+                        $('#jk-user').val(userInfo['userName'])
+                        $('#jk-name').val(userInfo['zhName'])
+                        $('#jk-zye').val(userInfo['totalAmount'])
+                        $('#jk-ysy').val(userInfo['alreadyUseAmount'])
+                        $('#jk-ky').val(userInfo['allowAmount'])
+                        $('#jk-date').val(userInfo['returnAmounDate'].substr(0, 10))
+                        $('#jk-jk').attr('max', userInfo['allowAmount'])
 
-                                $('#jk-submit').on('click', function () {
-                                    var value = $('#jk-jk').val()
-                                    var intVal = parseInt(value)
-                                    var ed = parseInt(userInfo['allowAmount'])
+                        $('#jk-submit').on('click', function () {
+                          var value = $('#jk-jk').val()
+                          var intVal = parseInt(value)
+                          var ed = parseInt(userInfo['allowAmount'])
 
-                                    if (!userInfo) {
-                                        noUser(res.msg)
-                                    } else if (!document.getElementById('jk-tk').checked) {
-                                        alert('请同意《借款规则》')
-                                    } else if (isNaN(intVal) || intVal <= 0) {
-                                        alert('请输入正确的借款金额')
-                                    } else if (intVal > ed) {
-                                        alert('借款金额<span style="color: #0099ff;">' + intVal + '</span><br/>' +
-                                            '不能大于可用额度<span style="color: red;">' + ed + '</span>')
-                                    } else {
-                                        $.post('../api/index.php', {
-                                            action: 'addLoanData',
-                                            amount: value
-                                        }, function (res) {
-                                            res = JSON.parse(res)
-                                            if (res.code === 200) {
-                                                alert({
-                                                    text: res['msg'],
-                                                    callback: function () {
-                                                        window.location.reload()
-                                                    }
-                                                })
-                                            } else alert(res['msg'])
-                                        })
+                          if (!userInfo) {
+                            noUser(res.msg)
+                          } else if (!document.getElementById('jk-tk').checked) {
+                            alert('请同意《借款规则》')
+                          } else if (isNaN(intVal) || intVal <= 0) {
+                            alert('请输入正确的借款金额')
+                          } else if (intVal > ed) {
+                            alert('借款金额<span style="color: #0099ff;">' + intVal + '</span><br/>' +
+                              '不能大于可用额度<span style="color: red;">' + ed + '</span>')
+                          } else {
+                            $.ajax({
+                              type:'post',
+                              url: url + "preferential/jiebei/",
+                              headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                                Authorization: token
+                              },
+                              data: {
+                                action: 'addLoanData',
+                                amount: value
+                              },
+                              dataType:'json',
+                              success: function (res) {
+                                // res = JSON.parse(res)
+                                if (res.code === 200) {
+                                  alert({
+                                    text: res['msg'],
+                                    callback: function () {
+                                      window.location.reload()
                                     }
-                                })
-                            } else {
-                                noUser(res.msg)
-                            }
-                        }
-                    )
+                                  })
+                                } else alert(res['msg'])
+                              }
+                          })
+                          }
+                        })
+                      } else {
+                        noUser(res.msg)
+                      }
+                    }
+                  })
                     break
 
                 case 'page-zf':
@@ -2101,17 +2151,26 @@
                         queryAmount: ''
                     }
 
-                    $.post('../api/index.php', {
-                        action: 'getUser',
-                        uid: '<?=$uid?>'
-                    }, function (res) {
-                        res = JSON.parse(res)
+                    $.ajax({
+                      type:'post',
+                      url: url + "preferential/jiebei/",
+                      headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        Authorization: token
+                      },
+                      data: {
+                        action: 'getUser'
+                      },
+                      dataType:'json',
+                      success: function (res) {
+                        // res = JSON.parse(res)
                         if (res.code === 200) {
-                            USER.username = res.data.username
-                            $form.find('input[name=username]').val(USER.username)
+                          USER.username = res.data.userName
+                          $form.find('input[name=username]').val(USER.username)
                         } else {
-                            noUser()
+                          noUser()
                         }
+                      }
                     })
 
                     // $('.hidden-input[value]').parent().show()
@@ -2131,22 +2190,30 @@
                         })
                     })
 
-                    $.post(
-                        '../api/index.php',
-                        {
-                            action: 'userRepaymentInfo'
-                        },
-                        function (res) {
-                            res = JSON.parse(res)
-                            if (res.code === 200) {
-                                USER.username = res.data['username']
-                                USER.queryAmount = parseInt(res.data['overdraft'])
-                                $input.val(USER.queryAmount || '')
-                            } else {
-                                noUser()
-                            }
-                        }
-                    )
+
+                  $.ajax({
+                    type:'post',
+                    url: url + "preferential/jiebei/",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      Authorization: token
+                    },
+                    data: {
+                      action: 'userRepaymentInfo'
+                    },
+                    dataType:'json',
+                    success: function (res) {
+                      // res = JSON.parse(res)
+                      if (res.code === 200) {
+                        USER.username = res.data['userName']
+                        USER.queryAmount = parseInt(res.data['overdraft'])
+                        $input.val(USER.queryAmount || '')
+                      } else {
+                        noUser()
+                      }
+                    }
+                  })
+
 
                     $portModalClose.on('click', function () {
                         $portModal.hide()
@@ -2619,24 +2686,29 @@
         })
 
         function getUser () {
-            $.post(
-                '../api/index.php',
-                {
-                    action: 'getUser',
-                    uid: '<?=$uid?>'
-                },
-                function (res) {
-                    var input = $('#search-text')
-                    res = JSON.parse(res)
-                    if (res.code === 200) {
-                        input.val(res.data.username)
-                        input.attr('disabled', 'disabled')
-                    } else {
-                        input.val('')
-                        input.attr('disabled', null)
-                    }
-                }
-            )
+          $.ajax({
+            type:'post',
+            url: url + "preferential/jiebei/",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: token
+            },
+            data: {
+              action: 'getUser'
+            },
+            dataType:'json',
+            success: function (res) {
+              var input = $('#search-text')
+              // res = JSON.parse(res)
+              if (res.code === 200) {
+                input.val(res.data.userName)
+                input.attr('disabled', 'disabled')
+              } else {
+                input.val('')
+                input.attr('disabled', null)
+              }
+            }
+          })
         }
 
         getUser()
@@ -2644,27 +2716,31 @@
         $('#btn-search-text').on('click', function () {
             var input = $('#search-text')
             if (/[A-z\d]{5,20}/.test(input.val())) {
-                $.post(
-                    '../api/index.php',
-                    {
-                        action: 'getUser',
-                        uid: '<?=$uid?>'
-                    },
-                    function (res) {
-
-                        res = JSON.parse(res)
-                        if (res.code === 200) {
-                            input.val(res.data.username)
-                            input.attr('disabled', 'disabled')
-                            goPage('back')
-                            goBackItem('page-ed')
-                        } else {
-                            input.val('')
-                            input.attr('disabled', null)
-                            noUser()
-                        }
-                    }
-                )
+              $.ajax({
+                type:'post',
+                url: url + "preferential/jiebei/",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                  Authorization: token
+                },
+                data: {
+                  action: 'getUser'
+                },
+                dataType:'json',
+                success: function (res) {
+                  // res = JSON.parse(res)
+                  if (res.code === 200) {
+                    input.val(res.data.userName)
+                    input.attr('disabled', 'disabled')
+                    goPage('back')
+                    goBackItem('page-ed')
+                  } else {
+                    input.val('')
+                    input.attr('disabled', null)
+                    noUser()
+                  }
+                }
+              })
             } else {
                 alert('请输入会员账号')
             }
@@ -2672,22 +2748,27 @@
 
         function upNotice () {
             var contentBox = $('.marquee-content')
-            $.post(
-                '../api/index.php?t=' + Math.random(),
-                {
-                    action: 'message'
-                },
-                function (res) {
-                    res = JSON.parse(res)
-                    if (res.code === 200 && res.data['msg']) {
-                        var size = getTextSize(res.data['msg'], '14px')
-                        contentBox.text(size.text)
-                        contentBox.css('display', 'black')
-                        contentBox.css('width', (size.width * 1.2) + 'px')
-                        contentBox.css('animation', 'marquee-animation ' + (Math.round(size.width / 36)) + 's linear 0s infinite normal')
-                    }
-                }
-            )
+          $.ajax({
+            url:'/frontend/v1/site/newNotice',
+            type:'post',
+            data: {
+              type:'lantern',
+              client_type: 'H5'
+            },
+            dataType:'json',
+            success: function (res) {
+              // res = JSON.parse(res)
+              if (res.code === 200 && res.data.data.length) {
+                var size = getTextSize(res.data.data[0].description, '14px')
+                contentBox.text(size.text)
+                contentBox.css('display', 'black')
+                contentBox.css('width', (size.width * 1.2) + 'px')
+                contentBox.css('animation', 'marquee-animation ' + (Math.round(size.width / 36)) + 's linear 0s infinite normal')
+              } else {
+                console.log('没有公告')
+              }
+            }
+          })
         }
 
         function getTextSize (text, fontSize) {
@@ -2738,39 +2819,45 @@
         function upTable (limit, index) {
             index = index || 1
             limit = limit || 10
-            $.post(
-                '../api/index.php',
-                {
-                    action: 'returnAmountAndRepaymentList',
-                    limit: limit,
-                    page: index
-                },
-                function (res) {
-                    res = JSON.parse(res)
-                    if (res.code === 200) {
-                        var data = res.data.data
-                        var html = ''
-                        $.each(data, function () {
-                            html += '<tr>' +
-                                '<td>' + this['username'] + '</td>' +
-                                // '<td>' + this['zh_name'] + '</td>' +
-                                '<td>' + this['borrow_amount'] + '</td>' +
-                                '<td>' + this['repayment'] + '</td>' +
-                                '<td>' + this['unpaid'] + '</td>' +
-                                '<td>' + this['status'] + '</td>' +
-                                // '<td>' + this['date'] + '</td>' +
-                                '</tr>'
-                        })
+          $.ajax({
+            type:'post',
+            url: url + "preferential/jiebei/",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: token
+            },
+            data: {
+              action: 'returnAmountAndRepaymentList',
+              limit: limit,
+              page: index
+            },
+            dataType:'json',
+            success: function (res) {
+              // res = JSON.parse(res)
+              if (res.code === 200) {
+                var data = res.data.data
+                var html = ''
+                $.each(data, function () {
+                  html += '<tr>' +
+                    '<td>' + this['username'] + '</td>' +
+                    // '<td>' + this['zh_name'] + '</td>' +
+                    '<td>' + this['borrow_amount'] + '</td>' +
+                    '<td>' + this['repayment'] + '</td>' +
+                    '<td>' + this['unpaid'] + '</td>' +
+                    '<td>' + this['status'] + '</td>' +
+                    // '<td>' + this['date'] + '</td>' +
+                    '</tr>'
+                })
 
-                        $tbody.html(html)
+                $tbody.html(html)
 
-                        upNavTab(res.data.total, limit, index)
-                    } else {
-                        checkUser()
-                        $nav.text('')
-                    }
-                }
-            )
+                upNavTab(res.data.total, limit, index)
+              } else {
+                checkUser()
+                $nav.text('')
+              }
+            }
+          })
         }
 
         function upNavTab (total, limit, target) {

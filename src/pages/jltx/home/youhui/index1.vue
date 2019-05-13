@@ -46,7 +46,7 @@
                               <img :src="typeof item.description === 'object' && item.description.pc"
                                    alt="加载失败" v-if="item.desc_type=='pic'">
 
-                              <div v-else-if="typeof item.description === 'object' && item.description.pc"
+                              <div v-else-if="typeof item.description === 'object' && item.description.pc" @click="register($event)"
                                    v-html="item.description.pc"></div>
                             </div>
                           </div>
@@ -113,6 +113,13 @@ export default {
     }
   },
   methods: {
+    register () {
+      if (arguments[0].target.className === 'register') {
+        this.$store.commit('jltx/showRegister', true)
+        // localStorage.setItem('zhuce', true)
+        // window.open('/', '_blank')
+      }
+    },
     // 获取活动分类、
     async getActiveCate () {
       let res = await this.$http.get(`${this.$HOST_NAME}/site/getActivityCateList?client_type=PC`)
@@ -167,6 +174,11 @@ export default {
         })
       }
       this.showList = this.activitylist
+      // this.$nextTick(() => {
+      //   if (document.getElementsByClassName('register')) {
+      //     document.getElementsByClassName('register')[0].addEventListener('click', this.register)
+      //   }
+      // })
       console.log(this.activitylist)
     },
     // 切换活动

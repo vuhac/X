@@ -443,8 +443,10 @@
         },
         success: function (res) {
           // res = JSON.parse(res)
-          if (res.code === 200 && res.data.data[0].description) {
+          if (res.code === 200 && res.data.data.length) {
             $notice.html(res.data.data[0].description)
+          } else {
+            console.log('没有公告')
           }
         }
       })
