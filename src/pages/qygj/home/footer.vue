@@ -5,7 +5,7 @@
             <div class="foot_links">
                 <ul class="wp flex">
                     <li class="introduce-cont">
-                        <h3 class="footer-link-title">新葡京赌场</h3>
+                        <h3 class="footer-link-title">澳门新葡京</h3>
                         <div>
                           <a href="javascript:void(0);"  @click="goHelp('/home/about/'+ index)" v-for="(item,index) in aItems" :key="index">{{item.item}}</a>
                             <!-- <a href="javascript:void(0);"  @click="goHelp('/home/about')">关于我们</a>
@@ -39,7 +39,7 @@
                 <div class="wp">
                     <div>
                         <!-- 千赢国际持有菲律宾 PAGCOR合法博彩执照&nbsp;&nbsp;版权为千赢国际所有&nbsp;&nbsp;PT游戏是由PT TransPacific在的授权下部署&nbsp;<img src="/static/qygj/img/pagcor_xs.png"> -->
-                        版权为新葡京赌场 所有 © 2019
+                        版权为澳门新葡京 所有 © 2019
                     </div>
                 </div>
             </div>

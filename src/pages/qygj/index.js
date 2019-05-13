@@ -49,7 +49,7 @@ window.myApp = new Vue({
   mounted () {
     this.$nextTick(function () {
       setTimeout(() => {
-        document.title = "新葡京赌场"
+        document.title = "澳门新葡京"
       }, 200)
     })
   }

@@ -50,19 +50,19 @@
           </div>
           <!-- 登录 -->
           <div>
-            <input type="button" value="登录" id="loginBtn" @click="login">
+            <input type="button" value="登录" id="loginBtn" style="padding:0;text-indent:0" @click="login">
           </div>
           <!-- 开户 -->
           <div>
-            <router-link tag="input" to="/home/register" type="button" value="免费开户" id="resetBtn"></router-link>
+            <router-link tag="input" to="/home/register" type="button" style="padding:0;text-indent:0" value="免费开户" id="resetBtn"></router-link>
           </div>
           <!-- 试玩 -->
           <div>
             <!-- <input type="button" value="试玩" @click="tryPlay" style="background-color: #7fb1a7"> -->
-            <router-link tag="input" to="/home" type="button" value="试玩"  style="background-color: #7fb1a7" @click.native="tryPlay"></router-link>
+            <router-link tag="input" to="/home" type="button" value="试玩"  style="background-color: #7fb1a7;padding:0;text-indent:0" @click.native="tryPlay"></router-link>
           </div>
           <!-- 忘记密码 -->
-          <div class="last_item">
+          <div class="last_item" style="margin-right:0">
             <a class="forgetpwd" @click="forget" href="javascript:void(0)">帐号问题?</a>
           </div>
         </div>
@@ -114,7 +114,7 @@
             </a>
           </div>
 
-          <div class="last_item">
+          <div class="last_item" style="margin-right:0">
             <a href="javascript:void(0);" @click="logout">登出</a>
           </div>
         </div>
@@ -530,7 +530,7 @@
 
 <style lang="less" scoped>
   .headerLinkBox{
-    width:300px;
+    width:350px;
     display:inline-block;
     overflow:hidden;
     height:100%;
@@ -538,9 +538,16 @@
       float: left;
       // width:60px;
       margin:0 15px;
+      position:relative;
       a{
             color: #697dac;
             font-size: 15px;
+            margin-left: 30px;
+      }
+      img{
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%)
       }
     }
   }
@@ -626,7 +633,7 @@
         }
         .login-before {
           float: right;
-          margin-right:12px;
+          // margin-right:12px;
           div {
             float: left;
             position: relative;
@@ -673,7 +680,7 @@
         .login-after {
           float: right;
           font-size: 13px;
-          margin-right: 6px;
+          // margin-right: 6px;
           a {
             height: 30px;
             text-align: center;

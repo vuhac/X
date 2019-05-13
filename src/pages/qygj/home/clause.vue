@@ -18,7 +18,7 @@
         </div>
         <component :is="component"></component>
       </div>
-      <div class="footer">Copyright &copy; 新葡京赌场 Reserved</div>
+      <div class="footer">Copyright &copy; 澳门新葡京 Reserved</div>
     </div>
   </div>
 </template>

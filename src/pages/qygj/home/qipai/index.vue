@@ -15,7 +15,7 @@
                           <ul>
                             <li class="game-item" :key="index" v-for="(item,index) in gameData">
                               <div class="game-pic">
-                                <img :src="publicUrl+item.images" :class="{'default':true,'mg-pic':$route.query.id==='26'}" alt="">
+                                <img :src="item.icon" :class="{'default':true,'mg-pic':$route.query.id==='26'}" alt="">
                               </div>
                               <h3>{{item.name}}</h3>
                               <a v-show="Public_User!=='test'" href="javascript:void(0)" class="play" @click="loginGame(item)">进入游戏</a>

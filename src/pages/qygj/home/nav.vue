@@ -2,7 +2,7 @@
     <div class="top_nav" >
     <!-- <div class="top_nav" :class="{night:colorbool}"> -->
       <div class="nav-content">
-        <div class="logo fl">
+        <div class="logo fl" style="margin-left: -35px;">
           <a href="javascript:void(0)" @click="goHome">
             <img src="/static/qygj/img/qy-logo1.png">
           </a>
