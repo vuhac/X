@@ -20,12 +20,15 @@
          </ul> -->
          <ul class="headerLinkBox">
             <li @click="goHeader(0)">
+               <img src="/static/qygj/img/xl.png" alt="">
               <a href="javascript:void(0)">线路检测</a>
             </li>
             <li @click="goHeader(1)">
+              <img src="/static/qygj/img/jiebei.png" alt="">
               <a href="javascript:void(0)">免息借呗</a>
             </li>
             <li @click="goHeader(2)">
+               <img src="/static/qygj/img/jgj.png" alt="">
               <a href="javascript:void(0)">金管家</a>
             </li>
 
