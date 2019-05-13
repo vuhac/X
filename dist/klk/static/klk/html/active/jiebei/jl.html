@@ -378,10 +378,13 @@
           type:'lantern',
           client_type: 'PC'
         },
+        dataType:'json',
         success: function (res) {
           // res = JSON.parse(res)
-          if (res.code === 200 && res.data.data[0].description) {
+          if (res.code === 200 && res.data.data.length) {
             $notice.html(res.data.data[0].description)
+          } else {
+            console.log('没有公告')
           }
         }
       })
@@ -398,13 +401,20 @@
       $('.kf').attr('href', href)
     })
 
-    $.post(
-      'api/index.php',
-      {
+
+    $.ajax({
+      type:'post',
+      url: url + "preferential/jiebei/",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: token
+      },
+      data: {
         action: 'getUser'
       },
-      function (res) {
-        res = JSON.parse(res)
+      dataType:'json',
+      success: function (res) {
+        // res = JSON.parse(res)
         if (res.code === 200) {
           init()
         } else {
@@ -416,7 +426,8 @@
           // })
         }
       }
-    )
+    })
+
 
     var $limit = $('#limits')
     var $tbody = $('#tbody')
@@ -434,15 +445,21 @@
     function upTable (limit, index) {
       index = index || 1
       limit = limit || 10
-      $.post(
-        'api/index.php',
-        {
+      $.ajax({
+        type:'post',
+        url: url + "preferential/jiebei/",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: token
+        },
+        data: {
           action: 'returnAmountAndRepaymentList',
           limit: limit,
           page: index
         },
-        function (res) {
-          res = JSON.parse(res)
+        dataType:'json',
+        success: function (res) {
+          // res = JSON.parse(res)
           if (res.code === 200) {
             var data = res.data.data
             var html = ''
@@ -454,7 +471,7 @@
                 '<td>' + this['repayment'] + '</td>' +
                 '<td>' + this['unpaid'] + '</td>' +
                 '<td>' + this['status'] + '</td>' +
-                '<td>' + this['date'] + '</td>' +
+                '<td>' + new Date(this['date'] * 1000).toLocaleDateString() + ' ' + new Date(this['date'] * 1000).toTimeString().substr(0, 8) + '</td>' +
                 '</tr>'
             })
 
@@ -466,7 +483,7 @@
             $nav.text('')
           }
         }
-      )
+      })
     }
 
     function upNavTab (total, limit, target) {
