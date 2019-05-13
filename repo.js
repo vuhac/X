@@ -173,7 +173,8 @@ function checkLocation () {
         `cd ${path.resolve(config.baseDir, site)}`,
         'git add -A',
         'git commit -m Build',
-        'git pull',
+        `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
+        'git pull origin master',
         'git push'
       ]
     } else {
