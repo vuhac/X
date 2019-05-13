@@ -22,7 +22,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import mixin from '../../../public/games/public.js'
 
   export default {

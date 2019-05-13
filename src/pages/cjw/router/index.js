@@ -17,6 +17,8 @@ const vpQipai = r => require.ensure([], () => r(require('@/pages/cjw/home/qipai'
 const vpSport = r => require.ensure([], () => r(require('@/pages/cjw/home/sport')), 'vpSport')
 const contactUs = r => require.ensure([], () => r(require('@/pages/cjw/home/contactUs')), 'contactUs')
 const clause = r => require.ensure([], () => r(require('@/pages/cjw/home/clause')), 'clause')
+const agent = r => require.ensure([], () => r(require('@/pages/cjw/home/agent')), 'agent')
+
 
 //购彩大厅
 import vpHall from '@/pages/public/tradition/vp-hall'
@@ -101,6 +103,11 @@ const router = new Router({
           path: '/home/youhui',
           component: vpYouhui,
           name: 'vpYouhui'
+        },
+        {
+          path: '/home/agent',
+          component: agent,
+          name: 'agent'
         },
         {
           path: '/home/qipai',

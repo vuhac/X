@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1">
+    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:200px;transition:all ease .3s">
       <a @click="goUserCen('recharge',1)" class="wechat" href="javascript:;"></a>
       <a @click="goUserCen('recharge',1)" class="zhifubao" href="javascript:;"></a>
       <a @click="goUserCen('recharge',1)" class="qq" href="javascript:;"></a>
@@ -9,7 +9,7 @@
       <a href="/static/cpzj/html/active/jgj/index.html" target="_blank" class="jinguanjia"></a>
       <a class="close" @click="s1=false" href="javascript:;"></a>
     </div>
-    <div v-show="s2" class="TplFloatSet TplFloatPic_1">
+    <div v-show="s2" class="TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:200px;transition:all ease .3s">
       <a @click="openKefu" class="kefu1"></a>
       <a @click="openKefu" class="kefu2"></a>
       <a class="close" @click="s2=false" href="javascript:;"></a>
@@ -27,7 +27,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -69,7 +69,18 @@
         }
       },
       scrollFunc () {
-        $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 180}, 1000)
+        // $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 180}, 1000)
+
+        var nodeitem = document.getElementsByClassName('TplFloatPic_1')[0]
+        var nodeitem1 = document.getElementsByClassName('TplFloatPic_1')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop;
+          if(t>0){
+            nodeitem.style.top = t + 200 + 'px';
+            nodeitem1.style.top = t + 200 + 'px'
+          }
+        }
+
       }
     },
     mounted () {
@@ -105,9 +116,6 @@
   }
 
   .TplFloatSet {
-    position: absolute;
-    z-index: 1000;
-    top: 40%;
     right: 18px;
     width: 127px;
     height: 298px;

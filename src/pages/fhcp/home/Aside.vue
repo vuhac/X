@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1">
+    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <div class="jgj" @click="openJgj"></div>
       <div class="zhuanpan" @click="openZhuanpan"></div>
       <div class="close" @click="s1 = false"></div>
     </div>
-    <div v-show="s2" class="TplFloatSet TplFloatPic_1">
+    <div v-show="s2" class="TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <div class="kefu" @click="openKefu"></div>
       <a href="javascript:;" class="idea" @click="gomessge"></a>
       <div class="close" @click="s2 = false"></div>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -33,7 +33,19 @@
         window.addEventListener('scroll', this.scrollFunc)
       },
       scrollFunc () {
-        $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 210}, 1000)
+        // $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 210}, 1000)
+        var nodeitem = document.getElementsByClassName('TplFloatPic_1')[0]
+        var nodeitem1 = document.getElementsByClassName('TplFloatPic_1')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop
+          if(t>0){
+            nodeitem.style.top = t + 170 + 'px'
+            nodeitem1.style.top = t + 170 + 'px'
+
+          }
+        }
+
+
       },
       openKefu () {
         let service = JSON.parse(localStorage.config).service;
@@ -97,9 +109,9 @@
   }
 
   .TplFloatSet {
-    position: absolute;
-    z-index: 1000;
-    top: 210px;
+    // position: absolute;
+    // z-index: 1000;
+    // top: 210px;
     right: 18px;
     width: 126px;
     height: 285px;

@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1">
+    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <img src="/static/eyc/img/aside_left.png" alt="">
       <a @click="goUserCen('recharge',1)" class="wechat" ></a>
       <a @click="goUserCen('recharge',1)" class="zhifubao" href="javascript:void (0);"></a>
@@ -10,7 +10,7 @@
       <a class="jgj" href="/static/eyc/html/active/jgj/index.html" target="_blank"></a>
       <a class="close" @click="s1=false" href="javascript:void (0);"></a>
     </div>
-    <div v-show="s2" class="TplFloatSet TplFloatPic_1">
+    <div v-show="s2" class="TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <img src="/static/eyc/img/aside_right.png" alt="">
 
       <a class="kefu" @click="kefuFc"></a>
@@ -23,7 +23,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -37,9 +37,21 @@
         window.addEventListener('scroll', this.scrollFunc)
       },
       scrollFunc (e) {
-        $('.TplFloatPic_1')
-          .stop()
-          .animate({top: window.pageYOffset + 170}, 1000)
+        // $('.TplFloatPic_1')
+        //   .stop()
+        //   .animate({top: window.pageYOffset + 170}, 1000)
+        var nodeitem = document.getElementsByClassName('TplFloatPic_1')[0]
+        var nodeitem1 = document.getElementsByClassName('TplFloatPic_1')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop
+          if(t>0){
+            nodeitem.style.top = t + 170 + 'px'
+            nodeitem1.style.top = t + 170 + 'px'
+
+          }
+        }
+
+
       },
       goUserCen (name, num) {
         if (!localStorage.token || !localStorage.userinfo) {
@@ -78,10 +90,10 @@
 
 <style lang="less" scoped>
   .TplFloatSet {
-    position: absolute;
+    // position: absolute;
     // cursor: pointer;
-    z-index: 9999;
-    top: 170px;
+    // z-index: 9999;
+    // top: 170px;
     right: 15px;
     width: 127px;
     // overflow: hidden;

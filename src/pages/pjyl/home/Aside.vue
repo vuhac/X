@@ -317,7 +317,7 @@
 
 <script>
   import UserService from '@/service/public/UserService.js'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {

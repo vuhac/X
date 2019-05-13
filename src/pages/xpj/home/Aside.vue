@@ -26,11 +26,11 @@
           <li class="closed" @click=" showSnav = false " ></li>
       </ul>
     </div> -->
-    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1">
+    <div v-show="s1" class="TplFloatSet0 TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <div class="dial"></div>
       <div class="newclose" @click="s1 = false"></div>
     </div>
-    <div v-show="s2" class="TplFloatSet TplFloatPic_1" >
+    <div v-show="s2" class="TplFloatSet TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
       <div class="kefu" @click="openKefu"></div>
       <div class="huiyuan"  @click="goLink"></div>
       <div class="zhifu">
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   export default {
     data () {
       return {
@@ -94,7 +94,18 @@
         window.addEventListener('scroll', this.scrollFunc)
       },
       scrollFunc () {
-        $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 180}, 1000)
+        // $('.TplFloatPic_1').stop().animate({top: window.pageYOffset + 180}, 1000)
+        var nodeitem = document.getElementsByClassName('TplFloatPic_1')[0]
+        var nodeitem1 = document.getElementsByClassName('TplFloatPic_1')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop
+          if(t>0){
+            nodeitem.style.top = t + 170 + 'px'
+            nodeitem1.style.top = t + 170 + 'px'
+          }
+        }
+
+
       },
       openKefu () {
         // window.open('https://vm.providesupport.com/08ffyyacqwb2j1oavlhdaf13sx')
@@ -245,9 +256,9 @@
   // }
 
    .TplFloatSet {
-    position: absolute;
-    z-index: 1000;
-    top: 190px;
+    // position: absolute;
+    // z-index: 1000;
+    // top: 190px;
     right: 10px;
     width: 143px;
     height:382px;

@@ -4,7 +4,9 @@
       <ul>
         <li v-for="(item,i) in buyuData" :key="i" @click="trustLogin(item)">
           <div class="cover_hover"></div>
-          <div class="cover" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
+          <div class="cover" :style="{backgroundImage: 'url(' + item.img + ')'}">
+            <span class="startGame"></span>
+          </div>
           <!-- <p><a class="btn" >开始游戏</a>
           </p> -->
           <!-- <p><a class="btn_ag" @click="trustLogin(item)"
@@ -223,6 +225,16 @@
             transition: all 0.3s ease-in;
             margin-top:0;
             z-index: 10;
+            position:relative;
+            .startGame{
+              position:absolute;
+              bottom:-4px;
+              left:50%;
+              transform:translate(-50%,-50%);
+              width:153px;
+              height:32px;
+              background:url(/static/cjw/img/button.png) no-repeat center;
+            }
           }
           .cover:hover{
             margin-top:-10px;

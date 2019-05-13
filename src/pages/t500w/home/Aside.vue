@@ -20,7 +20,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -30,16 +30,16 @@
       }
     },
     methods: {
-      addWindow () {
-        window.addEventListener('scroll', this.scrollFunc)
-      },
-      scrollFunc (e) {
-        $('.TplFloatPic_1')
-          .stop()
-          .animate({
-            top: window.pageYOffset + 170
-          }, 1000)
-      },
+      // addWindow () {
+      //   window.addEventListener('scroll', this.scrollFunc)
+      // },
+      // scrollFunc (e) {
+      //   $('.TplFloatPic_1')
+      //     .stop()
+      //     .animate({
+      //       top: window.pageYOffset + 170
+      //     }, 1000)
+      // },
       openKefu () {
         let service = JSON.parse(localStorage.config).service;
         if (service) {
@@ -65,7 +65,7 @@
 
     },
     mounted () {
-      this.addWindow()
+      // this.addWindow()
     },
     store
   }

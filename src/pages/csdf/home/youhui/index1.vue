@@ -51,14 +51,14 @@
             </div>
           </div>
           <div class="floorDetail" v-show="targetId===item.id" :id="'img_'+item.image.pc">
-            <div  v-if="item.desc_type=='pic'">
+            <div v-if="item.desc_type=='pic'">
               <img :src="typeof item.description === 'object' && item.description.pc"
                    alt="加载失败">
             </div>
-              <div class="content_bg" v-else-if="typeof item.description === 'object' && item.description.pc">
-                <div v-html="item.description.pc"></div>
-              </div>
+            <div class="content_bg" v-else-if="typeof item.description === 'object' && item.description.pc">
+              <div v-html="item.description.pc"></div>
             </div>
+          </div>
         </div>
         <div class="floorLine"></div>
       </div>
@@ -173,7 +173,9 @@ export default {
         // document.documentElement.scrollTop = document.body.scrollTop = 0
         if (this.targetId) {
           // document.documentElement.scrollTo(0, this.$refs['active-item'][index].offsetTop)
-          document.documentElement.scrollTop = document.body.scrollTop = this.$refs['active-item'][index].offsetTop
+          this.$nextTick(() => {
+            document.documentElement.scrollTop = document.body.scrollTop = this.$refs['active-item'][index].offsetTop
+          })
         }
       }
     },
@@ -266,10 +268,12 @@ export default {
             float: right;
           }
         }
+
         &:first-child {
           text-align: left;
           margin-left: 15px;
         }
+
         &:last-child {
           text-align: left;
         }
@@ -290,6 +294,7 @@ export default {
       }
     }
   }
+
   /*弹窗*/
   /deep/ .ivu-modal-mask {
     z-index: 2000;
@@ -469,6 +474,7 @@ export default {
       background-size: contain;
       margin: 10px auto;
     }
+
     table {
       text-align: center;
       table-layout: fixed;
@@ -477,26 +483,29 @@ export default {
       width: 100%;
       margin: 10px 0;
       color: #000;
+
       tbody .firstRow {
         background-color: #d91a42;
         color: #ffffff;
       }
-        th {
-          border: 1px solid #e6e6e6;
-          height: 40px;
-          font-size: 14px;
-          background-color: #4393be;
-          color: #fff;
-          font-weight: 100;
-          vertical-align: middle;
-        }
-        td {
-          border: 1px solid #000000;
-          height: 40px;
-          font-size: 14px;
-          vertical-align: middle;
-        }
+
+      th {
+        border: 1px solid #e6e6e6;
+        height: 40px;
+        font-size: 14px;
+        background-color: #4393be;
+        color: #fff;
+        font-weight: 100;
+        vertical-align: middle;
       }
+
+      td {
+        border: 1px solid #000000;
+        height: 40px;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+    }
 
   }
 

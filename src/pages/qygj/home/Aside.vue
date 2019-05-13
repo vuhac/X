@@ -1,6 +1,6 @@
 <template>
 <div>
-   <ul class="qy-service TplFloatPic_1">
+   <ul class="qy-service TplFloatPic_1" style="position: absolute;z-index: 1000;top:170px;transition:all ease .3s">
     <li class="service" @click="goService">
       <div>
       </div>
@@ -49,7 +49,7 @@
 
 <script>
   import UserService from '@/service/public/UserService.js'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -79,9 +79,21 @@
         window.addEventListener('scroll', this.scrollFunc)
       },
       scrollFunc (e) {
-        $('.TplFloatPic_1')
-          .stop()
-          .animate({top: window.pageYOffset+164}, 1000)
+        // $('.TplFloatPic_1')
+        //   .stop()
+        //   .animate({top: window.pageYOffset+164}, 1000)
+        var nodeitem = document.getElementsByClassName('TplFloatPic_1')[0]
+        // var nodeitem1 = document.getElementsByClassName('TplFloatPic_1')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop
+          if(t>0){
+            nodeitem.style.top = t + 170 + 'px'
+            // nodeitem1.style.top = t + 170 + 'px'
+          }
+        }
+
+
+
       },
       goDownload(){
          window.open("/static/qygj/html/download/index.html")
@@ -91,9 +103,28 @@
       },
      
       goTop () {
-        $('html,body')
-          .stop()
-          .animate({scrollTop: 0}, 500)
+        // $('html,body')
+        //   .stop()
+        //   .animate({scrollTop: 0}, 500)
+        let curr_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        let time_id = setInterval(()=>{
+
+                curr_top -= 40;
+
+                document.body.scollTop = curr_top;
+
+                document.documentElement.scrollTop = curr_top;
+
+                if(curr_top <= 0){
+
+                    clearInterval(time_id);
+
+                }
+
+            } , 10);
+
+
+
       },
       // hideNew2019(){
       //   this.showNew2019= false
@@ -108,10 +139,10 @@
 
 <style lang="less" scoped>
   .qy-service {
-    position: absolute;;
+    // position: absolute;;
     right: 20px;
-    z-index: 99;
-    top: 225px;
+    // z-index: 99;
+    // top: 225px;
     li {
       position: relative;
       width: 65px;

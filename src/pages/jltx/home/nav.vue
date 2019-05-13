@@ -127,7 +127,7 @@ export default {
                         name: "VG棋牌",
                         gameName: "1000",
                         platform: "VG_CHESS",
-                        id:1091
+                        id:10091
                     }
                     ]
                 },

@@ -127,14 +127,14 @@
 
       .sadi {
         float: left;
-        width: 180px;
+        width: 200px;
         padding: 0 9px;
       }
 
       .diti {
         font-size: 14px;
         color: #000000;
-        line-height: 74px;
+        line-height: 62px;
         border-bottom: 1px solid #760517;
         padding-left: 40px;
         height: 62px;

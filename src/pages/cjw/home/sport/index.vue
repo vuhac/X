@@ -23,7 +23,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import mixin from '../../../public/games/public.js'
 
   export default {
@@ -148,18 +148,31 @@
             //   center no-repeat;
             background-position: center center;
             background-repeat: no-repeat;
+            background-size:cover;
             transition: all 0.3s ease-in;
             margin-top:0;
             z-index: 10;
           }
           span{
             position: absolute;
-            bottom: 116px;
+            bottom: 114px;
             right: 64px;
             width: 153px;
             height: 32px;
             background: url(/static/cjw/img/button.png) no-repeat center;
           }   
+        }
+        li:nth-child(1){
+          margin-left:140px;
+        }
+        li:nth-child(2){
+          margin-left:-102px;
+        }
+        li:nth-child(3){
+          margin-left:-88px;
+        }
+        li:nth-child(4){
+          margin-left:-104px;
         }
 
         li:hover{

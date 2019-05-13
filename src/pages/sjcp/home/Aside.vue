@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="aside aside-left" v-show="s1">
+    <div class="aside aside-left" v-show="s1" style="position: absolute;z-index: 1000;top:200px;transition:all ease .3s">
       <img alt="" src="/static/sjcp/img/aside_left.png">
       <a @click="goUserCen('recharge',1)" class="wechat" href="javascript:;"></a>
       <a @click="goUserCen('recharge',1)"  class="zhifubao" href="javascript:;"></a>
@@ -8,7 +8,7 @@
       <a class="dial2" href="/static/sjcp/html/active/jgj/index.html" target="blank"></a>
       <a @click="s1 = false" class="close" href="javascript:void (0);"></a>
     </div>
-    <div class="aside aside-right" v-show="s2">
+    <div class="aside aside-right" v-show="s2" style="position: absolute;z-index: 1000;top:200px;transition:all ease .3s">
       <img alt="" src="/static/sjcp/img/aside_right.png">
       <a @click="openService" class="service" href="javascript:void (0);"></a>
       <a href="javascript:;" @click="tousu" class="tousu"></a>
@@ -25,7 +25,7 @@
 
 <script>
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     store,
@@ -46,7 +46,19 @@
       
       },
       scrollFunc(e) {
-        $('.aside').stop().animate({top: window.pageYOffset + 220}, 1000)
+        // $('.aside').stop().animate({top: window.pageYOffset + 220}, 1000)
+        var nodeitem = document.getElementsByClassName('aside')[0]
+        var nodeitem1 = document.getElementsByClassName('aside')[1]
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop
+          if(t>0){
+            nodeitem.style.top = t + 200 + 'px'
+            nodeitem1.style.top = t + 200 + 'px'
+          }
+        }
+
+
+
       },
       goUserCen (name, num) {
         if (!localStorage.token || !localStorage.userinfo) {
@@ -87,11 +99,11 @@
 
 <style lang="less" scoped>
   .aside {
-    display: inline-block;
-    position: absolute;
-    top: 220px;
+    // display: inline-block;
+    // position: absolute;
+    // top: 220px;
     right: 10px;
-    z-index: 1000;
+    // z-index: 1000;
     width: 120px;
 
     a{

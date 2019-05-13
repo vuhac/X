@@ -48,7 +48,7 @@
   import vpHeaderPic from "../headerPic";
   import mixin from '../../../public/games/public.js'
 
-  import $ from 'jquery'
+  // import $ from 'jquery'
   export default {
     mixins: [mixin],
 

@@ -15,7 +15,8 @@
               <!-- <li><a :class="className1" href="/static/cjw/html/download/index.html">APP下载</a></li> -->
               <!-- <li><a href="#/home/contactUs?p_id=1" class="red">备用网址</a></li> -->
               <li><a :class="className1" href="/static/cjw/html/download/index.html" target="_blank">APP下载</a></li>
-              <li><a  href="javascript:alert('加入收藏失败，请使用Ctrl+D进行添加');">加入收藏</a></li>
+              <!-- <li><a  href="javascript:alert('加入收藏失败，请使用Ctrl+D进行添加');">加入收藏</a></li> -->
+              <li><a javascript=":;" @click="$router.push('/home/agent')">金字塔代理</a></li>
               <li><a  href="https://kjzb.com/dns" target="_bank">防劫持教程</a></li>
               <li><a  :class="className2" href="javascript:void(0)" @click="openKefu">在线客服</a></li>
             </ul>

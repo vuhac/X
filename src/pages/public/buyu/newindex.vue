@@ -52,7 +52,7 @@
 
 </template>
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import mixin from '../games/public.js'
 
   export default {

@@ -149,16 +149,14 @@
 
 <script>
 // import $ from "jquery";
+import { _SetGet, _SetPost } from "@/service/public/service.js";
 import vpMc from "./mc"
-
 import store from "@/vuex/store";
 import "@/assets/iconfont/klk/iconfont.css";
 // import '/static/img/klk/font/iconfont.css'
 import data from "../../public/games/public.js";
-
 import vpNotice from "./notice";
 
-import {_SetPost,postS,getS} from '@/service/public/service.js'
 
 
 export default {

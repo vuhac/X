@@ -49,7 +49,7 @@
 
 <script>
   import UserService from '@/service/public/UserService.js'
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data () {
@@ -78,9 +78,28 @@
         this.$router.push('/home/register')
       },
       goTop () {
-        $('html,body')
-          .stop()
-          .animate({scrollTop: 0}, 500)
+        // $('html,body')
+        //   .stop()
+        //   .animate({scrollTop: 0}, 500)
+        let curr_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        let time_id = setInterval(()=>{
+
+                curr_top -= 40;
+
+                document.body.scollTop = curr_top;
+
+                document.documentElement.scrollTop = curr_top;
+
+                if(curr_top <= 0){
+
+                    clearInterval(time_id);
+
+                }
+
+            } , 10);
+
+
+
       },
       hideNew2019(){
         this.showNew2019= false

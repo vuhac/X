@@ -120,7 +120,7 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import store from '@/vuex/store'
   import vpMc from "./mc"
 

@@ -89,7 +89,7 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import store from '@/vuex/store'
   import UserService from '@/service/public/UserService.js'
   import '@/assets/iconfont/klk/iconfont.css'

@@ -18,4 +18,3 @@ config.json
 *.git
 *.map
 *.dist
-/lottery-sites/

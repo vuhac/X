@@ -225,7 +225,7 @@
 <script>
   import QRCode from 'qrcode'
   import store from '@/vuex/store'
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import UserService from "@/service/public/UserService.js";
   let timer
   export default {

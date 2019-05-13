@@ -36,7 +36,7 @@
 
 <script>
   import { _SetGet, _SetPost } from '@/service/public/service.js'
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import mixin from '../games/public.js'
 
   export default {

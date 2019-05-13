@@ -45,7 +45,7 @@
 <script>
   import { _SetGet,_SetPost } from '@/service/public/service.js'
   import vpHeaderPic from "../headerPic";
-  import $ from 'jquery'
+  // import $ from 'jquery'
   import mixin from '../../../public/games/public.js'
   
   export default {

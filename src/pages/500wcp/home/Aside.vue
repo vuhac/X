@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="aside aside-left" v-show="s1">
+    <div class="aside aside-left" v-show="s1" style="position:absolute;top:200px;z-index:1000;transition:all ease .3s">
       <img alt="" src="/static/500wcp/img/aside_left.png">
       <a @click="goUserCen('recharge',1)" class="wx" ></a>
       <a @click="goUserCen('recharge',1)" class="zfb" href="javascript:void (0);"></a>
@@ -9,7 +9,7 @@
       <a class="dial" href="/static/500wcp/html/active/opportunity/index.html" target="_blank"></a>
       <a @click="s1 = false" class="close" href="javascript:void (0);"></a>
     </div>
-    <div class="aside aside-right" v-show="s2">
+    <div class="aside aside-right" v-show="s2" style="position:absolute;top:200px;z-index:1000;transition:all ease .3s">
       <img alt="" src="/static/500wcp/img/aside_right.png">
       <a @click="openService" class="service" href="javascript:void (0);"></a>
       <a @click="gomessge" class="tousu" ></a>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
 
   export default {
     data() {
@@ -42,7 +42,19 @@
         window.addEventListener('scroll', this.scrollFunc)
       },
       scrollFunc() {
-        $('.aside').stop().animate({top: window.pageYOffset + 200}, 1000)
+        // $('.aside').stop().animate({top: window.pageYOffset + 200}, 1000)
+        var nodeitem = document.getElementsByClassName('aside')[0]
+        var nodeitem1 = document.getElementsByClassName('aside')[1]
+
+        window.onscroll = function(){
+          var t = document.documentElement.scrollTop||document.body.scrollTop;
+          if(t>0){
+            nodeitem.style.top = t + 200 + 'px'
+            nodeitem1.style.top = t + 200 + 'px'
+          }
+        }
+
+
       },
       openService() {
         let service = JSON.parse(localStorage.config);
@@ -79,10 +91,10 @@
 
 <style type="text/less" lang="less" scoped>
   .aside {
-    display: inline-block;
-    position: absolute;
-    top: 200px;
-    z-index: 1000;
+    // display: inline-block;
+    // position: absolute;
+    // top: 200px;
+    // z-index: 1000;
 
     a{
       display: inline-block;
