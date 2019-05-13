@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js  --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node --max_old_space_size=8192 build/build.js",
-    "build-all": "npm run build && cd .. && npm run build"
+    "build": "node --max_old_space_size=8192 build/build.js"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
