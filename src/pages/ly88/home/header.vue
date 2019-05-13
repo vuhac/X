@@ -287,7 +287,7 @@ import UserService from "@/service/public/UserService.js";
 import store from "@/vuex/store";
 import {_SetPost,postS,getS} from '@/service/public/service.js'
 // import { postS, getS } from "@/service/public/service.js";
-import $ from "jquery";
+// import $ from "jquery";
 import data from '../../public/games/public.js'
 export default {
   mixins: [data],
@@ -295,9 +295,9 @@ export default {
     return {
       navId:1,
       passKey: {
-         userName:'',
-         password: '',
-         code:''
+        //  userName:'',
+        //  password: '',
+        //  code:''
       },
       isShowPassword:true,
       isShowPassword11:true,
