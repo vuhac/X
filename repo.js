@@ -4,6 +4,12 @@ const path = require('path')
 const fs = require('fs')
 const { exec, execSync, spawn, spawnSync } = require('child_process')
 
+/**
+ * 分库站点
+ * @type {string[]}
+ */
+const sites = require('./sites')
+
 const config = {
   uid: 83,
   user: 'xiaokangnew',
@@ -16,7 +22,8 @@ const config = {
 
 const users = [
   'zs',
-  'candice'
+  'candice',
+  'gt'
 ]
 
 /**
@@ -55,43 +62,6 @@ $http.interceptors.response.use(function (response) {
   // 对响应错误做点什么
   return Promise.reject(error.response.data)
 })
-
-/**
- * 分库站点
- * @type {string[]}
- */
-const sites = [
-  'test',
-  'fczx',
-  't500w',
-  'jhcp',
-  'cjw',
-  'jlcp',
-  'szc',
-  't111',
-  'zyyl',
-  'qygj',
-  'hqyl',
-  'cpzj',
-  'ly88',
-  'jltx',
-  'pjyl',
-  'xpj',
-  'csdf',
-  '500w',
-  '500wcp',
-  'dalao',
-  'ddcp',
-  'dqr',
-  'ecp',
-  'eyc',
-  'fhcp',
-  'hsyl',
-  'qmcp',
-  'sjcp',
-  'wycp',
-  'klk',
-]
 
 // $http.get(
 //   '/users/search',
@@ -141,7 +111,9 @@ const api = {
   },
   addCollaborators (site) {
     users.forEach(user => {
-      $http.put(`/repos/${config.user}/${config.base + site}/collaborators/${user}`)
+      $http.put(`/repos/${config.user}/${config.base + site}/collaborators/${user}`, {
+        permission: 'admin'
+      })
     })
   }
 }
@@ -186,6 +158,8 @@ function checkOrigin () {
   }
 }
 
+const task = []
+
 function checkLocation () {
   sites.forEach(site => {
     let execs = []
@@ -195,7 +169,8 @@ function checkLocation () {
         `cd ${path.resolve(config.baseDir, site)}`,
         'git add -A',
         'git commit -m Build',
-        `git push --force`
+        'git pull',
+        'git push --force'
       ]
     } else {
       execs = [
@@ -204,24 +179,39 @@ function checkLocation () {
         'git add -A',
         'git commit -m INIT',
         `git remote add origin gogs@${config.server}:${config.user}/${config.base}${site}.git`,
-        `git push -u origin master --force`
+        'git push -u origin master --force'
       ]
     }
 
-    execTask(execs)
+    task.push(execs)
   })
+
+  execTask()
 }
 
 // execTask()
 
-function execTask (execs) {
-  exec(execs.join(' && '), function (error, stdout, stderr) {
-    console.log('stdout: ' + stdout)
-    console.log('stderr: ' + stderr)
-    if (error !== null) {
-      console.log('exec error: ' + error)
-    }
-  })
+let i = 0
+function execTask () {
+  // execs = [
+  //   execs[0],
+  //   'rm -R .git'
+  // ]
+
+  const execs = task[i]
+
+  if (execs) {
+    exec(execs.join(' && '), function (error, stdout, stderr) {
+      console.log('stdout: ' + stdout)
+      console.log('stderr: ' + stderr)
+      if (error !== null) {
+        console.log('exec error: ' + error)
+      }
+      execTask()
+    })
+  }
+
+  i++
 }
 
 main()
