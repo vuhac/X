@@ -14,7 +14,7 @@
         <ul class="game_type game_type2"  @click="changeMenu">
           <li @mouseover="changeSrc1" @mouseout="changeSrc2" class="deGame" id="ali">
             <img v-if="showGtu" :src='src' alt="">
-            <img class="imgTrue" v-else src="/static/qygj/img/youyi/other-item-hover.png" alt="">
+            <img class="imgTrue" v-else src="/static/public/image/youyi/other-item-hover.png" alt="">
           </li>
         </ul>
       </div>
@@ -119,7 +119,7 @@
         total: '',
         iptVal: '',
         showGtu:true,
-        src:'/static/qygj/img/youyi/other-item.png',
+        src:'/static/public/image/youyi/other-item.png',
         pageDatas: {
           page: 1
         },
@@ -152,7 +152,7 @@
           {
             id: '10022',
             name: 'MG老虎机',
-            src:'/static/qygj/img/youyi/mg2.png',
+            src:'/static/public/image/youyi/mg2.png',
             class: 'mg',
             type: {
               list: [
@@ -179,7 +179,7 @@
           {
             id: '10015',
             name: 'AG老虎机',
-            src:'/static/qygj/img/youyi/ag.png',
+            src:'/static/public/image/youyi/ag.png',
             class: 'ag',
             type: {
               list: [
@@ -206,7 +206,7 @@
           {
             id: '10024',
             name: 'PT老虎机',
-            src:'/static/qygj/img/youyi/pt.png',
+            src:'/static/public/image/youyi/pt.png',
             class: 'pt',
             type: {
               list: [
@@ -240,7 +240,7 @@
           {
             id: '10018',
             name: 'CQ9老虎机',
-            src:'/static/qygj/img/youyi/cq9.png',
+            src:'/static/public/image/youyi/cq9.png',
             class: 'cq9',
             type: {
               list: [
@@ -264,7 +264,7 @@
           {
             id: '10020',
             name: 'FG老虎机',
-            src:'/static/qygj/img/youyi/fg.png',
+            src:'/static/public/image/youyi/fg.png',
             class: 'fg',
             type: { list: [] },
             line: { list: [] }
@@ -272,7 +272,7 @@
           {
             id: '10021',
             name: 'JDB电子',
-            src:'/static/qygj/img/youyi/jbd.png',
+            src:'/static/public/image/youyi/jbd.png',
             class: 'jdb',
             type: { list: [] },
             line: { list: [] }
@@ -280,7 +280,7 @@
           {
             id: '10016',
             name: 'BBIN老虎机',
-            src:'/static/qygj/img/youyi/bbin.png',
+            src:'/static/public/image/youyi/bbin.png',
             class: 'bbin',
             type: {
               list: [
@@ -298,7 +298,7 @@
           {
             id: '10014',
             name: 'AE老虎机',
-            src:'/static/qygj/img/youyi/ae.png',
+            src:'/static/public/image/youyi/ae.png',
             class: 'ae',
             type: { list: [] },
             line: { list: [] }
@@ -306,7 +306,7 @@
           {
             id: '10019',
             name: 'DT老虎机',
-            src:'/static/qygj/img/youyi/dt.png',
+            src:'/static/public/image/youyi/dt.png',
             class: 'dt',
             type: {
               list: [
@@ -332,7 +332,7 @@
           {
             id: '10023',
             name: 'MW老虎机',
-            src:'/static/qygj/img/youyi/mw.png',
+            src:'/static/public/image/youyi/mw.png',
             class: 'mw',
             type: { list: [] },
             line: { list: [] }
@@ -340,7 +340,7 @@
           {
             id: '10025',
             name: 'TTG老虎机',
-            src:'/static/qygj/img/youyi/ttg.png',
+            src:'/static/public/image/youyi/ttg.png',
             class: 'ttg',
             type: {
               list: [
@@ -535,19 +535,19 @@
           menu.style.height = '270px';
           this.showGtu = false;
           aLi.className = 'active';
-          this.src = '/static/qygj/img/youyi/other-item-hover.png';
+          this.src = '/static/public/image/youyi/other-item-hover.png';
         }else{
           menu.style.height = '135px';
           this.showGtu = true;
           aLi.className = 'deGame';
-          this.src = '/static/qygj/img/youyi/other-item.png';
+          this.src = '/static/public/image/youyi/other-item.png';
         }
       },
       changeSrc1(){
-        this.src = '/static/qygj/img/youyi/other-item-hover.png';
+        this.src = '/static/public/image/youyi/other-item-hover.png';
       },
       changeSrc2(){
-        this.src = '/static/qygj/img/youyi/other-item.png';
+        this.src = '/static/public/image/youyi/other-item.png';
       }
     },
     created () {
@@ -650,14 +650,14 @@
       display: inline-block;
 
       li.hot_game{
-        background: url('/static/qygj/img/youyi/hot-game1.png') center top no-repeat;
+        background: url('/static/public/image/youyi/hot-game1.png') center top no-repeat;
       }
       li.hot_game:hover{
-        background: url('/static/qygj/img/youyi/hot-game-hover1.png') center top no-repeat;
+        background: url('/static/public/image/youyi/hot-game-hover1.png') center top no-repeat;
         background-size: 100% 100%;
       }
        li.hot_game.active{
-        background: url('/static/qygj/img/youyi/hot-game-hover1.png') center top no-repeat;
+        background: url('/static/public/image/youyi/hot-game-hover1.png') center top no-repeat;
         background-size: 100% 100%;
       }
       li {
@@ -800,7 +800,7 @@
               width: 16px;
               height: 16px;
               display: inline-block;
-              background: url('/static/qygj/img/youyi/sousuo.png') no-repeat center center;
+              background: url('/static/public/image/youyi/sousuo.png') no-repeat center center;
               background-size: 100% 100%;
               white-space:nowrap; 
               letter-spacing: -1em; 
@@ -836,13 +836,13 @@
               line-height: 15px;
 
               .gicon1{
-                background: url('/static/qygj/img/youyi/fenlei.png') no-repeat center center;
+                background: url('/static/public/image/youyi/fenlei.png') no-repeat center center;
               }
               .gicon2{
-                background: url('/static/qygj/img/youyi/jiaokuanqueren.png') no-repeat center center;
+                background: url('/static/public/image/youyi/jiaokuanqueren.png') no-repeat center center;
               }
               .gicon3{
-                background: url('/static/qygj/img/youyi/youxi.png') no-repeat center center;
+                background: url('/static/public/image/youyi/youxi.png') no-repeat center center;
               }
 
               .gicon{
@@ -954,7 +954,7 @@
                 top: 7px;
                 width: 27px;
                 height: 27px;
-                background: url("/static/qygj/img/icon-shoucang.png") no-repeat center top;
+                background: url("/static/public/image/icon-shoucang.png") no-repeat center top;
                 background-size: 100%;
               }
           }
