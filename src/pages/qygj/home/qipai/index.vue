@@ -20,7 +20,7 @@
                               <h3>{{item.name}}</h3>
                               <a v-show="Public_User!=='test'" href="javascript:void(0)" class="play" @click="loginGame(item)">进入游戏</a>
                               <a v-show="Public_User==='test'||!Public_User" href="javascript:void(0)" id="try"
-                                @click="loginGame(item)">试玩游戏</a>
+                                @click="loginTest(item)">试玩游戏</a>
                             </li>
 
                           </ul>
@@ -55,8 +55,10 @@
 
   import { _SetGet, _SetPost } from '@/service/public/service.js'
   import vpHeaderPic from "../headerPic";
+  import data from "../../../public/games/public.js";
 
   export default {
+    mixins: [data],
     data () {
       return {
         headerImg:"/static/qygj/img/carouel/qp.jpg",
@@ -153,20 +155,20 @@
       //   })
       //   window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
       // },
-      loginGame (item) {
-      if (!localStorage.token || !localStorage.userinfo) {
-        alert('未登录')
-        return false
-      }
-      let routeData = this.$router.resolve({
-        path: '/loading',
-        query: {
-          id: item.id,
-          login: true
-        }
-      })
-      window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
-    },
+    //   loginGame (item) {
+    //   if (!localStorage.token || !localStorage.userinfo) {
+    //     alert('未登录')
+    //     return false
+    //   }
+    //   let routeData = this.$router.resolve({
+    //     path: '/loading',
+    //     query: {
+    //       id: item.id,
+    //       login: true
+    //     }
+    //   })
+    //   window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
+    // },
 
 
 
