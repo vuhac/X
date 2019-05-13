@@ -170,7 +170,7 @@ function checkLocation () {
         'git add -A',
         'git commit -m Build',
         'git pull',
-        'git push --force'
+        'git push'
       ]
     } else {
       execs = [
