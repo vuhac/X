@@ -81,7 +81,16 @@
         ifmodel: false,
         content: "",
         list: [
-        
+          {
+            title: '彩票金管家',
+            img: require('../../../../../static/t111/img/youhui/jgj.png'),
+            type: 'single',
+            active_type: '专题优惠',
+            active_content: '永远累积打码',
+            time: '2019年4月1日至2019年12月31日',
+            id: 111,
+            param: '/static/t111/html/active/jgj/index.html'
+          },
           {
             title: '天降横财',
             img: require('../../../../../static/t111/img/youhui/jiang.png'),
