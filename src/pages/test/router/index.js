@@ -454,6 +454,13 @@ const router = new Router({
               path: '13',
               component: vp_trend_pk10
             },
+            {
+              path: '10044',
+              component: vp_trend_pk10
+            },{
+              path: '10045',
+              component: vp_trend_pk10
+            },
             //快乐十分
             {
               path: '5',

@@ -262,6 +262,16 @@ const router = new Router({
               meta: {id: 3630, name: '5分赛车PK10', code: 'wfsc', 'series': 'pk10',}
             },
             {
+              path: 'tradition/10044',
+              component: pk_beijing,
+              meta: {id: 10044, name: '香港赛马', code: 'xgsm', 'series': 'pk10',}
+            },  
+            {
+              path: 'tradition/10045',
+              component: pk_beijing,
+              meta: {id: 10045, name: '澳门赛马', code: 'amsm', 'series': 'pk10',}
+            },
+            {
               path: 'tradition/3',
               component: pk_beijing,
               meta: {id: 3, name: '幸运飞艇', code: 'xyft', 'series': 'pk10',}

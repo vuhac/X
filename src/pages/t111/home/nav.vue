@@ -244,16 +244,29 @@
       dragover (event) {
          event.preventDefault()
       },
-      async getLantern () {
-        let res = await this.$http.post(`${this.$HOST_NAME}/site/notice`, {
-          type: 'lantern',
-          desc_client_type: 'html'
-        })
-        if (res && res.code == 200) {
-          if (!res.data.data.length) return false
+      // 新文字走马灯接口
+     async getLantern () {
+      let res = await this.$http.post(`${this.$HOST_NAME}/site/newNotice`, {
+        type: 'lantern',
+        // desc_client_type: 'html'
+        client_type:"PC"
+      })
+      if (res && res.code == 200) {
+        // if (!res.data.data.length) return false
+        // this.lantern = res.data.data[0] && res.data.data[0].description
+
+        if(res.data.data.length){
           this.lantern = res.data.data[0] && res.data.data[0].description
+        }else{  
+          console.log("文字走马灯没有数据返回")
+          return false;
         }
-      },
+
+      }
+      // 参数： type: lantern 走马灯
+      // 参数： type: popups 弹窗
+      // 参数： type: notice 提示
+    },
       setActiveItem1(e){
         this.flag = e.offsetX;
         console.log(this.flag)

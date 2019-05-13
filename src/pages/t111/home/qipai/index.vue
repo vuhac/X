@@ -15,12 +15,12 @@
                           <ul>
                             <li class="game-item" :key="index" v-for="(item,index) in gameData">
                               <div class="game-pic">
-                                <img :src="publicUrl+item.images" :class="{'default':true,'mg-pic':$route.query.id==='26'}" alt="">
+                                <img :src="item.icon" :class="{'default':true,'mg-pic':$route.query.id==='26'}" alt="">
                               </div>
                               <h3>{{item.name}}</h3>
                               <a v-show="Public_User!=='test'" href="javascript:void(0)" class="play" @click="loginGame(item)">进入游戏</a>
                               <a v-show="Public_User==='test'||!Public_User" href="javascript:void(0)" id="try"
-                                @click="loginGame(item)">试玩游戏</a>
+                                @click="loginTest(item)">试玩游戏</a>
                             </li>
 
                           </ul>
@@ -55,15 +55,17 @@
 
   import { _SetGet, _SetPost } from '@/service/public/service.js'
   import vpHeaderPic from "../headerPic";
+  import data from "../../../public/games/public.js";
 
   export default {
+    mixins: [data],
     data () {
       return {
         headerImg:"/static/t111/img/carouel/qp.jpg",
         scrollDatas: [],
         jackpotNum1: 41318571943,
         jackpotNum2: 12961370,
-        publicUrl: 'http://img.7900005.com/',
+        // publicUrl: 'http://img.7900005.com/',
         currenttype: '',
         currentline: '',
         gameIndex:0,
@@ -109,7 +111,7 @@
             id: '10042',
             name: '开元棋牌',
             class: 'ky',
-            path: "/home/qipai?id=42&name=开元棋牌",
+            path: "/home/qipai?id=10042&name=开元棋牌",
             img:'/static/public/image/game/ptgame/gameky.png'
            },{
             id: '10041',
@@ -136,20 +138,20 @@
           this.total = res.data.last_page;
         }
       },
-      loginGame (item) {
-      if (!localStorage.token || !localStorage.userinfo) {
-        alert('未登录')
-        return false
-      }
-      let routeData = this.$router.resolve({
-        path: '/loading',
-        query: {
-          id: item.id,
-          login: true
-        }
-      })
-      window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
-    },
+    //   loginGame (item) {
+    //   if (!localStorage.token || !localStorage.userinfo) {
+    //     alert('未登录')
+    //     return false
+    //   }
+    //   let routeData = this.$router.resolve({
+    //     path: '/loading',
+    //     query: {
+    //       id: item.id,
+    //       login: true
+    //     }
+    //   })
+    //   window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
+    // },
       changgeme(item,index){
           this.gameIndex = index
           let scrollTop = document.documentElement.scrollTop;
