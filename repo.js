@@ -148,6 +148,10 @@ function main () {
     }
 
   })
+
+  // sites.forEach(site => {
+  //   $http.delete(`/repos/${config.user}/${config.base + site}`)
+  // })
 }
 
 function checkOrigin () {
@@ -193,12 +197,7 @@ function checkLocation () {
 
 let i = 0
 function execTask () {
-  // execs = [
-  //   execs[0],
-  //   'rm -R .git'
-  // ]
-
-  const execs = task[i]
+  let execs = task[i]
 
   if (execs) {
     exec(execs.join(' && '), function (error, stdout, stderr) {
