@@ -35,6 +35,7 @@
           :totalCount="totalCount"
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
@@ -59,7 +60,8 @@
     data () {
       return {
         allData: [],
-        listTop: []
+        listTop: [],
+        confirmbet:true
       }
     },
     methods: {

@@ -48,7 +48,7 @@
       <div class="lottery-content-all-right">
         <vp-fast-and-submit v-on:range-say="rangeChange" v-on:submit-Input-say="fastInput"
                             v-on:submit-resetAll="resetAllAdd" v-on:submit-review="review" :totalCount="totalCount"
-                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType">
+                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType" :confirmbet="confirmbet">
         </vp-fast-and-submit>
         <div class="tema-cheackbox-wrap">
           <div class="cheackbox-wrap">
@@ -113,6 +113,7 @@
     mixins: [childIndex, childTeMa],
     data () {
       return {
+        confirmbet:true,
         rangleType: '六合彩',
         temaType: '',
         navSelect: '正1特',

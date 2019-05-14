@@ -8,7 +8,7 @@ function LotterySev () {
       this.$store.commit('alert/showLogin', true)
       return false
     }
-
+    this.confirmbet=false
     let totalCount = JSON.parse(localStorage.totalCount)
     if (totalCount.mol == '角') {
       submitArr[0].money = String(submitArr[0].money / 10)
@@ -24,10 +24,12 @@ function LotterySev () {
       rebate: this.rebate
     })
     if (res && res.code == 200) {
+      this.confirmbet=true
       this.dNotify(res.data, 'success')
       this.resetAll()
       UserService.vpGetBasicInfo.call(this)
     } else {
+      this.confirmbet=true
       this.dNotify(res.message, 'error')
     }
   }

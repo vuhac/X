@@ -86,7 +86,7 @@
       <div class="lottery-content-all-right">
         <vp-fast-and-submit v-on:range-say="rangeChange" v-on:submit-Input-say="fastInput"
                             v-on:submit-resetAll="resetAll" v-on:submit-review="review" :totalCount="totalCount"
-                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney">
+                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :confirmbet="confirmbet">
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
       </div>
@@ -111,7 +111,8 @@
         listTop: data.liangMianPan[0].list,
         listBot: data.liangMianPan[1].list,
         listDouNiu: data.liangMianPan[2].list,
-        listSuoHa: data.liangMianPan[3].list
+        listSuoHa: data.liangMianPan[3].list,
+        confirmbet:true
       }
     },
     methods: {

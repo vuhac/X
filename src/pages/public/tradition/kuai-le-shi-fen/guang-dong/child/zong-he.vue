@@ -35,6 +35,7 @@
           :totalCount="totalCount"
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
@@ -60,7 +61,8 @@
     data () {
       return {
         allData: data.zongHe,
-        listSum: data.zongHe[0].list
+        listSum: data.zongHe[0].list,
+        confirmbet:true
       }
     },
     methods: {

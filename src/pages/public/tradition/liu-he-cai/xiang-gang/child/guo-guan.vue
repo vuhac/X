@@ -33,6 +33,7 @@
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
           :rangleType="rangleType"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
       </div>
@@ -73,6 +74,7 @@
     data () {
       return {
         modal: false,
+        confirmbet:true,
         rangleType: '六合彩',
         oddsList: '',
         seletPriceStaue: '',

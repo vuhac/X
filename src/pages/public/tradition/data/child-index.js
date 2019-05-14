@@ -365,7 +365,7 @@ const mixin = {
         this.dNotify('您未登录', 'error')
         return false
       }
-
+      this.confirmbet=false
       let res = await this.$http.post(`${this.$HOST_NAME}/lottery/submit`, {
         lotteryId: this.$route.meta.id,
         issue: this.childNeedMess.issue,
@@ -373,11 +373,13 @@ const mixin = {
         rebate: this.rebate
       })
       if (res && res.code == 200) {
+        this.confirmbet=true
         this.dNotify(res.data, 'success')
         this.resetAll()
         this.$store.commit("lottery/fetchBetRecord", Date.now());
         UserService.vpGetBasicInfo.call(this)
       } else {
+        this.confirmbet=true
         this.dNotify(res.message, 'error')
       }
     },

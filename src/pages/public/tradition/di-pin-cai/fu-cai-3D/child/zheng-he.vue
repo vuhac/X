@@ -89,7 +89,7 @@
       <div class="lottery-content-all-right">
         <vp-fast-and-submit v-on:range-say="rangeChange" v-on:submit-Input-say="fastInput"
                             v-on:submit-resetAll="resetAll" v-on:submit-review="review" :totalCount="totalCount"
-                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney">
+                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :confirmbet="confirmbet">
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
       </div>
@@ -114,7 +114,8 @@
         listTop: data.zhengHe[0].list,
         listCenter: data.zhengHe[1].list,
         listBot: data.zhengHe[2].list,
-        listAdd: data.zhengHe[3].list
+        listAdd: data.zhengHe[3].list,
+        confirmbet:true
       }
     },
     methods: {

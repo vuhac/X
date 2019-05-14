@@ -71,6 +71,9 @@
       },
       rangleType: {
         type: String
+      },
+      confirmbet:{
+        type:Boolean
       }
     },
     data () {
@@ -138,7 +141,11 @@
       },
       //提交查看提交详情
       review () {
-        this.$emit('submit-review')
+        if(this.confirmbet){
+          this.$emit('submit-review')
+        }else{
+  
+        }
       },
       //减少倍数
       decrease () {
@@ -158,7 +165,11 @@
         this.dropStaue = false
       }
     },
-    watch: {},
+    watch: {
+       confirmbet:function(newval,oldval){
+           console.log(newval)
+       }
+    },
     created: function () {
     },
     mounted () {

@@ -32,7 +32,7 @@
       <div class="lottery-content-all-right">
         <vp-fast-and-submit v-on:range-say="rangeChange" v-on:submit-Input-say="fastInput"
                             v-on:submit-resetAll="resetAll" v-on:submit-review="review" :totalCount="totalCount"
-                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType">
+                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType" :confirmbet="confirmbet">
         </vp-fast-and-submit>
       </div>
     </form>
@@ -71,6 +71,7 @@
     data () {
       return {
         modal: false,
+        confirmbet:true,
         rangleType: '六合彩',
         oddsList: '',
         animaList: '',
@@ -522,7 +523,7 @@
           // this.$store.commit("alert/showLogin", true);
           return false
         }
-
+        this.confirmbet=false
         let res = await this.$http.post(`${this.$HOST_NAME}/lottery/submit`, {
           lotteryId: this.$route.meta.id,
           issue: this.childNeedMess.issue,
@@ -530,10 +531,12 @@
           rebate: this.rebate
         })
         if (res && res.code == 200) {
+          this.confirmbet=true
           this.dNotify(res.data, 'success')
           this.resetAll()
           UserService.vpGetBasicInfo.call(this)
         } else {
+           this.confirmbet=true
           this.dNotify(res.message, 'error')
         }
       }

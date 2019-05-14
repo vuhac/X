@@ -43,6 +43,7 @@
                             v-on:submit-review="review"
                             :totalCount="totalCount"
                             :selectFast="selectFast"
+                            :confirmbet="confirmbet"
                             :saveSelectMoney="saveSelectMoney"
                             :rangleType="rangleType"></vp-fast-and-submit>
       </div>
@@ -69,7 +70,8 @@
       return {
         rangleType: '六合彩',
         allData: data.banBo,
-        listTop: data.banBo[0].list
+        listTop: data.banBo[0].list,
+        confirmbet:true
       }
     },
     methods: {

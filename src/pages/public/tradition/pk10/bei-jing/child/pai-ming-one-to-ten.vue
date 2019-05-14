@@ -48,6 +48,7 @@
           :totalCount="totalCount"
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
@@ -75,6 +76,7 @@
         allData: data.rankOneToTen,
         listOneToFive: data.rankOneToTen[0].list,
         listSixToTen: data.rankOneToTen[1].list,
+        confirmbet:true,
       }
     },
     methods: {

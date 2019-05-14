@@ -55,6 +55,7 @@
           :totalCount="totalCount"
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
@@ -81,6 +82,7 @@
         allData: data.liangMianPan,
         listTop: data.liangMianPan[0].list,
         listBot: data.liangMianPan[1].list,
+        confirmbet:true
       }
     },
     methods: {

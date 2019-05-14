@@ -49,6 +49,7 @@
           :totalCount="totalCount"
           :selectFast="selectFast"
           :saveSelectMoney="saveSelectMoney"
+          :confirmbet="confirmbet"
         >
         </vp-fast-and-submit>
         <vp-ranking ref="vpRanking"></vp-ranking>
@@ -75,6 +76,7 @@
         allData: data.zhengHe,
         listTop: data.zhengHe[0].list,
         listBot: data.zhengHe[1].list,
+        confirmbet:true
       }
     },
     methods: {

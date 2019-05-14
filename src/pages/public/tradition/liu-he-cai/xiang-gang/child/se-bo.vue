@@ -25,7 +25,7 @@
       <div class="lottery-content-all-right">
         <vp-fast-and-submit v-on:range-say="rangeChange" v-on:submit-Input-say="fastInput"
                             v-on:submit-resetAll="resetAll" v-on:submit-review="review" :totalCount="totalCount"
-                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType">
+                            :selectFast="selectFast" :saveSelectMoney="saveSelectMoney" :rangleType="rangleType" :confirmbet="confirmbet">
         </vp-fast-and-submit>
       </div>
     </form>
@@ -47,7 +47,8 @@
       return {
         rangleType: '六合彩',
         allData: data.banBo,
-        listTop: data.banBo[0].list
+        listTop: data.banBo[0].list,
+        confirmbet:true
       }
     },
     methods: {
