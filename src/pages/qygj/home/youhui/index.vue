@@ -2080,7 +2080,8 @@
     padding: 30px 20px 20px;
     // background: url(/static/qygj/img/youhui/bg.jpg) no-repeat, #f3f2ef;
     // background-size:100%;
-    width: 1920px;
+    max-width: 1920px;
+    min-width:1200px;
     margin: 0 auto;
     background: #e3eaf1;
 
