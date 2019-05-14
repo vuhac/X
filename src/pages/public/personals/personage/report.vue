@@ -58,16 +58,33 @@
 							<span></span>
 						</li>
 					</ul> -->
+
+
 					<ul class="contentUl cl">
 						<li v-for="(item,index) in agencyData" :key="index">
-							<div class="liItem">
+							<div class="liItem" :class="{noBorder:item.noBorder}">
 								<!-- <p class="itemName" :class="{betClass:item.name=='投注金额'}" ><span @click="tapTest(item)">{{item.name}}</span></p> -->
 								<p class="itemName"  ><span >{{item.name}}</span></p>
 								<p class="itemVal">{{item.value}}</p>
 
+
 							</div>
 						</li>
 					</ul>
+
+
+					<!-- <ul class="contentUl cl">
+						<li v-for="(item,index) in testData" :key="index">
+							<div class="liItem" :class="{noBorder:item.noBorder}">
+								<p class="itemName"  ><span >{{item.name}}</span></p>
+								<p class="itemVal">{{item.value}}</p>
+
+
+							</div>
+						</li>
+					</ul> -->
+
+
 				</div>
 
 				<div v-show="showTouzhu" class="betMoney">
@@ -111,7 +128,64 @@
 	export default {
 		data() {
 			return {
-
+				testData:[
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					{
+						value:"a",
+						name:"1"
+					},
+					// {
+					// 	value:"a",
+					// 	name:"1"
+					// },
+					// {
+					// 	value:"a",
+					// 	name:"1"
+					// },
+				],
 				showTouzhu:false,
 				agencyData:[
 					// {name: "团队净盈利", value: "0.00"},
@@ -199,8 +273,35 @@
 					console.log(res);
 						if (res.code == 200) {
 							if (res.data != '') {
-								if(res.data.length==7){
-									res.data.push({value:"",name:""})
+								// if(res.data.length==7){
+								// 	res.data.push({value:"",name:""})
+								// }
+								let leftNum=0;
+								// 测试实数
+								// let testData=this.testData;
+								// if(testData.length<4&&testData.length>0){
+								// 	leftNum=4-testData.length
+								// }else if(testData.length>4&&testData.length<8){
+								// 	leftNum=8-testData.length
+								// }else if(testData.length>8&&testData.length<12){
+								// 	leftNum=12-testData.length
+								// }else if(testData.length>12&&testData.length<16){
+								// 	leftNum=16-testData.length
+								// }	
+								// for(var i=0;i<leftNum;i++){
+								// 	this.testData.push({value:"",name:"",noBorder:true})
+								// }
+								if(res.data.length<4&&res.data.length>0){
+									leftNum=4-res.data.length
+								}else if(res.data.length>4&&res.data.length<8){
+									leftNum=8-res.data.length
+								}else if(res.data.length>8&&res.data.length<12){
+									leftNum=12-res.data.length
+								}else if(res.data.length>12&&res.data.length<16){
+									leftNum=16-res.data.length
+								}	
+								for(var i=0;i<leftNum;i++){
+									res.data.push({value:"",name:"",noBorder:true})
 								}
 								this.agencyData = res.data
 								this.contShow = true
@@ -305,7 +406,9 @@
 		display:block;
 		clear:both;
 	}
-
+	.noBorder{
+		border-right:0!important;
+	}
 
 
 	.agency_index {
