@@ -101,7 +101,7 @@
 
 						<ul class="contentUl_member cl">
 							<li v-for="(item,index) in agencyData" :key="index">
-								<div class="liItem">
+								<div class="liItem" :class="{noBorder:item.noBorder}">
 									<!-- <p class="itemName" :class="{betClass:item.name=='投注金额'}" ><span @click="tapTest1(item)">{{item.name}}</span></p> -->
 									<p class="itemName"  ><span>{{item.name}}</span></p>
 									<p class="itemVal">{{item.value}}</p>
@@ -153,7 +153,7 @@
 
 						<ul class="contentUl cl">
 							<li v-for="(item,index) in agencyData" :key="index">
-								<div class="liItem">
+								<div class="liItem" :class="{noBorder:item.noBorder}">
 									<!-- <p class="itemName" :class="{betClass:item.name=='投注金额'}" ><span @click="tapTest(item)">{{item.name}}</span></p> -->
 									<p class="itemName"  ><span >{{item.name}}</span></p>
 									<p class="itemVal">{{item.value}}</p>
@@ -460,7 +460,19 @@
 							// if(res.data.length==7){
 							// 	res.data.push({value:"",name:""})
 							// }
-
+							let leftNum=0;
+							if(res.data.length<4&&res.data.length>0){
+								leftNum=4-res.data.length
+							}else if(res.data.length>4&&res.data.length<8){
+								leftNum=8-res.data.length
+							}else if(res.data.length>8&&res.data.length<12){
+								leftNum=12-res.data.length
+							}else if(res.data.length>12&&res.data.length<16){
+								leftNum=16-res.data.length
+							}	
+							for(var i=0;i<leftNum;i++){
+								res.data.push({value:"",name:"",noBorder:true})
+							}
 							this.allUsers=res.data.data;
 							this.data = this.allUsers
 							this.total = res.data.total
@@ -565,9 +577,24 @@
 					.then(res => {
 						if (res.code == 200) {
 							if (res.data != '') {
-								if(res.data.length==7){
-									res.data.push({value:"",name:""})
+								// if(res.data.length==7){
+								// 	res.data.push({value:"",name:""})
+								// }
+								let leftNum=0;								
+								if(res.data.length<4&&res.data.length>0){
+									leftNum=4-res.data.length
+								}else if(res.data.length>4&&res.data.length<8){
+									leftNum=8-res.data.length
+								}else if(res.data.length>8&&res.data.length<12){
+									leftNum=12-res.data.length
+								}else if(res.data.length>12&&res.data.length<16){
+									leftNum=16-res.data.length
+								}	
+								for(var i=0;i<leftNum;i++){
+									res.data.push({value:"",name:"",noBorder:true})
 								}
+
+
 								this.agencyData = res.data
 								this.contShow = true
 							} else {
@@ -655,6 +682,11 @@
 </script>
 
 <style lang="less"> 
+
+	.noBorder{
+		border-right:0!important;
+	}
+
 .mySearch{
 	/deep/.ivu-input-icon{
 		font-size:20px;
