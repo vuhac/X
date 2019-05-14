@@ -353,7 +353,12 @@
         if (!this.canClick) {
           return false
         }
-        
+        console.log(this.amount)
+        if(!this.amount){
+          this.$error("请选择金额")
+          return false
+        }
+        // debugger
         if(minMoney==0&&maxMoney==0){
 
         }else{
@@ -498,6 +503,7 @@
               this.passKey.depositAccountName = ''
               this.$success(res.message)
             } else {
+              console.log(res.message)
               this.$error(res.message)
             }
           })
