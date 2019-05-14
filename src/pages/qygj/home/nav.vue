@@ -2,7 +2,7 @@
     <div class="top_nav" >
     <!-- <div class="top_nav" :class="{night:colorbool}"> -->
       <div class="nav-content">
-        <div class="logo fl" style="margin-left: -35px;">
+        <div class="logo fl" style="margin-left: -50px;">
           <a href="javascript:void(0)" @click="goHome">
             <img src="/static/qygj/img/qy-logo1.png">
           </a>
@@ -326,7 +326,12 @@
         }
         else if(item.platform == "VR_LOTTERY"){
             if (!localStorage.token || !localStorage.userinfo) {
-              alert('未登录')
+               this.$store.commit('alert/newshowtip',{
+               bool:true,
+               title:'未登录',
+               model:'',
+               leftspan:true
+            })
               return false
             }else{
               this.getItemId({id:'30',platform:'vr_lottery',name:'VR彩票',})
@@ -438,7 +443,7 @@
           position: relative;
           height: 100px;
           line-height: 85px;
-          margin: 0 10px;
+          margin: 0 15px;
           font-size: 16px;
           color: #54689a;
           // padding: 0 5px;

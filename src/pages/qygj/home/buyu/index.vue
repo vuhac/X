@@ -223,17 +223,7 @@
       }
     },
     methods: {
-      //   trustLogin (item) {
-      //   if (!localStorage.token) {
-      //     alert('未登录')
-      //     return false
-      //   }
-      //   let routeData = this.$router.resolve({
-      //     path: '/loading',
-      //     query: {platform: item.platform, gameName: item.gameName, name: item.name, login: true}
-      //   })
-      //   window.open(routeData.href, 'newwindow', 'height=750,width=1285, top=0, left=' + (window.screen.availWidth - 1295) / 2 + '')
-      // },
+      
     },
     created: function () {
     },

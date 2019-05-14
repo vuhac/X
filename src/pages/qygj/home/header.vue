@@ -37,7 +37,7 @@
         <div class="login-before" v-if="!userinfo" :class="{headerColor:headerColorBool}">
           <!-- 帐号 -->
           <div class="username">
-            <input type="text" placeholder="帐号" id="userName" v-model="passKey.userName" @blur="getCode" @focus="focusname">
+            <input type="text" placeholder="帐号" id="userName" v-model="passKey.userName" @blur="getCode" @focus="focusname" maxlength="10">
           </div>
           <!-- 密码 -->
           <div class="password">
@@ -162,37 +162,6 @@
       }
     },
     methods: {
-      // getCode () {
-      //   if (!this.passKey.userName) {
-      //     // alert("请输入6位帐号");
-      //     return false
-      //   }
-
-      //   if (this.passKey.userName.length < 5) {
-      //     // alert("请输入6位帐号");
-      //     this.passKey.userName = ''
-      //     var oInput = document.getElementById('userName')
-      //     oInput.focus()
-      //     return false
-      //   }
-
-      //   this.$http
-      //     .post(`${this.$HOST_NAME}/captcha`, {
-      //        userName: this.passKey.userName
-      //     })
-      //     .then(res => {
-      //       if (res.code == 200) {
-      //         this.codeImg = res.data.captcha_image_text
-      //         this.passKey.captcha_key = res.data.captcha_key
-      //       } else {
-      //         this.$store.commit('alert/showTipModel', {
-      //           bool: true,
-      //           title: res.message,
-      //           model: 'warn'
-      //         })
-      //       }
-      //     })
-      // },
       goHeader(typeNum){
         if(typeNum==0){
           // 线路检测
@@ -200,7 +169,12 @@
           return false;
         }else if(typeNum==1){
           // 借呗
-          alert("暂未开放，敬请期待")
+           this.$store.commit('alert/newshowtip',{
+               bool:true,
+               title:'暂未开放，敬请期待',
+               model:'',
+               leftspan:true
+            })
         }else if(typeNum==2){
           // 金管家
           window.open("/static/qygj/html/active/sxjgj/index.html","_blank");
@@ -262,8 +236,13 @@
       if (this.code_show == 0) {
         return;
       }
-      if (this.passKey.userName.length < 5) {
-           alert("请输入6位帐号");
+      if (this.passKey.userName.length < 6) {
+           this.$store.commit('alert/newshowtip',{
+               bool:true,
+               title:'请输入6-10位数字或字母组成的帐号',
+               model:'',
+               leftspan:false
+            })
            this.passKey.userName = ''
            var oInput = document.getElementById('userName')
            oInput.focus()
@@ -286,7 +265,7 @@
         if (!this.validateAccountLogin(this.passKey.userName)) {
           this.$store.commit('alert/newshowtip',{
                bool:true,
-               title:'请输入5-20位数字或字母组成的帐号',
+               title:'请输入6-10位数字或字母组成的帐号',
                model:'',
                leftspan:false
             })
@@ -296,7 +275,7 @@
         if (!this.validateAccountLogin(this.passKey.password)) {
           this.$store.commit('alert/newshowtip',{
                bool:true,
-               title:'请输入5-20位数字或字母组成的密码',
+               title:'请输入6-20位数字或字母组成的密码',
                model:'',
                 leftspan:false
             })
@@ -549,6 +528,9 @@
         top:50%;
         transform:translateY(-50%)
       }
+    }
+    li:nth-child(1){
+        margin-left:0; 
     }
   }
 
