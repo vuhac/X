@@ -5,7 +5,7 @@
 const path = require('path')
 let buildDir = process.env.NODE_ENV === 'production'
   ? 'all' // 正式环境
-  : 't111' // 测试环境
+  : 'klk' // 测试环境
 
 buildDir = buildDir.toLowerCase()
 
