@@ -89,7 +89,10 @@ axios.interceptors.response.use((response) => {
 
   return response.data
 }, (err) => {
-  return err
+  if(err.request.responseURL.indexOf('/member/balance') <= -1){
+    store.commit('alert/showTipModel', {bool: true, title: '网络异常,请稍后重试。', model: 'warn'})
+  }
+  return err;
 })
 //注册
 // Vue.prototype.$http = axios //post
