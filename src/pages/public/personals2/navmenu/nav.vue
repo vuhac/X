@@ -26,7 +26,6 @@
         discountsList: ['实时返水'],
         messageList: ['系统信息', '投诉建议', '已发信息'],
         personageList: [
-          "个人报表",
           '我的资料',
           '投注记录',
           '存款记录',

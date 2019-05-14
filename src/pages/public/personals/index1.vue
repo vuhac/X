@@ -60,24 +60,22 @@
   import recharge0 from './recharge/Internetbank'
   import recharge1 from './recharge/onLine'
   // 个人
-  import personage0 from './personage/report'
-  
-  import personage1 from './personage/my-info'
+  import personage0 from './personage/my-info'
 
   // 投注记录
-  import personage2 from './personage/betrecord.vue'
+  import personage1 from './personage/betrecord.vue'
   // 存款记录
-  import personage3 from './personage/deposit'
+  import personage2 from './personage/deposit'
   // 取款记录
-  import personage4 from './personage/withdrawal'
+  import personage3 from './personage/withdrawal'
   // 优惠记录
-  import personage5 from './personage/discounts'
+  import personage4 from './personage/discounts'
   // 代理记录
-  import personage6 from './personage/agency'
+  import personage5 from './personage/agency'
   // 其它记录
-  import personage7 from './personage/other'
+  import personage6 from './personage/other'
   // import personage5 from "./personage/transaction";
-  import personage8 from './personage/safety'
+  import personage7 from './personage/safety'
 
   // 取款
   import withdraw0 from './withdraw/request'
@@ -86,8 +84,7 @@
 
   // 代理
   import agency0 from './agency/agency-income'
-  // import agency1 from './agency/agency_Report_agency'
-  import agency1 from './agency/report'
+  import agency1 from './agency/agency_Report_agency'
   import agency2 from './agency/agency_repot'
   import agency6 from './agency/agency_people'
 
@@ -183,7 +180,7 @@
       personage5,
       personage6,
       personage7,
-      personage8,
+
       withdraw0,
       withdraw1,
       withdraw2,
@@ -273,7 +270,6 @@
     .peronsals-content {
       width: 1270px;
       height: 650px;
-      // height:720px;
       // margin: 2.5em auto;
       // position: absolute;
       overflow: hidden;
