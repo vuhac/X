@@ -17,7 +17,7 @@ const task = []
 sites.forEach(site => {
   const execs = [
     `cd ${path.resolve(__dirname, 'lottery-sites', site)}`,
-    'git pull'
+    'git pull --force'
   ]
 
   task.push(execs)
