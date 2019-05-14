@@ -96,7 +96,11 @@ export default {
             gameItem.lotteryName.includes("PK10") ||
             gameItem.lotteryName.includes("幸运飞艇")||
             gameItem.lotteryName.includes("香港赛马")||
-            gameItem.lotteryName.includes("澳门赛马")
+            gameItem.lotteryName.includes("澳门赛马")||
+            gameItem.lotteryName.includes("北京赛车")||
+            gameItem.lotteryName.includes("快速赛车")||
+            gameItem.lotteryName.includes("3分赛车")||
+            gameItem.lotteryName.includes("5分赛车")
           ) {
             pkList.push(gameItem);
           }
