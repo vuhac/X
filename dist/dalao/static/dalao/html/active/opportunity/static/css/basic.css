@@ -1,0 +1,53 @@
+body {margin: 0px;font-size: 12px;color:#000;font-family:"微软雅黑","";}
+a img { border:0; }	a:active, a:focus {outline:none;}
+ul,li {margin:0;padding:0;}	p{ line-height:18px; margin:10px}
+.menu {list-style:none;margin-right:30px;float:right;}
+.menu_li {cursor:pointer;width:101px;height:46px;float:left;background:url(images/menu_bg.png);line-height:46px;color:#fff;font-size:14px;text-align:center}
+.menu_li a {color: #fff;}
+.menu_li a:hover {color: #ffff00;}
+.step{list-style:none;width:965px;margin:0 auto;}
+.step_li{float:left;width:305px;height:185px;}
+body,td,th {font-family: 微软雅黑;}
+a:link {	text-decoration: none;}
+a:visited {	text-decoration: none;}
+a:hover {	text-decoration: none;}
+a:active {	text-decoration: none;}
+.scrollcontainer{width:990px;height:185px;overflow:hidden;position:relative;margin:0 auto;}
+.scrollcontainer ul{list-style:none;position:absolute;left:0px;top:0px;}
+.scrollcontainer li{float:left;width:330px;height:185px;text-align:center;}
+a.abtn{	position:absolute;	display:block;	margin-top:-150px;	overflow:hidden;}
+a.aleft{	left:100px;}a.aright{	right:100px;}
+.myprizelist {width: 310px;	padding: 3px;background: #FFF;border-collapse:collapse;border-spacing:0;}
+.myprizelist td {height: 32px;border: 1px #BDBDBD solid;text-align: center}
+.myprizelist .list_head {background-color: #D8D8D8}
+.actGotop{position:fixed;_position:absolute;bottom:180px;right:50px;width:47px;height:44px;display:none;}
+.actGotop a,.actGotop a:link{width:47px;height:78px;display:inline-block;background:url(./images/top.png) no-repeat;_background:url(./images/top.gif) no-repeat;outline:none;}
+.actGotop a:hover{background:url(./images/top.gif) no-repeat;outline:none;}
+.lottery_winners_list{ position: relative; height: 155px; overflow: hidden;}
+.lottery_winners_list ul{ position: absolute; width: auto; padding: 0;list-style:none;}
+.lottery_winners_list li{height:18px;}
+.lottery_winners_list li.first{ padding-left: 50px;}
+#lottery_winners_data td{color:#fff;}
+.clearfix:after { content: "\20"; display: block; height: 0; clear: both; visibility:hidden; }
+.clearfix {display: inline-block; } /* Hides from IE-mac\*/
+* html .clearfix { height: 1%; }
+.clearfix {display: block; } /* End hide from IE-mac*//*CSS quotes style pagination*/
+DIV.quotes {PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 3px; PADDING-TOP: 3px; TEXT-ALIGN: center}
+DIV.quotes A {BORDER-RIGHT: #ddd 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ddd 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #ddd 1px solid; COLOR: #aaa; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #ddd 1px solid; TEXT-DECORATION: none}
+DIV.quotes A:hover {BORDER-RIGHT: #a0a0a0 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #a0a0a0 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #a0a0a0 1px solid; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #a0a0a0 1px solid}
+DIV.quotes A:active {BORDER-RIGHT: #a0a0a0 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #a0a0a0 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #a0a0a0 1px solid; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #a0a0a0 1px solid}
+DIV.quotes SPAN.current {BORDER-RIGHT: #e0e0e0 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #e0e0e0 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; BORDER-LEFT: #e0e0e0 1px solid; COLOR: #aaa; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #e0e0e0 1px solid; BACKGROUND-COLOR: #f0f0f0}
+DIV.quotes SPAN.disabled {BORDER-RIGHT: #f3f3f3 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #f3f3f3 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #f3f3f3 1px solid; COLOR: #ccc; MARGIN-RIGHT: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: #f3f3f3 1px solid}
+.ly-plate{  position:relative;  width:445px;  height:445px;  margin: 10px auto;}
+.rotate-bg{  width: 440px;  height: 440px;  position: absolute;  background-repeat:no-repeat;  top: 0;  left: 0;  margin-top: 0%;}
+.ly-plate div.lottery-star{  width:163px;  height:209px;  position:absolute;  top:115px;  left:130px;  outline:none}
+
+.ly-plate div.lottery-star {cursor: pointer;  position: absolute;  top:0;  left:0;  *left:-107px}
+#lotteryBtn{cursor: pointer;  position: absolute;  top:115px; left:125px;}
+#msg_win{position:absolute;right:0px;display:none;overflow:hidden;z-index:99;border:1px solid #c00;background:#F9EFFC;width:240px;font-size:12px;margin:0px;}
+#msg_win .icos{position:absolute;top:2px;*top:0px;right:2px;z-index:9;}
+.icos a{float:left;color:#FFFFFF;margin:1px;text-align:center;font-weight:bold;width:14px;height:22px;line-height:22px;padding:1px;text-decoration:none;font-family:webdings;}
+.icos a:hover{color:#FFCC00;}
+#msg_title{background:#342506;border-bottom:1px solid #710B97;border-top:1px solid #FFF;border-left:1px solid #FFF;color:#FFFFFF;height:25px;line-height:25px;text-indent:5px;font-weight:bold;}
+#msg_content{margin:5px;margin-right:0;width:230px;height:126px;overflow:hidden;}
+#Notice *{color:#000;}

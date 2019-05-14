@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>500万彩票APP下载</title>
+    <link rel="stylesheet" href="css/normalize-v8.0.0.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css?v=092701">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="/static/public/js/qrcode.js"></script>
+    <script src="js/layer-v3.1.1/layer.js"></script>
+
+    <script>
+        $(function () {
+            $('.ios_help').on('click',function () {
+                layer.open({
+                    type: 2,
+                    title:'ios安装教程',
+                    content: 'images/hq-help.jpg?v=092701',
+                    area: ['757px', '800px'],
+                    maxmin: true
+                });
+            });
+           /* let arr = ['http://9826444.com/','http://www.9826444.com','http://www.9826444.com','http://www.9826444.com','http://www.9826444.com','http://www.9826444.com'];
+            let count = Math.floor(Math.random()*6);
+            $('.pc').attr('href',arr[count]);*/
+        });
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent)
+            || /Android/i.test(navigator.userAgent)
+            || /BlackBerry/i.test(navigator.userAgent)
+            || /IEMobile/i.test(navigator.userAgent)
+            || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+            window.location.href = "./mobile/index.html";//要跳转的目录
+        }
+    </script>
+</head>
+<body>
+
+<div class="container clearfix2">
+    <div class="fl container-left">
+        <div class="logo"></div>
+        <div class="down"></div>
+        <div class="play"></div>
+        <a href="/" class="pc"></a>
+        <div class="download clearfix2">
+            <div class="ar fl"></div>
+            <div class="down_ios fl"></div>
+            <div class="down_android fl"></div>
+            <div class="ios_help fl"></div>
+        </div>
+    </div>
+    <div class="fl container-right">
+        <div class="phone phone1 mobile_auto"></div>
+        <div class="phone phone2 mobile_auto"></div>
+        <div class="phone phone3 mobile_auto"></div>
+    </div>
+</div>
+<div class="pop" style="display: block;">
+    <div class="pop_cover"></div>
+</div>
+</body>
+<script>
+    function createDownloadQRCode(arr) {
+          let  el=arr.el1;
+          let  url=arr.url1;
+          let  size=arr.size1;
+          console.log(arr,el,url,size)
+          if (Object.prototype.toString.call(el) === '[object HTMLDivElement]') {
+
+          } else if (Object.prototype.toString.call(document.getElementById[el]) === '[object HTMLDivElement]') {
+          el = document.getElementById[el]
+          } else {
+          el = document.querySelector(el)
+          if (Object.prototype.toString.call(el) !== '[object HTMLDivElement]') {
+              console.log(Object.prototype.toString.call(el))
+              console.error('el参数不是DOM对象,也不是可查找的选择器,创建二维码失败!')
+              console.warn('el:', el)
+              return false
+          }
+          }
+
+          // console.log(el.style.height)
+
+          return new QRCode(el, {
+          text: url,
+          width: size,
+          height: size,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+          })
+    }
+    let el1=document.getElementsByClassName("ar")[0];
+    let  json={
+        el1: el1,
+        url1: window.location.origin + '/m#/download',
+        size1: 195
+    }
+    setTimeout(function(){
+        createDownloadQRCode(json)
+    })
+</script>
+</html>

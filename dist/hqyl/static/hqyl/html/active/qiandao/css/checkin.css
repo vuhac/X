@@ -1,0 +1,271 @@
+*{
+	padding:0;
+	margin:0;
+	text-decoration: none;
+	list-style: none;
+}
+
+body{
+	height: 100%;
+	background: #e3eaf0;
+}
+.box{
+	background: url(../img/radio.png) 15% -31% no-repeat,
+	url("../img/radios.png") 123% 117% no-repeat;
+}
+.box .meser{
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+	position: fixed;
+	z-index:7;
+}
+.box .meser .err{
+	width:400px;
+	margin:400px auto;
+	background: linear-gradient(to right, #a062f0 , #e14bb4);
+	color: #fff;
+	text-align:center;
+	line-height: 60px;
+	border-radius: 5px;
+	font-size: 18px;
+	position: relative
+}
+.box .meser .err .close{
+	width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}
+.close img{
+	width: 100%;
+}
+.box .meser .err .close:hover{
+	cursor: pointer;
+}
+.box .mes{
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+	position: fixed;
+	z-index:7;
+}
+.box .mes .almes{
+	width:500px;
+	margin:150px auto;
+	position:relative;
+}
+.box .mes .almes img{
+	width:100%;
+}
+.box .mes .almes .content{
+	position:absolute;
+	width:245px;
+	height:125px;
+	left:116px;
+	bottom:116px;
+	overflow: hidden;
+}
+.box .mes .almes .content h1{
+	text-align: center;
+	font-size:24px;
+}
+.box .mes .almes .content p{
+	text-align: center;
+	font-size:14px;
+	color:#bec3c2;
+}
+.box .mes .almes .content .butt{
+	background: linear-gradient(to right, #a460ec , #df4cb6);
+	text-align: center; 
+	width:100%;
+	height:55px;
+	color:#fff;
+	font-size:20px;
+	line-height: 55px;
+	margin-top:19px;
+	border-radius:0 0 10px 10px;
+}
+.box .mes .almes .content .butt:hover{
+	cursor: pointer;
+}
+.top{
+	width:100%;
+}
+.top img{
+	width:100%;
+}
+.date{
+	width:1044px;
+	height:106px;
+	margin: auto;
+	margin-top:80px;
+}
+.date ul{
+	width:100%;
+	height:100%;
+	display: flex;
+}
+.date ul li{
+	width:70px;
+	height:100%;
+	position: relative;
+}
+.date ul li .day{
+	width:70px;
+	height:70px;
+	background:#f54242;
+	border-radius: 50%;
+	display: none;
+	position: relative;
+	overflow: hidden;
+}
+.date ul li .day img{
+	display: block;
+	margin:1rem auto;
+}
+.date ul li .day .mark{
+	width: 45px;
+    height: 45px;
+    background: #f54242;
+    position: absolute;
+    left: 71px;
+    top: 12px;
+}
+.date ul li .noday{
+	width:70px;
+	height:70px;
+	background:#bbc2c7;
+	border-radius: 50%;
+	display: block;
+	text-align: center;
+	line-height: 70px;
+	font-size:12px;
+	color:#e6eaee;
+}
+.date ul li .day_text{
+	width:100%;
+	text-align: center;
+	color:#bbc2c7;
+	margin-top:6px;
+}
+.date ul .bor{
+	width:92px;
+	height:3px;
+	background: #bbc2c7;
+	margin-top:35px;
+}
+.date ul li .text{
+	width: 85px;
+	text-align: center;
+	position: absolute;
+	top:-46px; left:-10px;
+	color:#f54242;
+	display: relative;
+	background: #fff;
+	border-radius: 5px;
+    box-sizing: border-box;
+    padding:4px;
+    font-size: 12px;
+	display: none;
+}
+.date ul li .text .trangle{
+	display: block;
+	width:14px;
+	height:12px;
+	position: absolute;
+	left: 31px; bottom:-6px;
+	background: url(../img/triangle.png) 0 0 no-repeat;
+	background-size: 100% 100%;
+}
+.but{
+	width:342px;
+	height:75px;
+	text-align: center;
+	line-height: 75px;
+	color:#fff;
+	margin:15px auto;
+	border-radius: 12px;
+	background: linear-gradient(to right, #a460ec , #df4cb6); 
+	box-shadow:  5px 5px 10px #e1c5e4;
+}
+.but:hover{
+	cursor: pointer;
+}
+.rule{
+	width:1140px;
+	padding:20px 40px;
+	background: #fff;
+	border-radius: 10px;
+	margin:20px auto;
+	box-shadow:  5px 5px 10px #ccc;
+}
+.rule p{
+	font-size:18px;
+	color:#000;
+	font-weight: bolder;
+	margin-top:10px;
+}
+.rule p:nth-of-type(4){
+	color:#b7b7b7;
+	font-size:16px;
+}
+.rule table{
+	width:1140px;
+	height:130px;
+	margin-top:20px;
+	border-collapse :collapse; 
+}
+.rule table thead tr th{
+	padding:20px 0px;
+}
+.rule table tbody tr td{
+	padding:20px 0px;
+	text-align: center;
+}
+.ifmation{
+	width:1140px;
+	padding:20px 40px;
+	background: #fff;
+	border-radius: 10px;
+	margin:auto;
+	margin-top:50px;
+	margin-bottom: 70px;
+	box-shadow:  5px 5px 10px #ccc;
+}
+.ifmation p{
+	font-size:16px;
+	color:#000;
+	font-weight: bolder;
+	margin-top:15px;
+}
+/*.ifmation p:last-of-type{
+	display: block;
+	width:700px;
+	font-size:22px;
+	text-align: center;
+	margin:20px auto;
+	background: linear-gradient(to right, red, blue);
+	-webkit-background-clip: text;
+    color: transparent;
+}*/
+.bottom{
+	width:100%;
+	height:73px;
+	text-align: center;
+	line-height: 73px;
+	background: linear-gradient(to right, #a879af, #7c91c9,#87c096);
+	color:#fff;
+	font-size:14px;
+}
+#svg1,#svg2,#svg3,#svg4,#svg5,#svg6,#svg7{
+	stroke-width: 7;
+	stroke-miterlimit: 10;
+	fill: none;
+	stroke: #4de1ff;
+	position: absolute;
+	left:-5px; top:-5px;
+}

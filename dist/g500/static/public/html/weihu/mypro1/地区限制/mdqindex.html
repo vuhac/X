@@ -1,0 +1,97 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>龙8国际娱乐</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/pc1.png')
+        }
+        .main {
+            position: relative;
+            width: 80%;
+            height: 50%;
+            margin: 0 auto;
+            text-align: center;
+            transform: translateY(30%);
+        }
+        .main-bg-img {
+            position: absolute;
+            top: 35%;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+        .main-box-wrapper {
+            width: 200px;
+            height: 200px;
+        }
+        .main-animate {
+            position: relative;
+            overflow: hidden;    
+        }
+        .main-animate-img {
+            max-width: 100%;
+            opacity: .6;
+            animation: scroll 3s ease infinite; 
+        }
+        .main-txt-loading {
+            color: #878686;
+        }
+        .main-txt-title {
+            color: #40adda;
+        }
+        .main-txt {
+            color: #595959;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(-100%)
+            }
+            to {
+                transform: translateX(178%)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="main">
+            <div class="main-animate">
+                <img class="main-animate-img" src="./images/pc3.png" alt="">
+                <img class="main-bg-img" src="./images/pc2.png" alt="">
+            </div>
+            <p class="main-txt-loading">正在为你努力加载......</p>
+            <p class="main-txt">正在带你进入<span class="main-txt-title">龙8国际娱乐</span></p>
+        </div>
+    </div>
+    <script>
+        let xhr;
+        if (window.XMLHttpRequest) { 
+            xhr = new XMLHttpRequest(); 
+        } else { 
+        // IE6及其以下版本 
+            xhr = new ActiveXObjcet('Microsoft.XMLHTTP'); 
+        };
+        xhr.onreadystatechange = function() { 
+        // readyState属性表示请求/响应过程的当前活动阶段，4为完成，已经接收到全部响应数据
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                document.querySelector('.main-txt-title').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.open('get', './name.txt');
+        xhr.send(null);  
+        setTimeout(() => window.location.href = "./mdqxzindex.html", 1000)
+    </script>
+</body>
+</html>

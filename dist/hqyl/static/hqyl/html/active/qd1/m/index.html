@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>环球娱乐签到活动</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/liMarquee.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script src="./js/jquery.liMarquee.js"></script>
+    <script src="./js/rem.js"></script>
+
+</head>
+<body>
+<nav class="nav">
+    <ul class="menu fr" style="padding-right: 20px;">
+        <li class="menu_li"><a href="/" target="_blank" style="color:#ffffff;">网站首页</a></li>
+    </ul>
+</nav>
+<header class="header">
+    <img src="./images/header.png" alt="">
+</header>
+<div class="contain">
+    <div class="main animated move">
+        <img src="./images/b1.png" alt="" class="img1">
+    </div>
+</div>
+<div class="foot">
+    <section>
+        <p class="title">活动对象</p>
+        <p class="con">环球娱乐全体会员</p>
+    </section>
+    <section>
+        <p class="title">活动时间</p>
+        <p class="con">以官网展示为准</p>
+    </section>
+    <section>
+        <p class="title">活动内容</p>
+        <p class="con">全新签到系统、方便、快捷、彩金不断</p>
+    </section>
+    <section>
+        <p class="title">活动条件</p>
+        <table>
+            <tbody>
+            <tr class="firstRow">
+                <td>签到天数</td>
+                <td>天存款金额</td>
+                <td>天有效投注</td>
+                <td>签到金额</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>100+</td>
+                <td>X5倍</td>
+                <td>8元</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>1000+</td>
+                <td>X5倍</td>
+                <td>18元</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>10000+</td>
+                <td>X4倍</td>
+                <td>118元</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>100000+</td>
+                <td>X3倍</td>
+                <td>388元</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>500000+</td>
+                <td>X2倍</td>
+                <td>1888元</td>
+            </tr>
+            <tr>
+                <td>1+</td>
+                <td>1000000+</td>
+                <td>X1倍</td>
+                <td>3888元</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <p class="title">活动规则</p>
+        <p class="con">1.	此优惠香港六合彩下注金额不计算在有效投注额内。</p>
+        <p class="con">2. 签到活动每日12点30准时开始，每个会员每日只能签到一次。</p>
+        <p class="con">3.  签到金额系统自动派发，无需申请，秒签秒到帐。</p>
+        <p class="con">4.	签到彩金按照前一天总存款，总有效投注额计算。</p>
+        <p class="con">5.	签到统计时间为美东时间：当天中午12点至次日中午12点为一天。</p>
+        <p class="con">6.	无论是个人或团体，如有任何威胁、滥用或使用不诚实方式套利的行为，经“环球娱乐”风险部门审核，公司有权取消该会员所有优惠。</p>
+        <p class="con">7.	此活动可与其它优惠同时进行享用。环球娱乐保留所有权利在任何时候都可以更改、停止、取消该优惠活动。</p>
+    </section>
+</div>
+
+<!--登录后点击弹出这里-->
+<div class="tan" style="display: none;">
+    <div class="gx1 animated zoomIn">
+        <span class="close"></span>
+        <span class="txt1"></span>
+    </div>
+</div>
+<script>
+    $('.img1').on('click', function (e) {
+        $(this).attr('src','./images/11111.gif');
+        $('.tan').show();
+        function getQueryString(name) {
+            var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+            if (result == null || result.length < 1) {
+                return "";
+            }
+            return result[1];
+        }
+        var data1,data2;
+        data1 = {
+            uid:getQueryString("uid"),
+            token:getQueryString("token")
+        };
+        if (data1.uid !== '' || data1.token !=='' ) {
+            data2 = data1;
+        } else
+        {
+            data2 = null;
+        }
+        $.ajax({
+            url:'../../ajax_qd.php',
+            data:data2,
+            type:'get',
+            dataType:'json',
+            success:function (data) {
+                $('.gx1 .txt1').html(data.msg);
+            }
+        })
+    });
+    $('.close').on('click', function () {
+        $('.img1').attr('src','./images/22222.gif');
+        $(this).parent().parent().hide();
+    });
+</script>
+</body>
+</html>
