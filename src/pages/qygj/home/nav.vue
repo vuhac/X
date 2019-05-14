@@ -443,7 +443,7 @@
           position: relative;
           height: 100px;
           line-height: 85px;
-          margin: 0 15px;
+          margin: 0 12.2px;
           font-size: 16px;
           color: #54689a;
           // padding: 0 5px;
