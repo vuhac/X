@@ -23,8 +23,8 @@
     <div class="personals-wrap-style">
       <personals></personals>
     </div>
+    <vp-register></vp-register>
  <comModal></comModal>
-
 
   </div>
 </template>
@@ -32,6 +32,7 @@
   let timer
   import vpLotHeader from '@/pages/public/tradition/components/header/header'
   import vpHomeHeader from './home/header'
+  import vpRegister from './admin/register'
   import vpAside from './home/Aside'
   import vpHomeFooter from './home/footer'
   import personals from '../public/personals'
@@ -42,8 +43,9 @@ import comModal from  "../public/home/common.vue"
     data () {
       return {
 
+
         lotHeadDatas: {
-          logoUrl: '/static/jhcp/img/home/204-61.png',
+          logoUrl: '/static/jhcp/img/gclogo.png',
           downLoadurl: '/static/jhcp/html/download/index.html'
         }
       }
@@ -60,22 +62,21 @@ import comModal from  "../public/home/common.vue"
           document.querySelector('body').style.minHeight = 'auto'
         }
       },
-      async getBalance () {
+      getBalance () {
         if (localStorage.token) {
-          //$getS(`member/balance`).then(res => {
-          let res = await this.$getS(`member/balance`, {})
+          this.$getS(`/member/balance`).then(res => {
             if (res.code == 200) {
               let userinfo = JSON.parse(localStorage.userinfo)
               userinfo.balance = res.data.member
               userinfo.agent=res.data.agency
               this.$store.commit('mainState/reloadUserinfo', userinfo)
             }
+          })
         } else {
           clearInterval(timer) 
         }
       },
 
-    
     },
     created () {
       this.$http.get(`${this.$HOST_NAME}/games/list`).then(res => {
@@ -100,6 +101,7 @@ import comModal from  "../public/home/common.vue"
       vpAside,
       vpHomeFooter,
       personals,
+      vpRegister,
       comModal
     },
     store

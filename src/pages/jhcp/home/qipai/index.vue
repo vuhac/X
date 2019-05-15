@@ -1,25 +1,16 @@
 <template>
   <div class="fishing_main">
-
-
     <div class="wrapper">
-
       <ul>
         <li v-for="(item,i) in buyuData" :key="i">
           <div class="cover_hover"></div>
           <div class="cover" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
-          <!-- <div class="title">
-             <h2>{{item.name}}</h2>
-             <h3>{{item.content}}</h3>
-          </div> -->
           <p><a class="btn" @click="trustLogin({platform:item.platform,gameName:item.gameName,name:item.name,id:item.id})">开始游戏</a>
           </p>
           <p><a class="btn_ag" @click="trustLogin({platform:item.platform,gameName:item.gameName,name:item.name,id:item.id})"
                 href="javascript:void(0)">游戏说明</a>
           </p>
         </li>
-
-
       </ul>
     </div>
   </div>
@@ -35,13 +26,6 @@
     data () {
       return {
         buyuData: [
-          // {
-          //   name: "mw棋牌",
-          //   img: require("/static/jhcp/img/chess1.png"),
-          //   content: "花式捕鱼 爽快捞金",
-          //   platform: "MW_GAME",
-          //   gameName: "0"
-          // },
           {
             name: '开元棋牌',
             img: '/static/jhcp/img/chess2.png',
@@ -50,7 +34,7 @@
             gameName: '0',
             id:243
           },
-          {
+            {
             name: 'VG棋牌',
             img: '/static/jhcp/img/chess3.png',
             content: '经典玩法 玩法丰富',
@@ -58,12 +42,6 @@
             gameName: '1000',
             id:10091
           }
-          // {name:'欢乐捕鱼',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'FG_GAME',gameName:'fish_hl'}
-          // {name:'龙王捕鱼2',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'JDB_GAME',gameName:'7002'},
-          // {name:'千炮捕鱼',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'MW_GAME',gameName:'1051'},
-          // {name:'皇金渔场',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'CQ9_GAME',gameName:'AB3'},
-          // {name:'深海大赢家',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'PT_GAME',gameName:'cashfi'},
-          // {name:'财神捕鱼',img:require('/static/jhcp/img/bg_fish_01.png'),content:'经典玩法 玩法丰富',platform:'JDB_GAME',gameName:'7003'}
         ]
       }
     },
@@ -89,7 +67,6 @@
         li {
           width: 314px;
           // padding: 10px;
-          //margin: 0 220px;
           // background: #000;
           height: auto;
           float: right;
@@ -110,8 +87,6 @@
           .cover {
             width: 100%;
             height: 390px;
-            // background: url("/static/jhcp/img/bg_fish_01.png") center
-            //   center no-repeat;
             background-position: center center;
             background-repeat: no-repeat;
             transition: all 0.3s ease-in;
@@ -178,7 +153,7 @@
           }
         }
         li:nth-child(1){
-           margin-left: 20px;
+          margin-left:20px;
         }
       }
     }

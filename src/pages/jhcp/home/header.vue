@@ -3,76 +3,125 @@
     <!-- 头部顶部 -->
     <div class="header-top">
       <div class="container-top">
-        <div class="snavAll">
-          Hi，欢迎来到<span style="color:rgb(220, 59, 64);text-indent:2px;">9号彩票!</span>
+        <div class="linkbar clearfix">
+          <div class="snavAll">
+            <!-- Hi，欢迎来到9号彩票，祝您中大奖! -->
+          </div>
+          <div class="link fr">
+            <ul class="clearfix">
+              <!-- <li><a href="javascript:;" @click="tryPlay">免费试玩</a></li> -->
+              <!-- <li><a href="#/home/contactUs?p_id=1" class="red">备用网址</a></li> -->
+              <li><a href="https://66376.com/" class="red" target="_blank">备用网址</a></li>
+
+              <li><a :class="className1" href="/static/jhcp/html/download/index.html" target="_blank">APP下载</a></li>
+              <li><a  href="javascript:alert('加入收藏失败，请使用Ctrl+D进行添加');">加入收藏</a></li>
+              <li><a  href="https://kjzb.com/dns" target="_bank">防劫持教程</a></li>
+              <li><a  :class="className2" href="javascript:void(0)" @click="openKefu">在线客服</a></li>
+            </ul>
+          </div>
         </div>
 
+        <div class="loginBox">
+          <!-- logo -->
+          <h3 class="logo">
+            <router-link to="/home" class="router-link-exact-active curr" style="display:inline-block;margin-left:-25px;">
+              <img src="/static/jhcp/img/nhome/logo.png" style="margin-top:-7px;">
+            </router-link>
+            <img src="/static/jhcp/img/nhome/biaoti.png" alt="" class="textPic" style="margin-right:-33px;">
+            <!--<img src="/static/jhcp/img/slogan.png">-->
+          </h3>
+          <div class="user">
+            <!-- 登录前 -->
+            <ul class="snavInfo" v-if="!userinfo">
+              <li>
+                <input type="text" placeholder="请输入帐号" maxlength="20" autocomplete="off" class="userInput" v-model="passKey.userName"
+                       @blur="getCode">
+              </li>
+              <li>
+                <input type="password" placeholder="请输入密码" maxlength="20" autocomplete="off" class="userInput"
+                       v-model="passKey.password" v-on:keyup.enter="login">
+              </li>
+              <li v-if="code_show">
+                <input type="passwoed" maxlength="4" placeholder="验证码" autocomplete="off" class="userInput" v-model="passKey.code" v-on:keyup.enter="login">
+                <span class="codeyzm" :style="{backgroundImage: 'url(' + codeImg + ')'}" @click="getCode"></span>
+              </li>
+              <li>
+                <button @click="login">登陆</button>
+                <!-- <button @click="$router.push({name:'register'})">注册</button> -->
+                <button @click="register">注册</button>
+              </li>
 
-        <!-- 登录前 -->
-        <ul class="snavInfo" v-if="!userinfo">
-          <li @click="login" >亲，请登录</li>
-          <li class="fenge">|</li>
-          <li @click="register" >注册帐号</li>
-          <a class="ServiceBtn"  @click="openKefu"></a>
-        </ul>
+            </ul>
 
-        <ul class="snavInfo" v-else>
-          <li>欢迎您，{{userinfo.userName}}</li>
-          <li class="mycount" style="position:relative;">
-             <a href="javascript:void(0)" class="mycountA">我的帐号 <span class="mycountRot"><i class="iconfont h5-icon-next mycountJt"></i></span></a>
-             <div class="upSj"></div>
-             <ul class="mycountLi">
-               <li @click="goUserCen('personage',1)">投注记录</li>
-               <li @click="goUserCen('personage',3)">交易记录</li>
-               <li @click="goUserCen('personage',0)">个人信息</li>
-               <li @click="goUserCen('personage',7)">安全中心</li>
-               <li v-if="userinfo.is_agency" @click="goUserCen('agency',1)">代理中心</li>
-             </ul>
-          </li>
-
-          <li>余额：
-            <span v-if="balanceShow">{{userinfo&&userinfo.balance}}<span @click="balanceShow=false"
-                                                                         style="padding-left: 8px;">隐藏</span></span>
-            <span v-else>已隐藏<span @click="balanceShow=true" style="padding-left: 8px;">显示</span></span>
-          </li>
-          <li @click="goUserCen('recharge',0)">充值</li>
-          <li @click="goUserCen('withdraw',0)">提现</li>
-          <li @click="logout">退出</li>
-          <a class="ServiceBtn" @click="openKefu"></a>
-        </ul>
+            <ul class="snavInfo" v-else>
+              <li>欢迎您，{{userinfo.userName}}</li>
+              <li>余额：
+                <span v-if="balanceShow">{{userinfo&&userinfo.balance}}<span @click="balanceShow=false"
+                                                                             style="padding-left: 8px;">隐藏</span></span>
+                <span v-else>已隐藏<span @click="balanceShow=true" style="padding-left: 8px;">显示</span></span>
+              </li>
+              <li @click="goUserCen('recharge',0)"><span>充值</span></li>
+              <li @click="goUserCen('withdraw',0)"><span>提现</span></li>
+              <li @click="logout"><span>退出</span></li>
+              <li v-if="!userinfo">
+                <a class="ServiceBtn" @click="openKefu"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
       </div>
     </div>
 
     <!-- 导航栏 -->
     <div class="nav">
-      <div class="container">
-
-        <!-- logo -->
-        <h3>
-          <router-link to="/home" class="router-link-exact-active curr">
-            <img src="/static/jhcp/img/home/logo1.png">
-          </router-link>
-        </h3>
-
-        <!-- 导航 -->
-        <ul>
-          <li v-for="(item,i) in navDate" :key="i" :class="{'navActive':decodeURI($route.fullPath)==item.link}">
-            <a @click="goLink(item.link)" :class="item.class">{{item.name}}</a>
+      <div class="container clearfix">
+        <div class="hotGame fl">
+          <div class="txt" style="text-align: center;">热门游戏</div>
+          <div class="subNav">
+            <div class="officialGames fl">
+              <h3>购彩大厅<span>传</span></h3>
+              <div class="subWrapper clearfix">
+                <div class="sub fl" v-for="(game,i) in hotGames.officialGames" :key="i">
+                  <a  target="_blank" @click="goto(game.router)">
+                    <div style="text-align: center;"><img :src="game.id|capitalize" alt=""></div>
+                    <div class="cpname">{{game.name}}</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="creditGames fr" v-show="false">
+              <h3>用玩法<span>信</span></h3>
+              <div class="subWrapper clearfix">
+                <div class="sub fl" v-for="(game,i) in hotGames.creditGames" :key="i">
+                  <img :src="game.icon" alt="">
+                  <span>{{game.name}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="clearfix fr">
+          <div class="shadow" ref="shadow"></div>
+          <li v-for="(nav,i) in navList" :key="i" :ref="'item'+i" class="item" :class="{navActive:navActive ==i}"
+              @click.stop="toggleNav(i,nav.router)">
+            <i class="hot" v-if="nav.hot"></i>
+            <div class="icon">
+              <i :class="nav.icon"></i>
+            </div>
+            <div class="name">{{nav.name}}</div>
+            <div class="sub-nav clearfix" v-if="nav.child">
+              <div class="sub" v-for="(subitem,i) in nav.child" :key="i"
+                   @click.stop="goThirdParty(subitem,nav.platform)">
+                <span>{{subitem.name}}</span>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="my-modal" v-show="ifLogin">
-      <div class="bg"></div>
-      <div class="my-modal-content">
-        <div class="my-register">注册帐号</div>
-        <vp-admin-index></vp-admin-index>
-      </div>
-    </div>
   </div>
-
 </template>
 
 <script>
@@ -80,45 +129,308 @@
   import store from '@/vuex/store'
   import data from '../../public/games/public.js'
   import {postS,getS} from '@/service/public/service.js'
-  import vpAdminIndex from '../../public/tradition/components/admin'
-
 
   export default {
     mixins: [data],
     data () {
       return {
-        // navCurr: 0
-        navDate:[
-          {name:'首页',class:'home',link:'/home'},
-          {name:'购彩大厅',class:'lottery',link:'/home/caipiao/88'},
-          {name:'棋牌游戏',class:'ky_chess',link:'/home/qipai'},
-          {name:'活动中心',class:'acttvtty',link:'/home/youhui'},
-          {name:'手机购彩',class:'mobile',link:'/home/moblie'},
-          {name:'帮助指南',class:'help',link:'/home/help'}
+        navActive:0,
+        passKey: {},
+        codeImg: '/static/jhcp/img/code.jpg',
+        balanceShow: false,
+        code_show: parseInt(localStorage.is_code_show),
+        hotGames: {
+          officialGames: []
+        },
+        navList: [{
+          name: '首页',
+          icon: 'fa-home',
+          router: '/home'
+        },
+          {
+            name: '购彩大厅',
+            icon: 'Home',
+            router: '/plays/hall'
+          },
+          {
+          name:'香港六合彩',
+          icon:'',
+          router:'/plays/tradition/1'
+        },
+          {
+            name: '棋牌游戏',
+            icon: 'Home',
+            router: '/home/qipai',
+            // hot: true
+          },
+          {
+            name: '真人视讯',
+            icon: 'Home',
+            platform: 'live_casino',
+            router: '/home/live',
+            // child: [{
+            //   name: 'AG视讯',
+            //   id: '14'
+            // },
+            //   {
+            //     name: 'BBIN视讯',
+            //     id: '15'
+            //   },
+            //   {
+            //     name: 'BG视讯',
+            //     id: '44'
+            //   },
+            //   {
+            //     name: 'DG视讯',
+            //     id: '33'
+            //   },
+            //   {
+            //     name: 'DS视讯',
+            //     id: '16'
+            //   },
+            //   {
+            //     name: 'LEBO视讯',
+            //     id: '35'
+            //   },
+            //   {
+            //     name: 'OG视讯',
+            //     id: '39'
+            //   },
+            //   {
+            //     name: 'eBET视讯',
+            //     id: '34'
+            //   },
+            //   {
+            //     name: 'LMG视讯',
+            //     id: '36'
+            //   },
+            //   {
+            //     name: '欧博视讯',
+            //     id: '37'
+            //   },
+            //   {
+            //     name: 'SA视讯',
+            //     id: '40'
+            //   }
+            // ]
+          },
+          {
+            name: '体育投注',
+            icon: 'Sports',
+            platform: 'sport',
+            router: '/home/sport',
+            // child: [{
+            //   name: '皇冠体育',
+            //   id: 21
+            // },
+            //   {
+            //     name: '沙巴体育',
+            //     id: 20
+            //   },
+            //   {
+            //     name: 'BBIN体育',
+            //     id: 41
+            //   },
+            //   {
+            //     name: 'AG体育',
+            //     id: 22
+            //   }
+            // ]
+          },
+          {
+            name: '电子游艺',
+            icon: 'Home',
+            router: '/home/games?id=10022'
+          },
+          {
+            name: '捕鱼达人',
+            icon: 'Home',
+            router: '/home/buyu',
+            // hot: true
+          },
+          {
+            name: '优惠活动',
+            router: '/home/youhui',
+            // hot: true
+          },
+          {
+            name: '在线客服',
+            icon: 'Home',
+            router: '/kefu'
+          }
         ],
-        allList: [],
-        balanceShow: false
+        className1: "orange",
+        className2: "yellow",
+        className3: "red"
       }
     },
-    mounted () {
-      this.allList = JSON.parse(localStorage.getItem("lottery"));
-    },
     methods: {
+      toggleNav (i, link) {
+        let oNavActive=i;
+        // 改变导航栏
+        console.log(link)
+        if(link =='/home/youhui'){
+          oNavActive=this.navActive;
+          // alert('暂未开放')
+          // return false
+          this.$router.push(link)
+        }
+        if (link == '/kefu') {
+          let service = JSON.parse(localStorage.config).service;
+          if (service) {
+            let ser = service.find(item => item.status === 'on')
+            if (ser) {
+              window.open(ser.url);
+            }
+          }
+          oNavActive=this.navActive;
+          return false
+        }
+        if (link == '/plays/hall') {
+          oNavActive=this.navActive;
+          window.open('#/plays/hall')
+          return false
+          //  if(localStorage.token){
+          //   if(localStorage.Public_User == "test"){
+          //     this.dNotify("彩票暂无试玩功能，请立即注册帐号","error")
+          //   }else{
+          //     window.open(item.router)
+          //     return false
+          //   }
+          // }else{
+          //   this.dNotify("请先登录",'error')
+          // }
+        }
+        if (link == '/plays/tradition/1') {
+          oNavActive=this.navActive;
+          window.open('#/plays/tradition/1')
+          return false
+        }
+        if (link == '/qipai') {
+          oNavActive=i;
+          this.trustLogin(item)
+          return false
+        }
+        this.navActive=oNavActive;
+        this.$store.commit('cjw/setNav', oNavActive)
+        this.$router.push(link)
+        
+
+      },
+      register () {
+        this.$store.commit('cjw/showRegister', true)
+      },
+      goThirdParty (item) {
+        // 第三方跳转
+        if (item.id) {
+          this.getItemId(item)
+        }
+      },
+      openKefu () {
+        let service = JSON.parse(localStorage.config).service;
+        if (service) {
+          let ser = service.find(item => item.status === 'on')
+          if (ser) {
+            window.open(ser.url);
+          }
+        }
+      },
+      goto(item){
+           if(localStorage.token){
+                 if(localStorage.Public_User=='test' ){
+                   this.dNotify("彩票暂无试玩,立即注册", "error")
+               }else{
+                 var newitem=item.split("#")[1]
+                    this.$router.push({
+                    path: newitem
+                   })
+               }
+            }else{
+                 this.dNotify("请先登录", 'error')
+            }
+
+      },
+        is_code_show(){
+         getS(`is-show-captcha`).then(res => {
+        if (res && res.code === 200) {
+          this.code_show = res.data;
+        }
+      });
+       },
+      login () {
+        if (!this.validateAccountLogin(this.passKey.userName)) {
+          alert('请输入5-20位数字或字母组成的帐号')
+          return false
+        }
+        if (!this.validateAccountLogin(this.passKey.password)) {
+          alert('请输入5-20位数字或字母组成的密码')
+          return false
+        }
+        if(this.code_show){
+           if (!this.passKey.code) {
+          alert('验证码请务必输入')
+          return false
+        }
+        }
+        if(this.code_show){
+            if (this.passKey.code.length < 4 || this.passKey.code.length > 4) {
+          alert('请输入4位验证码')
+          return false
+        }
+        }
+
+            this.passKey.device = 'pc';
+           postS(`login`, this.passKey).then(res => {
+          if (res.code == 200) {
+            this.$http
+              .post(`${this.$HOST_NAME}/member/refundInfo`)
+              .then(res => {
+                let refund = res.data.platform
+                localStorage.setItem('refund', JSON.stringify(refund))
+              })
+              .then(res => {
+                this.$router.push({
+                  name: 'clause'
+                })
+              })
+            UserService.setCache(res, 'v1', 'login')
+          } else {
+            alert(res.message)
+            this.is_code_show()
+          }
+        })
+      },
+      getCode () {
+         if (this.code_show == 0) {
+           return;
+        }
+        if (!this.passKey.userName) {
+          alert('请输入帐号！')
+          return false
+        }
+
+           getS(`captcha`, {
+            userName: this.passKey.userName
+          })
+          .then(res => {
+            if (res.code == 200) {
+              this.codeImg = res.data.captcha_image_text
+              this.passKey.captcha_key = res.data.captcha_key
+            } else {
+              this.$store.commit('alert/showTipModel', {
+                bool: true,
+                title: res.message,
+                model: 'warn'
+              })
+            }
+          })
+      },
       logout () {
         UserService.logout.call(this)
       },
-      login(){
-        this.$router.push('/home/login');
-      },
-      //注册
-      register () {
-         this.$store.commit('alert/showLogin', true)
-         this.$store.commit('alert/setChooseModel', '注册帐号')
-         this.$store.commit('alert/setLoginTitle', '注册帐号')
-      },
       getBalance () {
         this.refreshS = true
-        getS(`/member/balance`).then(res => {
+        getS(`member/balance`).then(res => {
           if (res.code == 200) {
             let userinfo = JSON.parse(localStorage.userinfo)
             userinfo.balance = res.data.member
@@ -131,9 +443,29 @@
           }
         })
       },
+        changeclass() {
+        this.className1 == "orange"
+          ? (this.className1 = "red")
+          : (this.className1 = "orange");
+        this.className2 == "yellow"
+          ? (this.className2 = "orange")
+          : (this.className2 = "yellow");
+        this.className3 == "red"
+          ? (this.className3 = "yellow")
+          : (this.className3 = "red");
+        this.className4 == "white"
+          ? (this.className4 = "cyan")
+          : (this.className4 = "white");
+        this.className5 == "red"
+          ? (this.className5 = "white")
+          : (this.className5 = "red");
+        this.className6 == "white"
+          ? (this.className6 = "green")
+          : (this.className6 = "white");
+      },
       goUserCen (name, num) {
         if (!localStorage.userinfo) {
-          this.$router.push('/home/login');
+          this.$router.push('/home/login')
           return false
         }
         //name的类型有 ：  recharge （充值）  personage （个人资料）
@@ -149,7 +481,7 @@
         })
       },
       async tryPlay () {
-        let res = await this.$http.post('/api/test/registerTest', {})
+        let res = await this.$http.get("/frontend/test/demo", { headers: { 'Accept': 'application/x.tg.v2+json' },params:{}});
         if (res && res.code == 200) {
           UserService.setCache(res, 'test')
 
@@ -169,8 +501,6 @@
                 refund[i].list[j].name = alias[refund[i].list[j].key]
               })
             })
-
-            // this.refundData = refund;
             localStorage.setItem('refund', JSON.stringify(refund))
           })
           setTimeout(() => {
@@ -178,86 +508,75 @@
           }, 500)
         }
       },
+      getLeftMenu () {
+        this.$http.post(`${this.$HOST_NAME}/gameSortNew`, {
+          id:30001,
+          device:"pc"
+        }).then(res => {
+          if (res && res.code == 200) {
+            res.data[30001].forEach(item => {
+              item.id ? item.router = `#/plays/tradition/${item.id}` : ''
+            })
+            this.hotGames.officialGames = res.data[30001].splice(0,24)
+          }
+        })
+        // this.$http.post(`${this.$HOST_NAME}/games/lottery/leftMenu`, {
+        //   prePage: 34
+        // }).then(res => {
+        //   if (res && res.code == 200) {
+        //     res.data.forEach(item => {
+        //       item.id ? item.router = `#/plays/tradition/${item.id}` : ''
+        //     })
+        //     this.hotGames.officialGames = res.data
+        //   }
+        // })
+        // console.log(this.hotGames.officialGames)
+      }
 
-      thirdParty (item) {
-        console.log(item)
-        if (item.type) {
-          if (item.name == '传统彩票') {
-            window.open('#/plays/hall')
-          } else {
-            this.getItemId(item)
-          }
-        } else {
-          this.getItemId(item)
-        }
-      },
-      goLink(link){
-        if(link=="/home" || link=="/home/caipiao/88"|| link=="/home/qipai"){
-          this.$router.push({
-            path: link
-          })
-        }else{
-          this.$router.push({
-            path: link
-          })
-        }
-      },
-      openKefu () {
-        let service = JSON.parse(localStorage.config).service;
-        if (service) {
-          let ser = service.find(item => item.status === 'on')
-          console.log(ser);
-          if (ser) {
-            window.open(ser.url);
-          }
-        }
-      },
+    },
+    created () {
+      //  this.$nextTick(()=>{
+      this.getLeftMenu()
+      this.is_code_show()
+      //  })
+      this.navActive=this.$store.state.cjw.navActive;
+
+    },
+    mounted(){
+      let timer = setInterval(this.changeclass, 450);
     },
     computed: {
-      navCurr () {
-        return this.$store.state.wbw.curr;
-      },
-       // 个人信息刷新
       userinfo () {
-        return this.$store.state.mainState.userinfo;
+        return this.$store.state.mainState.userinfo
       },
-      // 是否提示信息
-      tipDatas () {
-        return this.$store.state.alert.tipModel;
-      },
-      // 是否显示登录
-      ifLogin () {
-        return this.$store.state.alert.login.ifLogin;
-      },
-      // 登录注册标题切换
-      modelTitle () {
-        return this.$store.state.alert.login.modelTitle;
-      }
+      // navActive: {
+      //   get(){
+      //     return this.$store.state.hsyl.navActive
+      //   },
+      //   // set(newValue,oldValue){
+      //   //   this.$store.commit('jlcp/setNav', newValue)
+      //   //   // console.log(newValue,oldValue)
+      //   // }
+      // }
     },
-
-    created () {
-      if(localStorage.zhuce){
-        if(!localStorage.token){
-          this.register();
-          localStorage.removeItem("zhuce");
+    store,
+    filters: {
+      capitalize: function (value) {
+        try {
+          return `/static/public/image/lottery/nico/png/${value}.png`
+        } catch (err) {
+          return `/static/public/image/lottery/nico/png/448.png`
         }
-      }
 
+      }
     },
-    components: {
-      vpAdminIndex
-    },
-    store
   }
 </script>
 
 <style lang="less" scoped>
-
-
-
-
   .w-header {
-    .clear:before, .clear:after {
+    .clear:before,
+    .clear:after {
       content: "";
       display: table;
     }
@@ -284,107 +603,6 @@
       }
     }
 
-    .menu-child1 {
-      position: absolute;
-      top: 27px;
-      width: 1000px;
-      *min-height: 564px;
-      margin: 0 5px;
-      padding: 1px;
-      z-index: 9999;
-      border-radius: 0 0 8px 8px;
-      zoom: 1;
-      left: 62px;
-      margin-top: 27px;
-      padding-top: 5px;
-      padding-bottom: 0;
-
-      .triangles_back {
-        width: 26px;
-        height: 19px;
-        position: absolute;
-        background: url(/static/jhcp/img/triangles_back.png) no-repeat;
-        left: 125px;
-        top: -8px;
-      }
-
-      .gamelist-1 {
-        padding-bottom: 5px;
-        border-radius: 5px;
-
-        .gamelist_r {
-          margin-left: 0;
-        }
-      }
-
-      .items {
-        min-height: 62px;
-        padding: 11px 0;
-        cursor: pointer;
-
-        .item {
-          float: left;
-          line-height: 28px;
-          margin: 5px 0;
-          height: 104px;
-          width: 92px;
-          position: relative;
-          text-align: center;
-
-          .item-ico {
-            display: block;
-            width: 80px;
-            height: 76px;
-            padding: 0 0 18px 0;
-            margin: 0 auto;
-            color: #222;
-            text-align: center;
-            background: url(/static/jhcp/img/game-icon-bg.png) no-repeat;
-            overflow: hidden;
-
-            img {
-              width: 80%;
-              height: 100%;
-              margin: 10%;
-            }
-          }
-
-          &:hover {
-            background: url(/static/jhcp/img/Wbg_03.png) repeat;
-          }
-
-          &:first-child {
-            margin-left: 14px;
-          }
-        }
-
-        p {
-          font-size: 12px;
-          display: block;
-          color: #fff;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          height: 28px;
-          line-height: 28px;
-          overflow: hidden;
-        }
-      }
-
-      .official_play {
-        display: inline-block;
-        zoom: 1;
-        font-size: 0;
-        float: left;
-
-        .high_wrap {
-          height: auto;
-          float: none;
-        }
-      }
-    }
-
     .container-top {
       width: 1000px;
       margin: 0 auto;
@@ -396,258 +614,322 @@
     }
 
     .header-top {
-      height: 30px;
-      line-height: 30px;
       background: #f8f8f8;
       border-bottom: 1px solid #e8e8e8;
 
-      .snavAll {
-        float: left;
-        padding-right: 20px;
-        color: #666;
-        font-size: 12px;
-      }
+      .linkbar {
+        height: 32px;
+        line-height: 32px;
 
-      .snavInfo {
-        float: right;
-        height: 30px;
-
-        li {
-          display: inline-block;
-          padding: 0 10px;
-          cursor: pointer;
+        .snavAll {
+          float: left;
+          padding-right: 20px;
           color: #666;
           font-size: 12px;
         }
-        .mycount{
-          position:relative;
-          .mycountRot{
-            display:none;
-            // transform:rotate(90deg);
-            .mycountJt{
-              font-size:12px;
+
+        .link {
+          li {
+            float: left;
+            padding: 0 8px;
+
+            a {
+              color: #666;
+              font-size: 12px;
+            }
+
+            a.red {
+              color: #e4393c;
+              // font-weight: bold;
+            }
+            a.yellow{
+              color:yellow
+            }
+            a.orange{
+              color:orange
+            }
+
+            a:hover {
+              color: #e4393c;
             }
           }
-          .mycountA{
-            color:#666;
-            &:hover{
-              color:red;
-              text-decoration: underline;
-            }
-          }
-          .upSj{
-              display:none;
-              margin-top:-8px;
-              margin-left:13px;
-              width:0;
-              height:0;
-              border-width:0 10px 10px;
-              border-style:solid;
-              padding:0;
-              border-color:transparent transparent #fff;
-            }
-          ul{
-            display:none;
-            position:absolute;
-            z-index: 10;
-            left:-16px;
-            top:30px;
-            width:100px;
-            text-align: center;
-            background-color: #fff;
-            color:#fff;
-            overflow:hidden;
-            li{
-              width:100%;
-              line-height: 30px;
-              height:30px;
-              color:#666;
-              &:hover{
-                color:red;
-              }
-            }
-
-          }
-          &:hover{
-            ul{
-              display:block;
-            }
-            .upSj{
-              display:block;
-            }
-            .mycountRot{
-              display:inline-block;
-              transform:rotate(90deg);
-            }
-          }
-        }
-
-
-
-        .fenge {
-          color: #ccc;
-          font-size: 13px;
-          padding: 0;
-        }
-
-        .ServiceBtn {
-          background: url("/static/jhcp/img/home/service.gif");
-          color: #e4393c !important;
-          display: block;
-          background-position: 0 -26px;
-          height: 25px;
-          float: right;
-          width: 87px;
-          position: relative;
-          margin-left: 25px;
-          margin-top: 2px;
         }
       }
+
+      .loginBox {
+        height: 85px;
+        line-height: 85px;
+
+        h3.logo {
+          float: left;
+          padding: 0;
+          margin: 0;
+          margin-right: 10px;
+          line-height: 0;
+          position:relative;
+          width:365px;
+          .textPic{
+            position:absolute;
+            top:0;
+            right:0px;
+          }
+          img {
+            // margin-top: 15px;
+            // margin-top:-7px;
+          }
+
+          .curr {
+            img {
+              // width: 200px;
+              width:250px;
+            }
+          }
+        }
+
+        .user {
+          float: right;
+          line-height: inherit;
+          // width:600px;
+          .snavInfo {
+            text-align:right;
+            li {
+              display: inline-block;
+              cursor: pointer;
+              color: #666;
+              font-size: 16px;
+              position: relative;
+              margin:0 5px;
+            }
+
+            input {
+              width: 120px;
+              font-size: 14px;
+              height: 36px;
+              text-indent: 6px;
+              outline: none;
+              border: 1px solid #939cf6;
+              margin-right: 10px;
+              vertical-align: middle;
+            }
+
+            .codeyzm {
+              width: 60px;
+              height: 30px;
+              padding-left: 10px;
+              position: absolute;
+              top: 28px;
+              left: 58px;
+              background-size: 100% 100%;
+            }
+
+            span:hover {
+              color: #e4393c;
+            }
+
+            button {
+              height: 36px;
+              line-height: 36px;
+              border: none;
+              width: 80px;
+              color: #fff;
+              background: #e4393c;
+              border-radius: 6px;
+              cursor: pointer;
+              font-size: 12px;
+              box-shadow: 2px 2px 2px #b6b6b6;
+              outline: none;
+              transition: all 0.5s linear;
+            }
+
+            button:hover {
+              background: #101482;
+              font-size: 13px;
+            }
+
+            .fenge {
+              color: #ccc;
+              font-size: 13px;
+              padding: 0;
+            }
+
+            .ServiceBtn {
+              background: url("/static/jhcp/img/home/service.gif");
+              color: #e4393c !important;
+              display: block;
+              background-position: 0 -26px;
+              height: 25px;
+              width: 87px;
+              margin-left: 25px;
+            }
+          }
+        }
+      }
+
     }
 
     .nav {
+      @h: 62px;
+      @w: 77.7px;
       background: #e4393c;
-      height: 72px;
+      height: @h;
+      line-height: @h;
 
-      h3 {
-        float: left;
-        padding: 0;
-        margin: 0;
-        margin-right: 10px;
-        line-height: 0;
+      .hotGame {
+        width: 200px;
+        position: relative;
+        text-align: right;
+        color: #fff;
+        cursor: pointer;
 
-        img {
-          width:200px;
-          height:50px;
-          margin-top: 12px;
-          background-size: 100%;
+        &:hover .subNav {
+          display: block;
+        }
+
+        .subNav {
+          z-index: 6;
+          position: absolute;
+          left: 0;
+          top: 62px;
+          padding: 10px;
+          background-color: #fff;
+          display: none;
+          // box-shadow: h-shadow v-shadow blur spread color inset;
+          // h-shadow 必需。水平阴影的位置。允许负值。
+          // v-shadow 必需。垂直阴影的位置。允许负值。
+          // blur 可选。模糊距离。
+          // spread 可选。阴影的尺寸。
+          // color 可选。阴影的颜色。请参阅 CSS 颜色值。
+          // inset 	可选。将外部阴影 (outset) 改为内部阴影。
+          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+
+          .officialGames {
+          }
+
+          h3 {
+            border-bottom: 1px solid #e4393c;
+            color: #666;
+            text-align: center;
+
+            span {
+              padding: 2px 4px;
+              background: #f83b3b;
+              color: #ffffff;
+              margin-left: 10px;
+              font-weight: 500;
+              border-radius: 4px;
+            }
+          }
+
+          .subWrapper {
+            width: 540px;
+
+            .sub {
+              width: 98px;
+              height: 100px;
+              margin: 5px;
+              padding-top: 5px;
+              line-height: 18px;
+              cursor: pointer;
+
+              &:hover {
+                box-shadow: 0px 1px 1px 1px #e4393c;
+              }
+
+              img {
+                width: 70px;
+              }
+
+              .cpname {
+                text-align: center;
+                color: #666;
+                font-size: 13px;
+              }
+            }
+          }
         }
       }
 
       ul {
-        float: right;
-        margin-top: 0;
-        padding-top: 20px;
+        position: relative;
+        z-index: 99;
+
+        .shadow {
+          position: absolute;
+          width: @w;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.2);
+          left: 0;
+          top: 0;
+          display: none;
+        }
 
         li {
-          float: left;
-          width: 120px;
           position: relative;
-          height: 32px;
-          border-left: 1px solid #e74d50;
-          box-shadow: -1px 0 0 #dd383a;
-          overflow: hidden;
+          float: left;
+          width: @w;
+          height: 60px;
+          cursor: pointer;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+          border-left: 1px solid #de2e31;
+          border-right: 1px solid #e85759;
 
-          a {
-            line-height: 18px;
-            position: relative;
-            display: block;
-            font-size: 16px;
-            color: #fff;
-            padding: 0 20px;
-            text-align: center;
-          }
-
-          a:after{
-            position: absolute;
-            font-size: 14px;
-            line-height: 10px;
+          span.name {
             width: 100%;
-            text-align: center;
-            left: 0;
+            display: inline-block;
+            margin-top: 19px;
+          }
+
+          .hot {
+            position: absolute;
             top: 0;
-            opacity: .5;
-            font-family: SimSun;
-            margin-top: 22px;
+            right: 0;
+            width: 20px;
+            height: 14px;
+            background-image: url("/static/jhcp/img/icon/hot.gif");
           }
 
-          .home:after{
-            content: 'HOME';
-          }
-          .lottery:after{
-            content: 'LOTTERY';
-          }
-          .acttvtty:after{
-            content: 'ACTIVITY';
-          }
-          .ky_chess:after{
-            content:'CHESS'
-          }
-          .mobile:after{
-            content: 'MOBILE';
-          }
-          .help:after{
-            content: 'HELP';
+          &.navActive {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffc107;
           }
 
-          .curr {
-            color: #fedf50;
+          &:hover {
+            .navActive();
           }
-        }
-        .navActive{
-          color:#fedf50;
-          a{
-            color:#fedf50;
-          }
-        }
 
-        li:hover {
-          a {
-            color: #fedf50;
+          &:hover .sub-nav {
+            display: block;
+            transform: translateX(-50%);
+          }
+
+          .sub-nav {
+            z-index: 6;
+            position: absolute;
+            left: 38.5px;
+            top: 60px;
+            width: @w;
+            background-color: #e4393c;
+            display: none;
+
+            .sub {
+              text-align: center;
+              width: @w;
+              height: 40px;
+              line-height: 40px;
+              color: #fff;
+              font-size: 13px;
+              // transition: property duration timing-function delay;
+              transition: all 0.3s linear;
+
+              &:hover {
+                color: #000;
+              }
+            }
           }
         }
       }
     }
   }
-  .my-modal {
-      display: block;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-
-      .bg {
-      z-index: 9998;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-        background-color: rgba(0,0,0,0.36)
-      }
-      .my-modal-content {
-        max-width: 750px;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        z-index: 9999;
-        background-color: #fff;
-        // padding: 5% 0;
-        border-radius: 10px;
-
-        .vp-admin-wrap{
-          padding: 116px 0 0px;
-        }
-
-       .my-register{
-           position: absolute;
-           font-size: 20px;
-           line-height: 20px;
-           color: #333;
-           font-weight: normal;
-           border-bottom: 2px solid #FF0024;
-           padding: 20px 10px 20px 10px;
-           top:0px;
-           left: 30px;
-           z-index: 99;
-        }
-      }
-    }
 </style>
