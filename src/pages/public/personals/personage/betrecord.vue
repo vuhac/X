@@ -39,7 +39,7 @@
 
 				<div class="totalBet" v-if="validBetAmount">
 					总投注：
-					<span style="color:red">{{total_bet}}</span> ，总输赢：
+					<span style="color:red">{{total_bet}}</span> ，总派彩：
 					<span style="color:red;">{{total_win}}</span>
 				</div>
 				<div class="page">
@@ -71,7 +71,7 @@
 
 				<div class="totalBet" v-if="validBetAmount1">
 					总投注：
-					<span style="color:red">{{total_bet1}}</span> ，总输赢：
+					<span style="color:red">{{total_bet1}}</span> ，总派彩：
 					<span style="color:red;">{{total_win1}}</span>
 				</div>
 
@@ -122,7 +122,7 @@
 						align: "center"
 					},
 					{
-						title: "输赢",
+						title: "派彩",
 						key: "bet_win_amount",
 						align: "center"
 					},
@@ -382,7 +382,7 @@
 					},
 
 					{
-						title: "输赢",
+						title: "派彩",
 						align: "center",
 						key: "netAmount",
 						render: (h, params) => {

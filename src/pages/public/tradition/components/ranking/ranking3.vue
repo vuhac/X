@@ -339,6 +339,9 @@ export default {
       console.log(val)
       if(val){
         clearInterval(this.timer)
+      }else{
+        this.getBetRecord1()
+        this.timer=setInterval(this.getBetRecord1,10000)
       }
     },
     '$store.state.alert.tipModel.model':function(newVal,oldVal){
@@ -352,9 +355,10 @@ export default {
     }
   },
   mounted(){
-    this.timer = setInterval(()=>{
-      setTimeout(this.getBetRecord1,0)
-    },1000*10)
+    //  this.timer = setInterval(()=>{
+    //   setTimeout(this.getBetRecord1,0)
+    //  },1000*10)
+    this.timer=setInterval(this.getBetRecord1,10000)
   },
   destroyed(){
     clearInterval(this.timer)
