@@ -275,7 +275,8 @@ body {
 
 .swiper-container {
     width: 100%;
-    min-width: 1328px;
+    /*min-width: 1328px;*/
+  max-width: 1920px;
     position: relative;
     height: 404px;
 }
