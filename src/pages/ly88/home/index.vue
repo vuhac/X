@@ -103,7 +103,7 @@
                   <!-- 彩票 -->
                   <a href="javascript:void(0)" @click="gogame(item)" class="game-in">进入游戏</a>
                 </div>
-                <div class="bg" :class="item.show ? 'bg1':'bg2'" v-else>
+                <div class="bg" :class="item.show && (Public_User=='test' || Public_User=='v1')? 'bg2':'bg1'" v-else>
                     <a  v-if="Public_User=='test'||!Public_User"
                       @click="loginTest(item)">免费试玩</a>
                     <a v-if="Public_User!='test'"  @click="gogame(item)" class="game-in">进入游戏</a>
